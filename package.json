@@ -1,0 +1,32 @@
+{
+  "name": "nuxt-project",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "autoprefixer": "^10.4.21",
+    "nuxt": "^3.10.0",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.8"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "@nuxt/content": "^3.5.1",
+    "@nuxt/image": "^1.10.0",
+    "@pinia/nuxt": "^0.5.1",
+    "jquery": "^3.7.1",
+    "nivo-slider": "^3.2.0",
+    "pinia": "^2.1.7",
+    "sitemap": "^8.0.0",
+    "swiper": "^11.2.8"
+  }
+}
