@@ -1,6 +1,6 @@
 <template>
   <div class="cat-title text-center">
-    <p class="cat_name">Sổ tay Dự án</p>
+    <p class="cat_name">{{ projectStore.menuPage }}</p>
     <div class="clear"></div>
   </div>
   <div class="container">
@@ -27,6 +27,8 @@
 <script setup lang="ts">
 import ProjectItem from "~/components/ProjectItem.vue";
 import Paginations from "~/components/Paginations.vue";
+import { useProjectStore } from "~/store/useProject";
+const projectStore = useProjectStore();
 const route = useRoute();
 const project = ref(null);
 onMounted(() => {});

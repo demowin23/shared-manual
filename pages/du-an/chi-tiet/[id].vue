@@ -9,7 +9,17 @@
           <div class="row">
             <div class="col-md-12">
               <div class="head_title3 text-left">
-                <p>Chung cư Rice City Long Châu</p>
+                <p>{{ project?.name }}</p>
+                <button class="btn btn-primary" @click="call">
+                  <i class="fa fa-heart"></i>
+                  Call
+                </button>
+                <input
+                  type="text"
+                  id="items_name"
+                  name="items_name"
+                  v-model="idParam"
+                />
               </div>
             </div>
           </div>
@@ -178,414 +188,15 @@
           <div class="row">
             <div class="col-md-12">
               <div class="content_product">
-                <h2 style="text-align: center">
-                  <span style="color: #27ae60"
-                    ><strong
-                      ><span style="font-size: 26px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          >CHUNG CƯ RICE CITY LONG CHÂU</span
-                        ></span
-                      ></strong
-                    ></span
+                <div class="custom-quill-editor ql-container ql-snow">
+                  <div
+                    class="ql-editor html-output"
+                    data-gramm="false"
+                    contenteditable="true"
                   >
-                </h2>
-
-                <p style="text-align: center">
-                  <span style="color: #2980b9"
-                    ><strong
-                      ><span style="font-size: 16px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          >LIÊN HỆ TƯ VẤN &amp; ĐẶT LỊCH XEM DỰ ÁN</span
-                        ></span
-                      ></strong
-                    ></span
-                  ><br />
-                  <span style="color: #e74c3c"
-                    ><strong
-                      ><span style="font-size: 16px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          ><span style="background-color: #ffff00"
-                            >HOTLINE: 0914.788.345</span
-                          ></span
-                        ></span
-                      ></strong
-                    ></span
-                  ><br />
-                  <span style="color: #2980b9"
-                    ><strong
-                      ><span style="font-size: 16px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          >************</span
-                        ></span
-                      ></strong
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-01.jpg"
-                    style="height: 533px; width: 800px"
-                  />
-                </p>
-
-                <h2 style="text-align: center">
-                  <strong
-                    ><span style="color: #e74c3c"
-                      ><span style="font-size: 20px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          ><span style="background-color: #ffff00"
-                            >TỔNG QUAN DỰ ÁN RICE CITY LONG CHÂU</span
-                          ></span
-                        ></span
-                      ></span
-                    ></strong
-                  >
-                </h2>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Tên dự án: Nhà ở xã hội Rice City Long Châu<br />
-                      • Vị trí dự án: Làng Gia Quất, Phường Thượng Thanh, Quận
-                      Long Biên, TP Hà Nội<br />
-                      • Chủ đầu tư: Công ty CP BIC Việt Nam<br />
-                      • Đơn vị thiết kế: Công ty Cổ phần Kiến trúc Lập Phương
-                      (CUBIC)<br />
-                      • Quy mô: cao 22 tầng, 03 tầng hầm<br />
-                      • Số lượng căn hộ: 600 căn<br />
-                      • Diện tích dự kiến: từ 64&nbsp;- 76.6 m2&nbsp;<br />
-                      • Kinh phí đầu tư: 2.685 tỷ đồng<br />
-                      • Hình thức sở hữu: Sổ hồng lâu dài&nbsp;</span
-                    ></span
-                  >
-                </p>
-
-                <h2 style="text-align: center">
-                  <strong
-                    ><span style="color: #e74c3c"
-                      ><span style="font-size: 20px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          ><span style="background-color: #ffff00"
-                            >VỊ TRÍ &amp; TIỆN ÍCH DỰ ÁN RICE CITY LONG
-                            CHÂU</span
-                          ></span
-                        ></span
-                      ></span
-                    ></strong
-                  >
-                </h2>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Khu nhà ở xã hội Rice City Long Châu&nbsp;thuộc địa
-                      giới hành chính phường Thượng Thanh, quận Long Biên, TP Hà
-                      Nội có phía bắc giáp khu công viên cây xanh Tp theo quy
-                      hoạch (công viên hồ Đầm Nấm); Phía nam giáp khu dân cư tổ
-                      5 và trường mầm non Thượng Thanh; Phía đông giáp đất đất
-                      nông nghiệp, dân cư phường Thượng Thanh và đường đấu nối
-                      với trục đường Cầu Chui-Đông Trù; Phía tây giáp khu chung
-                      cư Đầm Nấm.</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-03.jpg"
-                    style="height: 565px; width: 800px"
-                  />
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Trên khu đất thuộc phường Thượng Thanh, Chung cư Rice
-                      City Long Châu chính là cửa ngõ phía Đông Hà Nội, là trung
-                      tâm giao thương huyết mạch phía Đông Hà Nội với các tỉnh
-                      Hải Phòng, Quảng Ninh, Hải Dương, Bắc Giang, Bắc Ninh,
-                      Lạng Sơn thông qua quốc lộ 5 và quốc lộ 1. Dự án Rice City
-                      Thượng Thanh cách cầu Chương Dương khoảng 3km, từ dự án cư
-                      dân có thể tiếp cận di chuyển vào nội thành chỉ mất 5 – 10
-                      phút lái xe, nhờ đó mọi tiện nghi và nhịp sống sầm uất nơi
-                      đô thành vẫn luôn trong tầm tay.</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-04.jpg"
-                    style="height: 709px; width: 800px"
-                  />
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Nhà ở xã hội Rice City Long Châu đáp ứng nhu cầu về nhà
-                      ở của phần lớn người dân có mức thu nhập thấp và trung
-                      bình đang sinh sống tại khu vực và phụ cận. Bên cạnh đó,
-                      Chủ đầu tư dự án Rice City Long Châu rà soát hiện trạng,
-                      đề xuất chức năng sử dụng đất, các chỉ tiêu quy hoạch kiến
-                      trúc cho từng ô đất đảm bảo phù hợp với Quy chuẩn xây dựng
-                      Việt Nam, Tiêu chuẩn thiết kế chuyên ngành và phù hợp với
-                      định hướng Quy hoạch phân khu được duyệt.</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-05.jpg"
-                    style="height: 450px; width: 800px"
-                  />
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Với phương châm đem đến cho khách hàng một cuộc sống
-                      thoải mái và tiện nghi, các nhà làm Dự án NƠXH Rice City
-                      Long Châu không những chú trọng đặc biệt đến thiết kế các
-                      căn hộ cho phù hợp với phong thủy mà còn đem đến cho các
-                      khách hàng của mình một cuộc sống đầy đủ ngay chính tại
-                      nơi đây mà không phải đi bất cứ đâu như: mua sắm, giải
-                      trí, chăm sóc sức khỏe, làm đẹp, tập luyện thể thao... Các
-                      tiện ích ngay tại dự án giúp bạn tiết kiệm nhiều thời
-                      gian, công sức và tiền bạc sẽ nâng tầm cuộc sống cho
-                      bạn.</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-06.jpg"
-                    style="height: 450px; width: 800px"
-                  />
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Toàn bộ căn hộ tại Nhà ở xã hội Rice City Long Châu
-                      được thiết kế với thiết kế ưu việt để đáp ứng toàn bộ nhu
-                      cầu nghỉ ngơi tươi mát của khách hàng, đảm báo đưa đến
-                      100% lượng không khí tươi ráo vào trong từng căn hộ của
-                      bạn. Đặc biệt hơn nữa là cách bố trí hệ thống bế sát với
-                      lô gia để tạo ra sự thông thoáng cho bếp và căn hộ của gia
-                      chủ.</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-07.jpg"
-                    style="height: 452px; width: 800px"
-                  />
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Với đầy đủ các công năng như trung tâm thương mại, dịch
-                      vụ, văn phòng và căn hộ cao cấp, lại nằm trong khu vực có
-                      tốc độ đô thị hóa và sự tăng trưởng kinh tế rất nhanh của
-                      Thành phố, Rice City Long Châu - Long Biên&nbsp;sẽ là một
-                      trong những địa điểm làm việc lý tưởng của nhiều doanh
-                      nghiệp.</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-08.jpg"
-                    style="height: 450px; width: 800px"
-                  />
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Tại Chung cư - Nhà ở xã hội&nbsp;Rice City Long Châu,
-                      cư dân sẽ được hưởng một cuộc sống tiện nghi và thuận tiện
-                      với hệ thống an toàn, hệ thống thang máy chở người và hàng
-                      hóa riêng biệt nhằm đảm bảo lưu lượng di chuyển của cư dân
-                      vào giờ cao điểm, hệ thống an ninh đồng bộ, camera giám
-                      sát 24/24, máy phát điện dự phòng khởi động sau 15 giây
-                      khi xảy ra sự cố, tầng hầm để xe rộng rãi đáp ứng nhu cầu
-                      đi lại của cho cư dân</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-09.jpg"
-                    style="height: 450px; width: 800px"
-                  />
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Với những thiết kế hiện đại, áp dụng các tiêu chuẩn
-                      kiểu mẫu cho những căn hộ tại Chung cư Rice City Long Châu
-                      người mua nhà có thể hoàn toàn yên tâm về không gian sống,
-                      việc vận dụng các yếu tố phong thuỷ vào trong từng thiết
-                      kế với chủ đạo các căn hộ đều lấy cảm hừng "Chạm tay vào
-                      Nắng và Gió" kết hợp tinh tế với thiên nhiên, mang thiên
-                      nhiên vào từng căn hộ nhưng vẫn giữ được sự sang trọng và
-                      đẳng cấp.</span
-                    ></span
-                  >
-                </p>
-
-                <h2 style="text-align: center">
-                  <strong
-                    ><span style="color: #e74c3c"
-                      ><span style="font-size: 20px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          ><span style="background-color: #ffff00"
-                            >MẶT BẰNG DỰ ÁN RICE CITY LONG CHÂU</span
-                          ></span
-                        ></span
-                      ></span
-                    ></strong
-                  >
-                </h2>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Với phương châm "Xây nhà cho khách phải giống như xây
-                      nhà cho mình", Chủ đầu tư Rice City Long Châu đã rất chú
-                      trọng lựa chọn đối tác tư vấn thiết kế, nhà thầu thi công
-                      và đơn vị giám sát uy tín hàng đầu. Ngoài ra, vật liệu sử
-                      dụng cho công trình cũng đều được kiểm định nghiêm ngặt,
-                      đảm bảo sự tiện dụng và tối tân nhất, mang đến không gian
-                      sống chất lượng cho cư dân.</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-10.jpg"
-                    style="height: 562px; width: 800px"
-                  />
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Mặt bằng Chung cư Rice City Long Châu được thiết kế với
-                      xu hướng thời đại. Với mục tiêu mang đến cho khách hàng
-                      không gian sống mới lạ, mang phong cách riêng biệt. Nhưng
-                      vẫn đáp ứng đầy đủ nhu cầu sinh hoạt cho người dân. Điều
-                      đặc biệt trong thiết kế toàn bộ dự án luôn quan tâm đến
-                      phong thuỷ. Do phong thuỷ ảnh hưởng rất nhiều đến sức khoẻ
-                      cũng như tài vận của gia đình</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <img
-                    alt=""
-                    src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-11.jpg"
-                    style="height: 564px; width: 800px"
-                  />
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Thiết kế căn hộ Rice City Long Châu rộng rãi, tận dụng
-                      tối đa ánh sáng thiên nhiên. Cách sắp xếp và bố trí nội
-                      thất cũng mang vẻ ấm cúng nhưng không kém sang trọng. Vì
-                      thế, nó không chỉ mang đến cảm giác thoải mái thư giãn cho
-                      cư dân ở đây mà còn tiết kiệm chi phí tiền điện hàng tháng
-                      rất đáng kể.</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      ><img
-                        alt=""
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-12.jpg"
-                        style="height: 519px; width: 800px" /></span
-                  ></span>
-                </p>
-
-                <p style="text-align: center">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      ><img
-                        alt=""
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-13.jpg"
-                        style="height: 515px; width: 800px" /></span
-                  ></span>
-                </p>
-
-                <p style="text-align: justify">
-                  <span style="font-size: 16px"
-                    ><span style="font-family: Verdana, Geneva, sans-serif"
-                      >• Nhà ở xã hội Rice City Long Châu được quy hoạch xây
-                      dựng là khu nhà ở hiện đại, đồng bộ hạ tầng kỹ thuật, hạ
-                      tầng xã hội phù hợp với nhu cầu sử dụng cho dự án nhà ở xã
-                      hội và phục vụ cộng đồng dân cư khu vực; góp phần phát
-                      triển kinh tế – xã hội của địa phương và thành phố; tạo bộ
-                      mặt kiến trúc đô thị khang trang, hiện đại đóng góp vào
-                      cảnh quan kiến trúc chung của khu vực quận Long
-                      Biên.</span
-                    ></span
-                  >
-                </p>
-
-                <p style="text-align: center">
-                  <strong
-                    ><span style="color: #2980b9"
-                      ><span style="font-size: 20px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          >LIÊN HỆ TƯ VẤN &amp; ĐẶT LỊCH XEM DỰ ÁN</span
-                        ></span
-                      ></span
-                    ><br />
-                    <span style="color: #e74c3c"
-                      ><span style="font-size: 20px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          ><span style="background-color: #ffff00"
-                            >HOTLINE: 0914.788.345</span
-                          ></span
-                        ></span
-                      ></span
-                    ><br />
-                    <span style="color: #2980b9"
-                      ><span style="font-size: 20px"
-                        ><span style="font-family: Verdana, Geneva, sans-serif"
-                          >*************&nbsp;</span
-                        ></span
-                      ></span
-                    ></strong
-                  >
-                </p>
+                    <div class="html-preview" v-html="project?.detail"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -594,7 +205,7 @@
             <div class="col-md-12">
               <div id="form-project" class="form-project">
                 <h4 class="title-form">
-                  Tải trọn bộ tài liệu dự án Chung cư Rice City Long Châu
+                  Tải trọn bộ tài liệu dự án {{ project?.name }}
                 </h4>
 
                 <div class="col-xs-12 col-sm-6 col-left">
@@ -642,12 +253,6 @@
                       ></textarea>
                     </div>
 
-                    <input
-                      type="hidden"
-                      id="items_name"
-                      name="items_name"
-                      value="Chung cư Rice City Long Châu"
-                    />
                     <input
                       type="hidden"
                       id="items_id"
@@ -708,20 +313,6 @@
             type="text/css"
             href="/css/styles_menu.css"
           />
-          <!-- 
-
-<div class="box-left support_col" >
-	<div class="head_title4"><p>Hỗ trợ trực tuyến <i class="fa fa-star mr_5" aria-hidden="true"></i></p></div>
-	<div class="border_box">
-		<div class="hl"><p>0914.788.345</p></div>
-		<div class="h10"></div>
-		
-
-			<div class="clear"></div>
-		</div>
-	</div>
--->
-
           <div class="box-left">
             <div class="head_title4">
               <p>
@@ -1243,13 +834,14 @@
 
 <script setup lang="ts">
 import ProjectItem from "~/components/ProjectItem.vue";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed, watchEffect } from "vue";
+import { useRoute } from "vue-router";
+import { useProjectStore } from "~/store/useProject";
 
 definePageMeta({
   layout: "default",
 });
 
-// Add external CSS and JS
 useHead({
   link: [
     {
@@ -1298,65 +890,68 @@ useHead({
   ],
 });
 
+onMounted(async () => {
+  await call();
+  await loadScripts();
+  setTimeout(initializeXZoom, 500);
+});
 const route = useRoute();
+const projectStore = useProjectStore();
 const project = ref(null);
-
-// Main image state
-const mainImage = ref(
-  "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-01.jpg"
-);
+let idParam = ref(route.params.id);
+const call = async () => {
+  let id = idParam.value;
+  if (typeof id === "string") {
+    const match = id.match(/^(\\d+)/);
+    if (match) id = match[1];
+  }
+  if (id) {
+    await projectStore.fetchProjectById(Number(id));
+    project.value = projectStore.getProject;
+    console.log(project.value);
+  }
+};
 
 // Gallery images
-const galleryImages = ref([
+const defaultGallery = [
   {
     src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-01.jpg",
     alt: "Chung cư Rice City Long Châu",
   },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-03.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-04.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-05.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-06.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-07.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-08.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-09.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-10.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-11.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-12.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-13.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-]);
+  // ... các ảnh mặc định khác nếu cần
+];
+
+const galleryImages = computed(() => {
+  if (
+    project.value &&
+    Array.isArray(project.value.images) &&
+    project.value.images.length > 0
+  ) {
+    // Nếu là mảng string
+    if (typeof project.value.images[0] === "string") {
+      const prefix = "http://127.0.0.1:4000/uploads/";
+      return project.value.images.map((img, idx) => ({
+        src: prefix + img,
+        alt: project.value.name || `Ảnh ${idx + 1}`,
+      }));
+    }
+    // Nếu là mảng object {src, alt}
+    return project.value.images;
+  }
+  return defaultGallery;
+});
+
+// Main image state
+const mainImage = ref("");
+
+watchEffect(() => {
+  if (galleryImages.value.length > 0) {
+    mainImage.value = galleryImages.value[0].src;
+  } else {
+    mainImage.value =
+      "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-01.jpg";
+  }
+});
 
 const initializeXZoom = () => {
   if (typeof window !== "undefined" && window.jQuery) {
@@ -1406,11 +1001,6 @@ const loadScripts = () => {
     document.body.appendChild(jqueryScript);
   });
 };
-
-onMounted(async () => {
-  await loadScripts();
-  setTimeout(initializeXZoom, 500); // Add a small delay to ensure DOM is ready
-});
 
 const projects = ref([
   {
@@ -1569,7 +1159,6 @@ const projects = ref([
   },
 ]);
 </script>
-
 <style scoped>
 .xzoom-gallery4 {
   border: 1px solid #ccc;
@@ -1604,5 +1193,26 @@ const projects = ref([
   background: url(../images/xloading.gif);
   width: 48px;
   height: 48px;
+}
+.html-output {
+  background: #f6f8fa;
+  border-radius: 8px;
+  padding: 18px 16px;
+  margin-top: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+.html-output h3 {
+  margin-top: 0;
+  font-size: 17px;
+  color: #333;
+}
+.html-output pre {
+  background: #23272f;
+  color: #e6e6e6;
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 13px;
+  margin-bottom: 12px;
 }
 </style>

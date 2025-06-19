@@ -2350,9 +2350,10 @@ a.search_icon {
 
 .logo {
     text-align: left;
-    padding: 10px 0px;
 }
-
+.img-responsive {
+    object-fit: contain;
+}
 .logo img {
     margin-top: 0px;
     max-height: 80px;
