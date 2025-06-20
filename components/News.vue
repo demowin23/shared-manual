@@ -33,3 +33,9 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  // Không có logic script, chỉ template
+};
+</script>

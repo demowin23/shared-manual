@@ -6,8 +6,8 @@ export default defineNuxtPlugin(() => {
   return {
     provide: {
       env: {
-        URL_BE: process.env.URL_BE || 'http://127.0.0.1:4000'
+        URL_BE: config.public.URL_BE
       }
     }
   }
-}) 
+})

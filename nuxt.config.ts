@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '~/assets/css/style_menu.css',
     '~/assets/css/main.css',
     '~/assets/css/reponsive.css',
+    '@fortawesome/fontawesome-free/css/all.min.css'
   ],
   modules: [
     '@pinia/nuxt',
@@ -143,6 +144,13 @@ export default defineNuxtConfig({
           }
         }
       ]
+    }
+  },
+
+  runtimeConfig: {
+    URL_BE: process.env.URL_BE || 'http://127.0.0.1:4000',
+    public: {
+      URL_BE: process.env.URL_BE || 'http://127.0.0.1:4000',
     }
   }
 }) 

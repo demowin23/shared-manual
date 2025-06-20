@@ -8,6 +8,7 @@
 }
 
 #nav_menu {
+    background: linear-gradient(90deg, #9f69d7, #708ac9);
     position: relative;
 }
 
@@ -15,9 +16,11 @@
     width: 102%;
     margin: 0 auto;
     position: relative;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 4px 24px 0 rgba(127,83,172,0.10), 0 1.5px 6px 0 rgba(95,251,241,0.08);
+    overflow: visible;
 }
 
-#cssmenu:after,
 #cssmenu ul:after {
     content: '';
     display: block;
@@ -50,11 +53,10 @@
 #cssmenu>ul>li {
     display: inline-block;
     float: left;
-    margin: 0px 0px;
-    margin-right: 0px;
-    -webkit-transition: all 0.4s;
-    -ms-transition: all 0.4s;
-    -o-transition: all 0.4s;
+    margin: 0 2px;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
 }
 
 #cssmenu.align-center {
@@ -78,44 +80,30 @@
 }
 
 #cssmenu>ul>li>a {
-    color: #000;
+    color: #fff;
     font-size: 14px;
     text-transform: uppercase;
-    padding: 10px 20px;
-    -webkit-transition: all 0.4s;
+    padding: 10px 18px;
+    font-family: inherit;
     font-weight: 600;
-    -ms-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    font-family: utmAvo;
+    border-radius: 8px 8px 0 0;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    position: relative;
+    letter-spacing: 0.5px;
 }
 
-#cssmenu>ul>li:hover:after {
-    /* content: '';
-
-  display: block;
-
-  width: 0;
-
-  height: 0;
-
-  position: absolute;
-
-  left: 50%;
-
-  bottom: 0;
-
-  border-left: 10px solid transparent;
-
-  border-right: 10px solid transparent;
-
-  border-bottom: 10px solid #0fa1e0;
-
-  margin-left: -10px;*/
+#cssmenu>ul>li:hover>a, #cssmenu>ul>li.active>a {
+    color: #7F53AC;
+    background: #fff;
+    box-shadow: 0 4px 16px 0 rgba(127,83,172,0.10);
+    transform: translateY(-2px) scale(1.04);
 }
 
 #cssmenu>ul>li:first-child {}
 
 #cssmenu>ul>li:first-child>a {
+    font-family: inherit;
+    font-weight: 600;
     border-right: 0px;
     border-left: 0px;
 }
@@ -133,7 +121,8 @@
 }
 
 #cssmenu>ul>li.active>a {
-    font-family: system-ui;
+    color: #ffffff;
+    background: rgba(127,83,172,0.15);
 }
 
 #cssmenu>ul>li:hover {}
@@ -142,50 +131,71 @@
     z-index: 9999;
 }
 
-#cssmenu .has-sub:hover>ul {
-    display: block;
+#cssmenu .has-sub:hover>a:after {
+    transform: rotate(180deg);
 }
 
 #cssmenu .has-sub ul {
     display: none;
-    margin-top: 0px;
     position: absolute;
-    width: 230px;
-    top: 100%;
     left: 0;
-    padding: 23px 0px 0px 0px;
+    top: 100%;
+    min-width: 220px;
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 32px 0 rgba(127,83,172,0.15), 0 2px 8px 0 rgba(95,251,241,0.10);
+    padding: 10px 0;
+    z-index: 100;
+    animation: dropdownFadeIn 0.3s;
 }
 
-#cssmenu.align-right .has-sub ul {
-    left: auto;
-    right: 0;
+#cssmenu .has-sub:hover>ul {
+    display: block;
+}
+
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 #cssmenu .has-sub ul li {
-    *margin-bottom: -1px;
+    border: none;
+    margin: 0;
+    border-radius: 0;
 }
 
 #cssmenu .has-sub ul li a {
-    background: #444444;
-    border-bottom: 1px solid #545454;
+    color: #7F53AC;
+    background: transparent;
     font-size: 13px;
-    filter: none;
-    display: block;
-    line-height: 120%;
-    padding: 10px;
-    color: white;
-    text-align: left;
+    padding: 8px 18px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 500;
 }
 
-#cssmenu .has-sub ul li:hover a {
-    -webkit-transition: all 0.4s;
-    -ms-transition: all 0.4s;
-    -o-transition: all 0.4s;
+#cssmenu .has-sub ul li a:hover {
+    background: linear-gradient(90deg, #7F53AC22, #5FFBF122);
+    color: #5FFBF1;
+}
+
+#cssmenu .has-sub .has-sub>ul {
+    left: 100%;
+    top: 0;
+    border-radius: 12px;
+    margin-left: 2px;
+    box-shadow: 0 8px 32px 0 rgba(127,83,172,0.10);
+}
+
+
+
+#cssmenu .has-sub .has-sub ul li a {
+    padding-left: 26px;
 }
 
 #cssmenu ul ul li:hover>a {
-    background: #d0420d;
-    color: white;
+    background: #5FFBF1;
+    color: #7F53AC;
 }
 
 #cssmenu .has-sub .has-sub:hover>ul {
@@ -211,13 +221,14 @@
 }
 
 #cssmenu .has-sub .has-sub ul li a {
-    background: #444444;
-    border-bottom: 1px solid #545454;
+    background: #fff;
+    border-bottom: 1px solid #e0e7ff;
+    color: #7F53AC;
 }
 
 #cssmenu .has-sub .has-sub ul li a:hover {
-    background: #d0420d;
-    color: white;
+    background: linear-gradient(90deg, #7F53AC22, #5FFBF122);
+    color: #5FFBF1;
 }
 
 #cssmenu ul ul li.last>a,
@@ -227,4 +238,26 @@
 #cssmenu .has-sub ul li:last-child>a,
 #cssmenu .has-sub ul li.last>a {
     border-bottom: 0;
+}
+
+#cssmenu ul.maunen > li.has-sub > a[title="Nhà đất bán"],
+#cssmenu ul.maunen > li.has-sub > a[title="Nhà đất cho thuê"],
+#cssmenu ul.maunen > li.has-sub > a[title="Kiến thức"],
+#cssmenu ul.maunen > li.has-sub > a[title="Liên hệ"],
+#cssmenu ul.maunen > li.has-sub > a[title="Trang chủ"] {
+  pointer-events: auto;
+  background: none !important;
+  color: #fff !important;
+  transition: none !important;
+}
+#cssmenu ul.maunen > li.has-sub > a[title="Nhà đất bán"]:hover,
+#cssmenu ul.maunen > li.has-sub > a[title="Nhà đất cho thuê"]:hover,
+#cssmenu ul.maunen > li.has-sub > a[title="Kiến thức"]:hover,
+#cssmenu ul.maunen > li.has-sub > a[title="Liên hệ"]:hover,
+#cssmenu ul.maunen > li.has-sub > a[title="Trang chủ"]:hover {
+  background: none !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  filter: none !important;
 }

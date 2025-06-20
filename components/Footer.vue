@@ -183,20 +183,6 @@
               </div>
             </form>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="info_f">
-              <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/hoanghailandcom/&tabs=timeline&width=340&height=270&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1951538371539278"
-                width="340"
-                height="270"
-                style="border: none; overflow: hidden"
-                scrolling="no"
-                frameborder="0"
-                allowTransparency="true"
-                allow="encrypted-media"
-              ></iframe>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -206,6 +192,8 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script>
+export default {};
+</script>
 
 <style scoped></style>

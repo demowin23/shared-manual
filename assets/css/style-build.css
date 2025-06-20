@@ -1,33 +1,4 @@
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url(../css/font/glyphicons-halflings-regular.eot);
-    src: url(../css/font/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'), url(../css/font/glyphicons-halflings-regular.woff) format('woff'), url(../css/font/glyphicons-halflings-regular.ttf) format('truetype'), url(../css/font/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg');
-}
 
-@font-face {
-    font-family: "robotobold";
-    src: url(../css/font/Roboto-BoldCondensed.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: "utm";
-    src: url(../css/font/UTM_Swiss.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: "utmAvoBold";
-    src: url(../css/font/UTMAvoBold.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: "utmAvo";
-    src: url(../css/font/UTMAvo.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: "UTMWeddingKT";
-    src: url(../css/font/UTMWeddingK&T.ttf) format('truetype');
-}
 
 ul {
     padding: 0px;
@@ -52,8 +23,8 @@ body {
     margin: 0px;
     padding: 0px;
     line-height: 1.42857143;
-    color: #333;
-    background-color: #fff;
+    color: #222;
+    background: linear-gradient(135deg, #f8f8ff 0%, #e0e7ff 100%);
 }
 
 .sticky {
@@ -89,11 +60,14 @@ body {
     bottom: 0px;
     font-family: utm;
     font-size: 19px;
-    color: #ffffff;
+    color: #fff;
+    background: #7F53AC;
+    border-radius: 6px;
+    padding: 2px 12px;
 }
 
 .hotline_top span {
-    color: #ff0202;
+    color: #5FFBF1;
 }
 
 #top_bar {
@@ -104,7 +78,7 @@ body {
 
 #footer {
     text-align: left;
-    background: #363636;
+    background: linear-gradient(90deg, #7F53AC 0%, #5FFBF1 100%);
     padding: 15px 0px;
     color: white;
 }
@@ -131,13 +105,13 @@ body {
 }
 
 .menu_new_top_left ul li a {
-    color: black;
+    color: #7F53AC;
     padding: 0px 10px;
-    border-right: 1px black solid;
+    border-right: 1px #5FFBF1 solid;
 }
 
 .menu_new_top_left ul li:last-child a {
-    border-right: 0px black solid;
+    border-right: 0px #5FFBF1 solid;
 }
 
 .page_content {
@@ -163,7 +137,7 @@ body {
 }
 
 .box_services .box_content a {
-    color: #494949;
+    color: #7F53AC;
 }
 
 .icon {
@@ -196,7 +170,7 @@ body {
 }
 
 .info_support {
-    border: 1px solid #f7941d;
+    border: 1px solid #5FFBF1;
     float: right;
     position: relative;
     width: 100%;
@@ -368,7 +342,6 @@ ul.more-content {}
 
 .more-content li:before {
     content: "\f046";
-    font-family: 'FontAwesome';
     padding-right: 8px;
     display: inline;
     color: #666666;
@@ -877,7 +850,7 @@ ul.more-content {}
 
 .head_title2 p {
     margin-bottom: 0px;
-    color: #000000;
+    color: #337ab7;
     text-transform: uppercase;
     font-weight: 500;
     padding-left: 0px;
@@ -1252,7 +1225,7 @@ ul.more-content {}
 .footer2 {
     border-color: #e9eaee;
     border-top-width: 12px;
-    background: url(/assets/images/footer-bg.jpg)no-repeat;
+    background: url(/assets/images/news.jpg)no-repeat;
     background-size: cover;
     color: white
 }
@@ -2704,7 +2677,7 @@ p.short {
 }
 
 .module3 {
-    background: url(/assets/images/bg_sectwo.jpg) no-repeat;
+    background: url(/assets/images/world.jpg) no-repeat;
     background-size: 100%;
     text-align: center;
     color: #fff;
@@ -2761,12 +2734,12 @@ p.short {
 }
 
 .newhome h3 a {
-    color: #143c56;
+    color: #337ab7;
 }
 
 .newhome p.date {
     text-align: left;
-    color: black;
+    color: #337ab7;
 }
 
 .newhome p.date i {

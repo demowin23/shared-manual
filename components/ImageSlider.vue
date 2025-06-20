@@ -3,19 +3,14 @@
     <swiper
       :modules="[
         SwiperAutoplay,
-        SwiperEffectCube,
+        SwiperEffectFade,
         SwiperNavigation,
         SwiperPagination,
       ]"
       :slides-per-view="1"
       :loop="true"
-      :effect="'cube'"
-      :cube-effect="{
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94,
-      }"
+      :effect="'fade'"
+      :fade-effect="{ crossFade: true }"
       :speed="1000"
       :autoplay="{
         delay: 4000,
@@ -50,45 +45,47 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay, EffectCube, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/effect-cube";
+import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const slides = [
-  {
-    href: "/",
-    title: "https://sotaychungcu.com/admin/https://sotaychungcu.com/",
-    image:
-      "https://sotaychungcu.com//img/upload/images/files/Slideshow/Banner_01.jpg",
+export default {
+  components: { Swiper, SwiperSlide },
+  data() {
+    return {
+      slides: [
+        {
+          href: "/",
+          title: "Chung cư",
+          image: "/images/Banner_01.jpg",
+        },
+        {
+          href: "https://sotaychungcu.com/",
+          title: "Chung cư",
+          image: "/images/Banner_02.jpg",
+        },
+        {
+          href: "https://sotaychungcu.com/",
+          title: "Chung cư",
+          image: "/images/Banner_03.jpg",
+        },
+        {
+          href: "https://sotaychungcu.com/",
+          title: "Chung cư",
+          image: "/images/Roman-Plaza-Slider.jpg",
+        },
+      ],
+      SwiperAutoplay: Autoplay,
+      SwiperEffectFade: EffectFade,
+      SwiperNavigation: Navigation,
+      SwiperPagination: Pagination,
+    };
   },
-  {
-    href: "https://sotaychungcu.com/",
-    title: "https://sotaychungcu.com/admin/https://sotaychungcu.com/",
-    image:
-      "https://sotaychungcu.com//img/upload/images/files/Slideshow/Roman-Plaza-Slider.jpg",
-  },
-  {
-    href: "https://sotaychungcu.com/",
-    title: "https://sotaychungcu.com/admin/https://sotaychungcu.com/",
-    image:
-      "https://sotaychungcu.com//img/upload/images/files/Slideshow/Banner_02.jpg",
-  },
-  {
-    href: "https://sotaychungcu.com/",
-    title: "https://sotaychungcu.com/admin/https://sotaychungcu.com/",
-    image:
-      "https://sotaychungcu.com//img/upload/images/files/Slideshow/Banner_03.jpg",
-  },
-];
-
-const SwiperAutoplay = Autoplay;
-const SwiperEffectCube = EffectCube;
-const SwiperNavigation = Navigation;
-const SwiperPagination = Pagination;
+};
 </script>
 
 <style scoped>

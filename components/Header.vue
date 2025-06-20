@@ -42,26 +42,17 @@
         <ul class="menu-list">
           <!-- Trang chủ -->
           <li class="active">
-            <a href="/" @click="closeMobileMenu">
-              <img
-                src="~/assets/icon/home.png"
-                alt="Icon trang chủ"
-                width="11"
-                height="11"
-                loading="lazy"
-              />
-              Trang chủ
-            </a>
+            <a href="/" @click="closeMobileMenu"> Trang chủ </a>
           </li>
 
           <!-- Sổ tay Dự án -->
-          <li class="has-submenu">
+          <li class="has-submenu" v-for="area in areas" :key="area.id">
             <div class="menu-item">
               <a
-                href="/du-an/431-so-tay-du-an"
-                @click.prevent="handleMenuClick(1, 'Sổ tay Dự án')"
+                :href="`/du-an/${area.id}`"
+                @click.prevent="handleMenuClick(area.id, area.name)"
               >
-                <h2>Sổ tay Dự án</h2>
+                <h2>{{ area.name }}</h2>
               </a>
               <span
                 class="arrow"
@@ -72,447 +63,16 @@
             </div>
             <ul class="submenu">
               <!-- Dự án Hà Nội -->
-              <li class="has-submenu">
-                <div class="menu-item">
-                  <a
-                    href="/du-an/127-du-an-ha-noi"
-                    @click.prevent="handleMenuClick(2, 'Dự án Hà Nội')"
-                    >Dự án Hà Nội</a
-                  >
-                  <span
-                    class="arrow"
-                    @click="toggleSubmenu($event)"
-                    aria-expanded="false"
-                    aria-label="Mở rộng menu con"
-                  ></span>
-                </div>
-                <ul class="submenu">
-                  <li>
-                    <a
-                      href="/du-an/429-quan-ba-dinh"
-                      @click.prevent="handleMenuClick(3, 'Quận Ba Đình')"
-                      >Quận Ba Đình</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/430-quan-hoan-kiem"
-                      @click.prevent="handleMenuClick(4, 'Quận Hoàn Kiếm')"
-                      >Quận Hoàn Kiếm</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/431-quan-hai-ba-trung"
-                      @click.prevent="handleMenuClick(5, 'Quận Hai Bà Trưng')"
-                      >Quận Hai Bà Trưng</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/432-quan-dong-da"
-                      @click.prevent="handleMenuClick(6, 'Quận Đống Đa')"
-                      >Quận Đống Đa</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/433-quan-tay-ho"
-                      @click.prevent="handleMenuClick(7, 'Quận Tây Hồ')"
-                      >Quận Tây Hồ</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/434-quan-cau-giay"
-                      @click.prevent="handleMenuClick(8, 'Quận Cầu Giấy')"
-                      >Quận Cầu Giấy</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/435-quan-thanh-xuan"
-                      @click.prevent="handleMenuClick(9, 'Quận Thanh Xuân')"
-                      >Quận Thanh Xuân</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/436-quan-hoang-mai"
-                      @click.prevent="handleMenuClick(10, 'Quận Hoàng Mai')"
-                      >Quận Hoàng Mai</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/437-quan-long-bien"
-                      @click.prevent="handleMenuClick(11, 'Quận Long Biên')"
-                      >Quận Long Biên</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/438-quan-nam-tu-liem"
-                      @click.prevent="handleMenuClick(12, 'Quận Nam Từ Liêm')"
-                      >Quận Nam Từ Liêm</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/439-quan-bac-tu-liem"
-                      @click.prevent="handleMenuClick(13, 'Quận Bắc Từ Liêm')"
-                      >Quận Bắc Từ Liêm</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/440-quan-ha-dong"
-                      @click.prevent="handleMenuClick(14, 'Quận Hà Đông')"
-                      >Quận Hà Đông</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/441-huyen-thanh-tri"
-                      @click.prevent="handleMenuClick(15, 'Huyện Thanh Trì')"
-                      >Huyện Thanh Trì</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/442-huyen-gia-lam"
-                      @click.prevent="handleMenuClick(16, 'Huyện Gia Lâm')"
-                      >Huyện Gia Lâm</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/443-huyen-dong-anh"
-                      @click.prevent="handleMenuClick(17, 'Huyện Đông Anh')"
-                      >Huyện Đông Anh</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/444-huyen-soc-son"
-                      @click.prevent="handleMenuClick(18, 'Huyện Sóc Sơn')"
-                      >Huyện Sóc Sơn</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/445-thi-xa-son-tay"
-                      @click.prevent="handleMenuClick(19, 'Thị xã Sơn Tây')"
-                      >Thị xã Sơn Tây</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/446-huyen-ba-vi"
-                      @click.prevent="handleMenuClick(20, 'Huyện Ba Vì')"
-                      >Huyện Ba Vì</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/447-huyen-phuc-tho"
-                      @click.prevent="handleMenuClick(21, 'Huyện Phúc Thọ')"
-                      >Huyện Phúc Thọ</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/448-huyen-dan-phuong"
-                      @click.prevent="handleMenuClick(22, 'Huyện Đan Phượng')"
-                      >Huyện Đan Phượng</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/449-huyen-hoai-duc"
-                      @click.prevent="handleMenuClick(23, 'Huyện Hoài Đức')"
-                      >Huyện Hoài Đức</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/450-huyen-quoc-oai"
-                      @click.prevent="handleMenuClick(24, 'Huyện Quốc Oai')"
-                      >Huyện Quốc Oai</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/451-huyen-thach-that"
-                      @click.prevent="handleMenuClick(25, 'Huyện Thạch Thất')"
-                      >Huyện Thạch Thất</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/452-huyen-chuong-my"
-                      @click.prevent="handleMenuClick(26, 'Huyện Chương Mỹ')"
-                      >Huyện Chương Mỹ</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/453-huyen-thanh-oai"
-                      @click.prevent="handleMenuClick(27, 'Huyện Thanh Oai')"
-                      >Huyện Thanh Oai</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/454-huyen-thuong-tin"
-                      @click.prevent="handleMenuClick(28, 'Huyện Thường Tín')"
-                      >Huyện Thường Tín</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/455-huyen-phu-xuyen"
-                      @click.prevent="handleMenuClick(29, 'Huyện Phú Xuyên')"
-                      >Huyện Phú Xuyên</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/456-huyen-ung-hoa"
-                      @click.prevent="handleMenuClick(30, 'Huyện Ứng Hòa')"
-                      >Huyện Ứng Hòa</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/457-huyen-my-duc"
-                      @click.prevent="handleMenuClick(31, 'Huyện Mỹ Đức')"
-                      >Huyện Mỹ Đức</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/458-huyen-me-linh"
-                      @click.prevent="handleMenuClick(32, 'Huyện Mê Linh')"
-                      >Huyện Mê Linh</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <!-- Dự án Sài Gòn -->
-              <li class="has-submenu">
-                <div class="menu-item">
-                  <a
-                    href="/du-an/128-du-an-sai-gon"
-                    @click.prevent="handleMenuClick(32, 'Dự án Sài Gòn')"
-                    >Dự án Sài Gòn</a
-                  >
-                  <span
-                    class="arrow"
-                    @click="toggleSubmenu($event)"
-                    aria-expanded="false"
-                    aria-label="Mở rộng menu con"
-                  ></span>
-                </div>
-                <ul class="submenu">
-                  <li>
-                    <a
-                      href="/du-an/109-quan-1-1"
-                      @click.prevent="handleMenuClick(33, 'Quận 1')"
-                      >Quận 1</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/110-quan-2"
-                      @click.prevent="handleMenuClick(34, 'Quận 2')"
-                      >Quận 2</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/111-quan-3"
-                      @click.prevent="handleMenuClick(35, 'Quận 3')"
-                      >Quận 3</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/112-quan-4"
-                      @click.prevent="handleMenuClick(36, 'Quận 4')"
-                      >Quận 4</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/113-quan-5"
-                      @click.prevent="handleMenuClick(37, 'Quận 5')"
-                      >Quận 5</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/114-quan-6"
-                      @click.prevent="handleMenuClick(38, 'Quận 6')"
-                      >Quận 6</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/115-quan-7"
-                      @click.prevent="handleMenuClick(39, 'Quận 7')"
-                      >Quận 7</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/116-quan-8"
-                      @click.prevent="handleMenuClick(40, 'Quận 8')"
-                      >Quận 8</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/117-quan-9"
-                      @click.prevent="handleMenuClick(41, 'Quận 9')"
-                      >Quận 9</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/118-quan-10"
-                      @click.prevent="handleMenuClick(42, 'Quận 10')"
-                      >Quận 10</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/119-quan-11"
-                      @click.prevent="handleMenuClick(43, 'Quận 11')"
-                      >Quận 11</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/120-quan-12"
-                      @click.prevent="handleMenuClick(44, 'Quận 12')"
-                      >Quận 12</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/121-quan-binh-tan"
-                      @click.prevent="handleMenuClick(45, 'Quận Bình Tân')"
-                      >Quận Bình Tân</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/122-quan-binh-thanh"
-                      @click.prevent="handleMenuClick(46, 'Quận Bình Thạnh')"
-                      >Quận Bình Thạnh</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/469-quan-go-vap"
-                      @click.prevent="handleMenuClick(47, 'Quận Gò Vấp')"
-                      >Quận Gò Vấp</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/470-quan-phu-nhuan"
-                      @click.prevent="handleMenuClick(48, 'Quận Phú Nhuận')"
-                      >Quận Phú Nhuận</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/471-quan-tan-binh"
-                      @click.prevent="handleMenuClick(49, 'Quận Tân Bình')"
-                      >Quận Tân Bình</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/472-quan-tan-phu"
-                      @click.prevent="handleMenuClick(50, 'Quận Tân Phú')"
-                      >Quận Tân Phú</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/473-tp-thu-duc"
-                      @click.prevent="handleMenuClick(51, 'TP Thủ Đức')"
-                      >TP Thủ Đức</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/474-huyen-binh-chanh"
-                      @click.prevent="handleMenuClick(52, 'Huyện Bình Chánh')"
-                      >Huyện Bình Chánh</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/475-huyen-can-gio"
-                      @click.prevent="handleMenuClick(53, 'Huyện Cần Giờ')"
-                      >Huyện Cần Giờ</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/476-huyen-cu-chi"
-                      @click.prevent="handleMenuClick(54, 'Huyện Củ Chi')"
-                      >Huyện Củ Chi</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/477-huyen-hoc-mon"
-                      @click.prevent="handleMenuClick(55, 'Huyện Hóc Môn')"
-                      >Huyện Hóc Môn</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/478-huyen-nha-be"
-                      @click.prevent="handleMenuClick(56, 'Huyện Nhà Bè')"
-                      >Huyện Nhà Bè</a
-                    >
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-
-          <!-- Sổ tay Nhà đất -->
-          <li class="has-submenu">
-            <div class="menu-item">
-              <a
-                href="/du-an/464-so-tay-nha-dat"
-                @click.prevent="handleMenuClick(57, 'Sổ tay Nhà đất')"
+              <li
+                class="has-submenu"
+                v-for="subArea in area.children"
+                :key="subArea.id"
               >
-                <h2>Sổ tay Nhà đất</h2>
-              </a>
-              <span
-                class="arrow"
-                @click="toggleSubmenu($event)"
-                aria-expanded="false"
-                aria-label="Mở rộng menu con"
-              ></span>
-            </div>
-            <ul class="submenu">
-              <!-- Nhà đất Đông Bắc -->
-              <li class="has-submenu">
                 <div class="menu-item">
                   <a
-                    href="/du-an/482-nha-dat-dong-bac"
-                    @click.prevent="handleMenuClick(58, 'Nhà đất Đông Bắc')"
-                    >Nhà đất Đông Bắc</a
+                    :href="`/du-an/${subArea.id}`"
+                    @click.prevent="handleMenuClick(subArea.id, subArea.name)"
+                    >{{ subArea.name }}</a
                   >
                   <span
                     class="arrow"
@@ -522,566 +82,16 @@
                   ></span>
                 </div>
                 <ul class="submenu">
-                  <li>
-                    <a
-                      href="/du-an/489-nha-dat-hai-phong"
-                      @click.prevent="handleMenuClick(59, 'Nhà đất Hải Phòng')"
-                      >Nhà đất Hải Phòng</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/490-nha-dat-quang-ninh"
-                      @click.prevent="handleMenuClick(60, 'Nhà đất Quảng Ninh')"
-                      >Nhà đất Quảng Ninh</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/491-nha-dat-bac-ninh"
-                      @click.prevent="handleMenuClick(61, 'Nhà đất Bắc Ninh')"
-                      >Nhà đất Bắc Ninh</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/492-nha-dat-bac-giang"
-                      @click.prevent="handleMenuClick(62, 'Nhà đất Bắc Giang')"
-                      >Nhà đất Bắc Giang</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/493-nha-dat-hung-yen"
-                      @click.prevent="handleMenuClick(63, 'Nhà đất Hưng Yên')"
-                      >Nhà đất Hưng Yên</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/494-nha-dat-hai-duong"
-                      @click.prevent="handleMenuClick(64, 'Nhà đất Hải Dương')"
-                      >Nhà đất Hải Dương</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/495-nha-dat-thai-nguyen"
-                      @click.prevent="
-                        handleMenuClick(65, 'Nhà đất Thái Nguyên')
-                      "
-                      >Nhà đất Thái Nguyên</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/496-nha-dat-vinh-phuc"
-                      @click.prevent="handleMenuClick(66, 'Nhà đất Vĩnh Phúc')"
-                      >Nhà đất Vĩnh Phúc</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/497-nha-dat-ha-nam"
-                      @click.prevent="handleMenuClick(67, 'Nhà đất Hà Nam')"
-                      >Nhà đất Hà Nam</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/498-nha-dat-phu-tho"
-                      @click.prevent="handleMenuClick(68, 'Nhà đất Phú Thọ')"
-                      >Nhà đất Phú Thọ</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/499-nha-dat-thai-binh"
-                      @click.prevent="handleMenuClick(69, 'Nhà đất Thái Bình')"
-                      >Nhà đất Thái Bình</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/500-nha-dat-nam-dinh"
-                      @click.prevent="handleMenuClick(70, 'Nhà đất Nam Định')"
-                      >Nhà đất Nam Định</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/501-nha-dat-ninh-binh"
-                      @click.prevent="handleMenuClick(71, 'Nhà đất Ninh Bình')"
-                      >Nhà đất Ninh Bình</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/502-nha-dat-lang-son"
-                      @click.prevent="handleMenuClick(72, 'Nhà đất Lạng Sơn')"
-                      >Nhà đất Lạng Sơn</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/503-nha-dat-cao-bang"
-                      @click.prevent="handleMenuClick(73, 'Nhà đất Cao Bằng')"
-                      >Nhà đất Cao Bằng</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/504-nha-dat-tuyen-quang"
-                      @click.prevent="
-                        handleMenuClick(74, 'Nhà đất Tuyên Quang')
-                      "
-                      >Nhà đất Tuyên Quang</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/505-nha-dat-ha-giang"
-                      @click.prevent="handleMenuClick(75, 'Nhà đất Hà Giang')"
-                      >Nhà đất Hà Giang</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/506-nha-dat-bac-kan"
-                      @click.prevent="handleMenuClick(76, 'Nhà đất Bắc Kạn')"
-                      >Nhà đất Bắc Kạn</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <!-- Nhà đất Tây Bắc -->
-              <li class="has-submenu">
-                <div class="menu-item">
-                  <a
-                    href="/du-an/483-nha-dat-tay-bac"
-                    @click.prevent="handleMenuClick(77, 'Nhà đất Tây Bắc')"
-                    >Nhà đất Tây Bắc</a
+                  <li
+                    v-for="subSubArea in subArea.children"
+                    :key="subSubArea.id"
                   >
-                  <span
-                    class="arrow"
-                    @click="toggleSubmenu($event)"
-                    aria-expanded="false"
-                    aria-label="Mở rộng menu con"
-                  ></span>
-                </div>
-                <ul class="submenu">
-                  <li>
                     <a
-                      href="/du-an/512-nha-dat-lai-chau"
-                      @click.prevent="handleMenuClick(78, 'Nhà đất Lai Châu')"
-                      >Nhà đất Lai Châu</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/507-nha-dat-hoa-binh"
-                      @click.prevent="handleMenuClick(79, 'Nhà đất Hòa Bình')"
-                      >Nhà đất Hòa Bình</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/508-nha-dat-lao-cai"
-                      @click.prevent="handleMenuClick(80, 'Nhà đất Lào Cai')"
-                      >Nhà đất Lào Cai</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/509-nha-dat-yen-bai"
-                      @click.prevent="handleMenuClick(81, 'Nhà đất Yên Bái')"
-                      >Nhà đất Yên Bái</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/510-nha-dat-son-la"
-                      @click.prevent="handleMenuClick(82, 'Nhà đất Sơn La')"
-                      >Nhà đất Sơn La</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/511-nha-dat-dien-bien"
-                      @click.prevent="handleMenuClick(83, 'Nhà đất Điện Biên')"
-                      >Nhà đất Điện Biên</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <!-- Nhà đất Bắc Trung Bộ -->
-              <li class="has-submenu">
-                <div class="menu-item">
-                  <a
-                    href="/du-an/484-nha-dat-bac-trung-bo"
-                    @click.prevent="handleMenuClick(84, 'Nhà đất Bắc Trung Bộ')"
-                    >Nhà đất Bắc Trung Bộ</a
-                  >
-                  <span
-                    class="arrow"
-                    @click="toggleSubmenu($event)"
-                    aria-expanded="false"
-                    aria-label="Mở rộng menu con"
-                  ></span>
-                </div>
-                <ul class="submenu">
-                  <li>
-                    <a
-                      href="/du-an/513-nha-dat-nghe-an"
-                      @click.prevent="handleMenuClick(85, 'Nhà đất Nghệ An')"
-                      >Nhà đất Nghệ An</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/514-nha-dat-thanh-hoa"
-                      @click.prevent="handleMenuClick(86, 'Nhà đất Thanh Hóa')"
-                      >Nhà đất Thanh Hóa</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/515-nha-dat-ha-tinh"
-                      @click.prevent="handleMenuClick(87, 'Nhà đất Hà Tĩnh')"
-                      >Nhà đất Hà Tĩnh</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/516-nha-dat-quang-binh"
-                      @click.prevent="handleMenuClick(88, 'Nhà đất Quảng Bình')"
-                      >Nhà đất Quảng Bình</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/517-nha-dat-quang-tri"
-                      @click.prevent="handleMenuClick(89, 'Nhà đất Quảng Trị')"
-                      >Nhà đất Quảng Trị</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/518-nha-dat-thua-thien-hue"
+                      :href="`/du-an/${subSubArea.id}`"
                       @click.prevent="
-                        handleMenuClick(90, 'Nhà đất Thừa Thiên - Huế')
+                        handleMenuClick(subSubArea.id, subSubArea.name)
                       "
-                      >Nhà đất Thừa Thiên - Huế</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <!-- Nhà đất Nam Trung Bộ -->
-              <li class="has-submenu">
-                <div class="menu-item">
-                  <a
-                    href="/du-an/485-nha-dat-nam-trung-bo"
-                    @click.prevent="handleMenuClick(91, 'Nhà đất Nam Trung Bộ')"
-                    >Nhà đất Nam Trung Bộ</a
-                  >
-                  <span
-                    class="arrow"
-                    @click="toggleSubmenu($event)"
-                    aria-expanded="false"
-                    aria-label="Mở rộng menu con"
-                  ></span>
-                </div>
-                <ul class="submenu">
-                  <li>
-                    <a
-                      href="/du-an/519-nha-dat-da-nang"
-                      @click.prevent="handleMenuClick(92, 'Nhà đất Đà Nẵng')"
-                      >Nhà đất Đà Nẵng</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/520-nha-dat-quang-nam"
-                      @click.prevent="handleMenuClick(93, 'Nhà đất Quảng Nam')"
-                      >Nhà đất Quảng Nam</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/521-nha-dat-quang-ngai"
-                      @click.prevent="handleMenuClick(94, 'Nhà đất Quảng Ngãi')"
-                      >Nhà đất Quảng Ngãi</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/522-nha-dat-binh-dinh"
-                      @click.prevent="handleMenuClick(95, 'Nhà đất Bình Định')"
-                      >Nhà đất Bình Định</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/523-nha-dat-phu-yen"
-                      @click.prevent="handleMenuClick(96, 'Nhà đất Phú Yên')"
-                      >Nhà đất Phú Yên</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/524-nha-dat-khanh-hoa"
-                      @click.prevent="handleMenuClick(97, 'Nhà đất Khánh Hòa')"
-                      >Nhà đất Khánh Hòa</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/525-nha-dat-ninh-thuan"
-                      @click.prevent="handleMenuClick(98, 'Nhà đất Ninh Thuận')"
-                      >Nhà đất Ninh Thuận</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/526-nha-dat-binh-thuan"
-                      @click.prevent="handleMenuClick(99, 'Nhà đất Bình Thuận')"
-                      >Nhà đất Bình Thuận</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <!-- Nhà đất Đông Nam Bộ -->
-              <li class="has-submenu">
-                <div class="menu-item">
-                  <a
-                    href="/du-an/486-nha-dat-dong-nam-bo"
-                    @click.prevent="handleMenuClick(100, 'Nhà đất Đông Nam Bộ')"
-                    >Nhà đất Đông Nam Bộ</a
-                  >
-                  <span
-                    class="arrow"
-                    @click="toggleSubmenu($event)"
-                    aria-expanded="false"
-                    aria-label="Mở rộng menu con"
-                  ></span>
-                </div>
-                <ul class="submenu">
-                  <li>
-                    <a
-                      href="/du-an/527-nha-dat-binh-duong"
-                      @click.prevent="
-                        handleMenuClick(101, 'Nhà đất Bình Dương')
-                      "
-                      >Nhà đất Bình Dương</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/528-nha-dat-vung-tau"
-                      @click.prevent="handleMenuClick(102, 'Nhà đất Vũng Tàu')"
-                      >Nhà đất Vũng Tàu</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/529-nha-dat-dong-nai"
-                      @click.prevent="handleMenuClick(103, 'Nhà đất Đồng Nai')"
-                      >Nhà đất Đồng Nai</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/530-nha-dat-ba-ria"
-                      @click.prevent="handleMenuClick(104, 'Nhà đất Bà Rịa')"
-                      >Nhà đất Bà Rịa</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/531-nha-dat-tay-ninh"
-                      @click.prevent="handleMenuClick(105, 'Nhà đất Tây Ninh')"
-                      >Nhà đất Tây Ninh</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/532-nha-dat-binh-phuoc"
-                      @click.prevent="
-                        handleMenuClick(106, 'Nhà đất Bình Phước')
-                      "
-                      >Nhà đất Bình Phước</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <!-- Nhà đất Tây Nam Bộ -->
-              <li class="has-submenu">
-                <div class="menu-item">
-                  <a
-                    href="/du-an/487-nha-dat-tay-nam-bo"
-                    @click.prevent="handleMenuClick(107, 'Nhà đất Tây Nam Bộ')"
-                    >Nhà đất Tây Nam Bộ</a
-                  >
-                  <span
-                    class="arrow"
-                    @click="toggleSubmenu($event)"
-                    aria-expanded="false"
-                    aria-label="Mở rộng menu con"
-                  ></span>
-                </div>
-                <ul class="submenu">
-                  <li>
-                    <a
-                      href="/du-an/533-nha-dat-can-tho"
-                      @click.prevent="handleMenuClick(108, 'Nhà đất Cần Thơ')"
-                      >Nhà đất Cần Thơ</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/534-nha-dat-tien-giang"
-                      @click.prevent="
-                        handleMenuClick(109, 'Nhà đất Tiền Giang')
-                      "
-                      >Nhà đất Tiền Giang</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/535-nha-dat-hau-giang"
-                      @click.prevent="handleMenuClick(110, 'Nhà đất Hậu Giang')"
-                      >Nhà đất Hậu Giang</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/536-nha-dat-long-an"
-                      @click.prevent="handleMenuClick(111, 'Nhà đất Long An')"
-                      >Nhà đất Long An</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/537-nha-dat-tra-vinh"
-                      @click.prevent="handleMenuClick(112, 'Nhà đất Trà Vinh')"
-                      >Nhà đất Trà Vinh</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/538-nha-dat-soc-trang"
-                      @click.prevent="handleMenuClick(113, 'Nhà đất Sóc Trăng')"
-                      >Nhà đất Sóc Trăng</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/539-nha-dat-dong-thap"
-                      @click.prevent="handleMenuClick(114, 'Nhà đất Đồng Tháp')"
-                      >Nhà đất Đồng Tháp</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/540-nha-dat-vinh-long"
-                      @click.prevent="handleMenuClick(115, 'Nhà đất Vĩnh Long')"
-                      >Nhà đất Vĩnh Long</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/541-nha-dat-bac-lieu"
-                      @click.prevent="handleMenuClick(116, 'Nhà đất Bạc Liêu')"
-                      >Nhà đất Bạc Liêu</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/542-nha-dat-ben-tre"
-                      @click.prevent="handleMenuClick(117, 'Nhà đất Bến Tre')"
-                      >Nhà đất Bến Tre</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/543-nha-dat-ca-mau"
-                      @click.prevent="handleMenuClick(118, 'Nhà đất Cà Mau')"
-                      >Nhà đất Cà Mau</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/544-nha-dat-an-giang"
-                      @click.prevent="handleMenuClick(119, 'Nhà đất An Giang')"
-                      >Nhà đất An Giang</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/545-nha-dat-kien-giang"
-                      @click.prevent="
-                        handleMenuClick(120, 'Nhà đất Kiên Giang')
-                      "
-                      >Nhà đất Kiên Giang</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <!-- Nhà đất Tây Nguyên -->
-              <li class="has-submenu">
-                <div class="menu-item">
-                  <a
-                    href="/du-an/488-nha-dat-tay-nguyen"
-                    @click.prevent="handleMenuClick(121, 'Nhà đất Tây Nguyên')"
-                    >Nhà đất Tây Nguyên</a
-                  >
-                  <span
-                    class="arrow"
-                    @click="toggleSubmenu($event)"
-                    aria-expanded="false"
-                    aria-label="Mở rộng menu con"
-                  ></span>
-                </div>
-                <ul class="submenu">
-                  <li>
-                    <a
-                      href="/du-an/546-nha-dat-kon-tum"
-                      @click.prevent="handleMenuClick(122, 'Nhà đất Kon Tum')"
-                      >Nhà đất Kon Tum</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/547-nha-dat-lam-dong"
-                      @click.prevent="handleMenuClick(123, 'Nhà đất Lâm Đồng')"
-                      >Nhà đất Lâm Đồng</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/548-nha-dat-gia-lai"
-                      @click.prevent="handleMenuClick(124, 'Nhà đất Gia Lai')"
-                      >Nhà đất Gia Lai</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/549-nha-dat-dak-lak"
-                      @click.prevent="handleMenuClick(125, 'Nhà đất Đắk Lắk')"
-                      >Nhà đất Đắk Lắk</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/du-an/550-nha-dat-dak-nong"
-                      @click.prevent="handleMenuClick(126, 'Nhà đất Đắk Nông')"
-                      >Nhà đất Đắk Nông</a
+                      >{{ subSubArea.name }}</a
                     >
                   </li>
                 </ul>
@@ -1091,21 +101,21 @@
 
           <!-- Nhà đất bán -->
           <li class="has-sub">
-            <a href="/du-an/465-nha-dat-ban" title="Nhà đất bán">
+            <a title="Nhà đất bán" href="/du-an/465-nha-dat-ban">
               <h2>Nhà đất bán</h2>
             </a>
           </li>
 
           <!-- Nhà đất cho thuê -->
           <li class="has-sub">
-            <a href="/du-an/466-nha-dat-cho-thue" title="Nhà đất cho thuê">
+            <a title="Nhà đất cho thuê" href="/du-an/466-nha-dat-cho-thue">
               <h2>Nhà đất cho thuê</h2>
             </a>
           </li>
 
           <!-- Kiến thức -->
           <li class="has-sub">
-            <a href="/du-an/467-kien-thuc" title="Kiến thức">
+            <a title="Kiến thức" href="/du-an/467-kien-thuc">
               <h2>Kiến thức</h2>
             </a>
           </li>
@@ -1128,1325 +138,124 @@
       <div class="container">
         <div class="row">
           <div id="header-wrapper">
-            <div class="col-md-2 col-sm-3">
-              <div class="logo">
-                <a href="/">
+            <div class="col-md-12 col-sm-12">
+              <div id="cssmenu">
+                <a
+                  href="/"
+                  class="logo-bg"
+                  style="
+                    background: none;
+                    border-radius: 0;
+                    display: flex;
+                    align-items: center;
+                    padding: 0;
+                    vertical-align: middle;
+                  "
+                >
                   <img
                     class="img-responsive"
                     src="../assets/images/logo.png"
                     alt="Logo Sổ tay chung cư"
-                    width="200"
-                    height="50"
+                    width="110"
+                    height="32"
                     loading="lazy"
-                /></a>
-                <div class="clear"></div>
-              </div>
-              <div class="clear"></div>
-            </div>
-            <div class="col-md-10 col-sm-10">
-              <div id="cssmenu">
+                    style="
+                      background: transparent;
+                      margin: 0;
+                      padding: 0;
+                      vertical-align: middle;
+                    "
+                  />
+                </a>
                 <ul class="maunen">
-                  <li class="active">
-                    <a href="/"
-                      ><img
-                        src="~/assets/icon/home.png"
-                        alt="Icon trang chủ"
-                        width="13"
-                        height="13"
-                      />&nbsp Trang chủ</a
-                    >
+                  <li class="has-sub">
+                    <a href="/" title="Trang chủ">Trang chủ</a>
                   </li>
 
-                  <li class="has-sub">
+                  <li class="has-sub" v-for="area in areas" :key="area.id">
                     <a
-                      title="Sổ tay Dự án"
-                      href="/du-an/431-so-tay-du-an"
-                      @click.prevent="handleMenuClick(1, 'Sổ tay Dự án')"
+                      :title="area.name"
+                      :href="`/du-an/${area.id}`"
+                      @click.prevent="handleMenuClick(area.id, area.name)"
                     >
-                      <h2>Sổ tay Dự án</h2>
+                      <h2>{{ area.name }}</h2>
                     </a>
                     <ul>
-                      <li class="has-sub">
+                      <li
+                        class="has-sub"
+                        v-for="subArea in area.children"
+                        :key="subArea.id"
+                      >
                         <a
-                          title="Dự án Hà Nội"
-                          href="/du-an/127-du-an-ha-noi"
-                          @click.prevent="handleMenuClick(2, 'Dự án Hà Nội')"
-                          >Dự án Hà Nội
+                          :title="subArea.name"
+                          :href="`/du-an/${subArea.id}`"
+                          @click.prevent="
+                            handleMenuClick(subArea.id, subArea.name)
+                          "
+                          >{{ subArea.name }}
                         </a>
                         <ul>
-                          <li class="has-sub">
+                          <li
+                            class="has-sub"
+                            v-for="subSubArea in subArea.children"
+                            :key="subSubArea.id"
+                          >
                             <a
-                              title="Quận Ba Đình"
-                              href="/du-an/429-quan-ba-dinh"
+                              :title="subSubArea.name"
+                              :href="`/du-an/${subSubArea.id}`"
                               @click.prevent="
-                                handleMenuClick(3, 'Quận Ba Đình')
+                                handleMenuClick(subSubArea.id, subSubArea.name)
                               "
-                              >Quận Ba Đình</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Hoàn Kiếm"
-                              href="/du-an/430-quan-hoan-kiem"
-                              @click.prevent="
-                                handleMenuClick(4, 'Quận Hoàn Kiếm')
-                              "
-                              >Quận Hoàn Kiếm</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Hai Bà Trưng"
-                              href="/du-an/431-quan-hai-ba-trung"
-                              @click.prevent="
-                                handleMenuClick(5, 'Quận Hai Bà Trưng')
-                              "
-                              >Quận Hai Bà Trưng</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Đống Đa"
-                              href="/du-an/432-quan-dong-da"
-                              @click.prevent="
-                                handleMenuClick(6, 'Quận Đống Đa')
-                              "
-                              >Quận Đống Đa</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Tây Hồ"
-                              href="/du-an/433-quan-tay-ho"
-                              @click.prevent="handleMenuClick(7, 'Quận Tây Hồ')"
-                              >Quận Tây Hồ</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Cầu Giấy"
-                              href="/du-an/434-quan-cau-giay"
-                              @click.prevent="
-                                handleMenuClick(8, 'Quận Cầu Giấy')
-                              "
-                              >Quận Cầu Giấy</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Thanh Xuân"
-                              href="/du-an/435-quan-thanh-xuan"
-                              @click.prevent="
-                                handleMenuClick(9, 'Quận Thanh Xuân')
-                              "
-                              >Quận Thanh Xuân</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Hoàng Mai"
-                              href="/du-an/436-quan-hoang-mai"
-                              @click.prevent="
-                                handleMenuClick(10, 'Quận Hoàng Mai')
-                              "
-                              >Quận Hoàng Mai</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Long Biên"
-                              href="/du-an/437-quan-long-bien"
-                              @click.prevent="
-                                handleMenuClick(11, 'Quận Long Biên')
-                              "
-                              >Quận Long Biên</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Nam Từ Liêm"
-                              href="/du-an/438-quan-nam-tu-liem"
-                              @click.prevent="
-                                handleMenuClick(12, 'Quận Nam Từ Liêm')
-                              "
-                              >Quận Nam Từ Liêm</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Bắc Từ Liêm"
-                              href="/du-an/439-quan-bac-tu-liem"
-                              @click.prevent="
-                                handleMenuClick(13, 'Quận Bắc Từ Liêm')
-                              "
-                              >Quận Bắc Từ Liêm</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Hà Đông"
-                              href="/du-an/440-quan-ha-dong"
-                              @click.prevent="
-                                handleMenuClick(14, 'Quận Hà Đông')
-                              "
-                              >Quận Hà Đông</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Thanh Trì"
-                              href="/du-an/441-huyen-thanh-tri"
-                              @click.prevent="
-                                handleMenuClick(15, 'Huyện Thanh Trì')
-                              "
-                              >Huyện Thanh Trì</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Gia Lâm"
-                              href="/du-an/442-huyen-gia-lam"
-                              @click.prevent="
-                                handleMenuClick(16, 'Huyện Gia Lâm')
-                              "
-                              >Huyện Gia Lâm</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Đông Anh"
-                              href="/du-an/443-huyen-dong-anh"
-                              @click.prevent="
-                                handleMenuClick(17, 'Huyện Đông Anh')
-                              "
-                              >Huyện Đông Anh</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Sóc Sơn"
-                              href="/du-an/444-huyen-soc-son"
-                              @click.prevent="
-                                handleMenuClick(18, 'Huyện Sóc Sơn')
-                              "
-                              >Huyện Sóc Sơn</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Thị xã Sơn Tây"
-                              href="/du-an/445-thi-xa-son-tay"
-                              @click.prevent="
-                                handleMenuClick(19, 'Thị xã Sơn Tây')
-                              "
-                              >Thị xã Sơn Tây</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Ba Vì"
-                              href="/du-an/446-huyen-ba-vi"
-                              @click.prevent="
-                                handleMenuClick(20, 'Huyện Ba Vì')
-                              "
-                              >Huyện Ba Vì</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Phúc Thọ"
-                              href="/du-an/447-huyen-phuc-tho"
-                              @click.prevent="
-                                handleMenuClick(21, 'Huyện Phúc Thọ')
-                              "
-                              >Huyện Phúc Thọ</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Đan Phượng"
-                              href="/du-an/448-huyen-dan-phuong"
-                              @click.prevent="
-                                handleMenuClick(22, 'Huyện Đan Phượng')
-                              "
-                              >Huyện Đan Phượng</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Hoài Đức"
-                              href="/du-an/449-huyen-hoai-duc"
-                              @click.prevent="
-                                handleMenuClick(23, 'Huyện Hoài Đức')
-                              "
-                              >Huyện Hoài Đức</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Quốc Oai"
-                              href="/du-an/450-huyen-quoc-oai"
-                              @click.prevent="
-                                handleMenuClick(24, 'Huyện Quốc Oai')
-                              "
-                              >Huyện Quốc Oai</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Thạch Thất"
-                              href="/du-an/451-huyen-thach-that"
-                              @click.prevent="
-                                handleMenuClick(25, 'Huyện Thạch Thất')
-                              "
-                              >Huyện Thạch Thất</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Chương Mỹ"
-                              href="/du-an/452-huyen-chuong-my"
-                              @click.prevent="
-                                handleMenuClick(26, 'Huyện Chương Mỹ')
-                              "
-                              >Huyện Chương Mỹ</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Thanh Oai"
-                              href="/du-an/453-huyen-thanh-oai"
-                              @click.prevent="
-                                handleMenuClick(27, 'Huyện Thanh Oai')
-                              "
-                              >Huyện Thanh Oai</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Thường Tín"
-                              href="/du-an/454-huyen-thuong-tin"
-                              @click.prevent="
-                                handleMenuClick(28, 'Huyện Thường Tín')
-                              "
-                              >Huyện Thường Tín</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Phú Xuyên"
-                              href="/du-an/455-huyen-phu-xuyen"
-                              @click.prevent="
-                                handleMenuClick(29, 'Huyện Phú Xuyên')
-                              "
-                              >Huyện Phú Xuyên</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Ứng Hòa"
-                              href="/du-an/456-huyen-ung-hoa"
-                              @click.prevent="
-                                handleMenuClick(30, 'Huyện Ứng Hòa')
-                              "
-                              >Huyện Ứng Hòa</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Mỹ Đức"
-                              href="/du-an/457-huyen-my-duc"
-                              @click.prevent="
-                                handleMenuClick(31, 'Huyện Mỹ Đức')
-                              "
-                              >Huyện Mỹ Đức</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Mê Linh"
-                              href="/du-an/458-huyen-me-linh"
-                              @click.prevent="
-                                handleMenuClick(32, 'Huyện Mê Linh')
-                              "
-                              >Huyện Mê Linh</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-
-                      <li class="has-sub">
-                        <a
-                          title="Dự án Sài Gòn"
-                          href="/du-an/128-du-an-sai-gon"
-                          @click.prevent="handleMenuClick(32, 'Dự án Sài Gòn')"
-                          >Dự án Sài Gòn</a
-                        >
-                        <ul>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 1"
-                              href="/du-an/109-quan-1-1"
-                              @click.prevent="handleMenuClick(33, 'Quận 1')"
-                              >Quận 1</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 2"
-                              href="/du-an/110-quan-2"
-                              @click.prevent="handleMenuClick(34, 'Quận 2')"
-                              >Quận 2</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 3"
-                              href="/du-an/111-quan-3"
-                              @click.prevent="handleMenuClick(35, 'Quận 3')"
-                              >Quận 3</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 4"
-                              href="/du-an/112-quan-4"
-                              @click.prevent="handleMenuClick(36, 'Quận 4')"
-                              >Quận 4</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 5"
-                              href="/du-an/113-quan-5"
-                              @click.prevent="handleMenuClick(37, 'Quận 5')"
-                              >Quận 5</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 6"
-                              href="/du-an/114-quan-6"
-                              @click.prevent="handleMenuClick(38, 'Quận 6')"
-                              >Quận 6</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 7"
-                              href="/du-an/115-quan-7"
-                              @click.prevent="handleMenuClick(39, 'Quận 7')"
-                              >Quận 7</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 8"
-                              href="/du-an/116-quan-8"
-                              @click.prevent="handleMenuClick(40, 'Quận 8')"
-                              >Quận 8</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 9"
-                              href="/du-an/117-quan-9"
-                              @click.prevent="handleMenuClick(41, 'Quận 9')"
-                              >Quận 9</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 10"
-                              href="/du-an/118-quan-10"
-                              @click.prevent="handleMenuClick(42, 'Quận 10')"
-                              >Quận 10</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 11"
-                              href="/du-an/119-quan-11"
-                              @click.prevent="handleMenuClick(43, 'Quận 11')"
-                              >Quận 11</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận 12"
-                              href="/du-an/120-quan-12"
-                              @click.prevent="handleMenuClick(44, 'Quận 12')"
-                              >Quận 12</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Bình Tân"
-                              href="/du-an/121-quan-binh-tan"
-                              @click.prevent="
-                                handleMenuClick(45, 'Quận Bình Tân')
-                              "
-                              >Quận Bình Tân</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Bình Thạnh"
-                              href="/du-an/122-quan-binh-thanh"
-                              @click.prevent="
-                                handleMenuClick(46, 'Quận Bình Thạnh')
-                              "
-                              >Quận Bình Thạnh</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Gò Vấp"
-                              href="/du-an/469-quan-go-vap"
-                              @click.prevent="
-                                handleMenuClick(47, 'Quận Gò Vấp')
-                              "
-                              >Quận Gò Vấp</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Phú Nhuận"
-                              href="/du-an/470-quan-phu-nhuan"
-                              @click.prevent="
-                                handleMenuClick(48, 'Quận Phú Nhuận')
-                              "
-                              >Quận Phú Nhuận</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Tân Bình"
-                              href="/du-an/471-quan-tan-binh"
-                              @click.prevent="
-                                handleMenuClick(49, 'Quận Tân Bình')
-                              "
-                              >Quận Tân Bình</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Quận Tân Phú"
-                              href="/du-an/472-quan-tan-phu"
-                              @click.prevent="
-                                handleMenuClick(50, 'Quận Tân Phú')
-                              "
-                              >Quận Tân Phú</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="TP Thủ Đức"
-                              href="/du-an/473-tp-thu-duc"
-                              @click.prevent="handleMenuClick(51, 'TP Thủ Đức')"
-                              >TP Thủ Đức</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Bình Chánh"
-                              href="/du-an/474-huyen-binh-chanh"
-                              @click.prevent="
-                                handleMenuClick(52, 'Huyện Bình Chánh')
-                              "
-                              >Huyện Bình Chánh</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Cần Giờ"
-                              href="/du-an/475-huyen-can-gio"
-                              @click.prevent="
-                                handleMenuClick(53, 'Huyện Cần Giờ')
-                              "
-                              >Huyện Cần Giờ</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Củ Chi"
-                              href="/du-an/476-huyen-cu-chi"
-                              @click.prevent="
-                                handleMenuClick(54, 'Huyện Củ Chi')
-                              "
-                              >Huyện Củ Chi</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Hóc Môn"
-                              href="/du-an/477-huyen-hoc-mon"
-                              @click.prevent="
-                                handleMenuClick(55, 'Huyện Hóc Môn')
-                              "
-                              >Huyện Hóc Môn</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Huyện Nhà Bè"
-                              href="/du-an/478-huyen-nha-be"
-                              @click.prevent="
-                                handleMenuClick(56, 'Huyện Nhà Bè')
-                              "
-                              >Huyện Nhà Bè</a
+                              >{{ subSubArea.name }}</a
                             >
                           </li>
                         </ul>
                       </li>
                     </ul>
                   </li>
-
                   <li class="has-sub">
                     <a
-                      title="Sổ tay Nhà đất"
-                      href="/du-an/464-so-tay-nha-dat"
-                      @click.prevent="handleMenuClick(57, 'Sổ tay Nhà đất')"
+                      title="Nhà đất bán"
+                      @click.prevent="
+                        handleMenuClick(0, 'Nhà đất bán', 'nha-dat-ban')
+                      "
+                      href="/danh-muc-du-an/nha-dat-ban"
                     >
-                      <h2>Sổ tay Nhà đất</h2>
-                    </a>
-                    <ul>
-                      <li class="has-sub">
-                        <a
-                          title="Nhà đất Đông Bắc"
-                          href="/du-an/482-nha-dat-dong-bac"
-                          @click.prevent="
-                            handleMenuClick(58, 'Nhà đất Đông Bắc')
-                          "
-                          >Nhà đất Đông Bắc</a
-                        >
-                        <ul>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Hải Phòng"
-                              href="/du-an/489-nha-dat-hai-phong"
-                              @click.prevent="
-                                handleMenuClick(59, 'Nhà đất Hải Phòng')
-                              "
-                              >Nhà đất Hải Phòng</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Quảng Ninh"
-                              href="/du-an/490-nha-dat-quang-ninh"
-                              @click.prevent="
-                                handleMenuClick(60, 'Nhà đất Quảng Ninh')
-                              "
-                              >Nhà đất Quảng Ninh</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bắc Ninh"
-                              href="/du-an/491-nha-dat-bac-ninh"
-                              @click.prevent="
-                                handleMenuClick(61, 'Nhà đất Bắc Ninh')
-                              "
-                              >Nhà đất Bắc Ninh</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bắc Giang"
-                              href="/du-an/492-nha-dat-bac-giang"
-                              @click.prevent="
-                                handleMenuClick(62, 'Nhà đất Bắc Giang')
-                              "
-                              >Nhà đất Bắc Giang</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Hưng Yên"
-                              href="/du-an/493-nha-dat-hung-yen"
-                              @click.prevent="
-                                handleMenuClick(63, 'Nhà đất Hưng Yên')
-                              "
-                              >Nhà đất Hưng Yên</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Hải Dương"
-                              href="/du-an/494-nha-dat-hai-duong"
-                              @click.prevent="
-                                handleMenuClick(64, 'Nhà đất Hải Dương')
-                              "
-                              >Nhà đất Hải Dương</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Thái Nguyên"
-                              href="/du-an/495-nha-dat-thai-nguyen"
-                              @click.prevent="
-                                handleMenuClick(65, 'Nhà đất Thái Nguyên')
-                              "
-                              >Nhà đất Thái Nguyên</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Vĩnh Phúc"
-                              href="/du-an/496-nha-dat-vinh-phuc"
-                              @click.prevent="
-                                handleMenuClick(66, 'Nhà đất Vĩnh Phúc')
-                              "
-                              >Nhà đất Vĩnh Phúc</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Hà Nam"
-                              href="/du-an/497-nha-dat-ha-nam"
-                              @click.prevent="
-                                handleMenuClick(67, 'Nhà đất Hà Nam')
-                              "
-                              >Nhà đất Hà Nam</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Phú Thọ"
-                              href="/du-an/498-nha-dat-phu-tho"
-                              @click.prevent="
-                                handleMenuClick(68, 'Nhà đất Phú Thọ')
-                              "
-                              >Nhà đất Phú Thọ</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Thái Bình"
-                              href="/du-an/499-nha-dat-thai-binh"
-                              @click.prevent="
-                                handleMenuClick(69, 'Nhà đất Thái Bình')
-                              "
-                              >Nhà đất Thái Bình</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Nam Định"
-                              href="/du-an/500-nha-dat-nam-dinh"
-                              @click.prevent="
-                                handleMenuClick(70, 'Nhà đất Nam Định')
-                              "
-                              >Nhà đất Nam Định</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Ninh Bình"
-                              href="/du-an/501-nha-dat-ninh-binh"
-                              @click.prevent="
-                                handleMenuClick(71, 'Nhà đất Ninh Bình')
-                              "
-                              >Nhà đất Ninh Bình</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Lạng Sơn"
-                              href="/du-an/502-nha-dat-lang-son"
-                              @click.prevent="
-                                handleMenuClick(72, 'Nhà đất Lạng Sơn')
-                              "
-                              >Nhà đất Lạng Sơn</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Cao Bằng"
-                              href="/du-an/503-nha-dat-cao-bang"
-                              @click.prevent="
-                                handleMenuClick(73, 'Nhà đất Cao Bằng')
-                              "
-                              >Nhà đất Cao Bằng</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Tuyên Quang"
-                              href="/du-an/504-nha-dat-tuyen-quang"
-                              @click.prevent="
-                                handleMenuClick(74, 'Nhà đất Tuyên Quang')
-                              "
-                              >Nhà đất Tuyên Quang</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Hà Giang"
-                              href="/du-an/505-nha-dat-ha-giang"
-                              @click.prevent="
-                                handleMenuClick(75, 'Nhà đất Hà Giang')
-                              "
-                              >Nhà đất Hà Giang</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bắc Kạn"
-                              href="/du-an/506-nha-dat-bac-kan"
-                              @click.prevent="
-                                handleMenuClick(76, 'Nhà đất Bắc Kạn')
-                              "
-                              >Nhà đất Bắc Kạn</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="has-sub">
-                        <a
-                          title="Nhà đất Tây Bắc"
-                          href="/du-an/483-nha-dat-tay-bac"
-                          @click.prevent="
-                            handleMenuClick(77, 'Nhà đất Tây Bắc')
-                          "
-                          >Nhà đất Tây Bắc</a
-                        >
-                        <ul>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Lai Châu"
-                              href="/du-an/512-nha-dat-lai-chau"
-                              @click.prevent="
-                                handleMenuClick(78, 'Nhà đất Lai Châu')
-                              "
-                              >Nhà đất Lai Châu</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Hòa Bình"
-                              href="/du-an/507-nha-dat-hoa-binh"
-                              @click.prevent="
-                                handleMenuClick(79, 'Nhà đất Hòa Bình')
-                              "
-                              >Nhà đất Hòa Bình</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Lào Cai"
-                              href="/du-an/508-nha-dat-lao-cai"
-                              @click.prevent="
-                                handleMenuClick(80, 'Nhà đất Lào Cai')
-                              "
-                              >Nhà đất Lào Cai</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Yên Bái"
-                              href="/du-an/509-nha-dat-yen-bai"
-                              @click.prevent="
-                                handleMenuClick(81, 'Nhà đất Yên Bái')
-                              "
-                              >Nhà đất Yên Bái</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Sơn La"
-                              href="/du-an/510-nha-dat-son-la"
-                              @click.prevent="
-                                handleMenuClick(82, 'Nhà đất Sơn La')
-                              "
-                              >Nhà đất Sơn La</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Điện Biên"
-                              href="/du-an/511-nha-dat-dien-bien"
-                              @click.prevent="
-                                handleMenuClick(83, 'Nhà đất Điện Biên')
-                              "
-                              >Nhà đất Điện Biên</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="has-sub">
-                        <a
-                          title="Nhà đất Bắc Trung Bộ"
-                          href="/du-an/484-nha-dat-bac-trung-bo"
-                          @click.prevent="
-                            handleMenuClick(84, 'Nhà đất Bắc Trung Bộ')
-                          "
-                          >Nhà đất Bắc Trung Bộ</a
-                        >
-                        <ul>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Nghệ An"
-                              href="/du-an/513-nha-dat-nghe-an"
-                              @click.prevent="
-                                handleMenuClick(85, 'Nhà đất Nghệ An')
-                              "
-                              >Nhà đất Nghệ An</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Thanh Hóa"
-                              href="/du-an/514-nha-dat-thanh-hoa"
-                              @click.prevent="
-                                handleMenuClick(86, 'Nhà đất Thanh Hóa')
-                              "
-                              >Nhà đất Thanh Hóa</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Hà Tĩnh"
-                              href="/du-an/515-nha-dat-ha-tinh"
-                              @click.prevent="
-                                handleMenuClick(87, 'Nhà đất Hà Tĩnh')
-                              "
-                              >Nhà đất Hà Tĩnh</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Quảng Bình"
-                              href="/du-an/516-nha-dat-quang-binh"
-                              @click.prevent="
-                                handleMenuClick(88, 'Nhà đất Quảng Bình')
-                              "
-                              >Nhà đất Quảng Bình</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Quảng Trị"
-                              href="/du-an/517-nha-dat-quang-tri"
-                              @click.prevent="
-                                handleMenuClick(89, 'Nhà đất Quảng Trị')
-                              "
-                              >Nhà đất Quảng Trị</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Thừa Thiên - Huê"
-                              href="/du-an/518-nha-dat-thua-thien-hue"
-                              @click.prevent="
-                                handleMenuClick(90, 'Nhà đất Thừa Thiên - Huế')
-                              "
-                              >Nhà đất Thừa Thiên - Huế</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="has-sub">
-                        <a
-                          title="Nhà đất Nam Trung Bộ"
-                          href="/du-an/485-nha-dat-nam-trung-bo"
-                          @click.prevent="
-                            handleMenuClick(91, 'Nhà đất Nam Trung Bộ')
-                          "
-                          >Nhà đất Nam Trung Bộ</a
-                        >
-                        <ul>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Đà Nẵng"
-                              href="/du-an/519-nha-dat-da-nang"
-                              @click.prevent="
-                                handleMenuClick(92, 'Nhà đất Đà Nẵng')
-                              "
-                              >Nhà đất Đà Nẵng</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Quảng Nam"
-                              href="/du-an/520-nha-dat-quang-nam"
-                              @click.prevent="
-                                handleMenuClick(93, 'Nhà đất Quảng Nam')
-                              "
-                              >Nhà đất Quảng Nam</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Quảng Ngãi"
-                              href="/du-an/521-nha-dat-quang-ngai"
-                              @click.prevent="
-                                handleMenuClick(94, 'Nhà đất Quảng Ngãi')
-                              "
-                              >Nhà đất Quảng Ngãi</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bình Định"
-                              href="/du-an/522-nha-dat-binh-dinh"
-                              @click.prevent="
-                                handleMenuClick(95, 'Nhà đất Bình Định')
-                              "
-                              >Nhà đất Bình Định</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Phú Yên"
-                              href="/du-an/523-nha-dat-phu-yen"
-                              @click.prevent="
-                                handleMenuClick(96, 'Nhà đất Phú Yên')
-                              "
-                              >Nhà đất Phú Yên</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Khánh Hòa"
-                              href="/du-an/524-nha-dat-khanh-hoa"
-                              @click.prevent="
-                                handleMenuClick(97, 'Nhà đất Khánh Hòa')
-                              "
-                              >Nhà đất Khánh Hòa</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Ninh Thuận"
-                              href="/du-an/525-nha-dat-ninh-thuan"
-                              @click.prevent="
-                                handleMenuClick(98, 'Nhà đất Ninh Thuận')
-                              "
-                              >Nhà đất Ninh Thuận</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bình Thuận"
-                              href="/du-an/526-nha-dat-binh-thuan"
-                              @click.prevent="
-                                handleMenuClick(99, 'Nhà đất Bình Thuận')
-                              "
-                              >Nhà đất Bình Thuận</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="has-sub">
-                        <a
-                          title="Nhà đất Đông Nam Bộ"
-                          href="/du-an/486-nha-dat-dong-nam-bo"
-                          @click.prevent="
-                            handleMenuClick(100, 'Nhà đất Đông Nam Bộ')
-                          "
-                          >Nhà đất Đông Nam Bộ</a
-                        >
-                        <ul>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bình Dương"
-                              href="/du-an/527-nha-dat-binh-duong"
-                              @click.prevent="
-                                handleMenuClick(101, 'Nhà đất Bình Dương')
-                              "
-                              >Nhà đất Bình Dương</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Vũng Tàu"
-                              href="/du-an/528-nha-dat-vung-tau"
-                              @click.prevent="
-                                handleMenuClick(102, 'Nhà đất Vũng Tàu')
-                              "
-                              >Nhà đất Vũng Tàu</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Đồng Nai"
-                              href="/du-an/529-nha-dat-dong-nai"
-                              @click.prevent="
-                                handleMenuClick(103, 'Nhà đất Đồng Nai')
-                              "
-                              >Nhà đất Đồng Nai</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bà Rịa"
-                              href="/du-an/530-nha-dat-ba-ria"
-                              @click.prevent="
-                                handleMenuClick(104, 'Nhà đất Bà Rịa')
-                              "
-                              >Nhà đất Bà Rịa</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Tây Ninh"
-                              href="/du-an/531-nha-dat-tay-ninh"
-                              @click.prevent="
-                                handleMenuClick(105, 'Nhà đất Tây Ninh')
-                              "
-                              >Nhà đất Tây Ninh</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bình Phước"
-                              href="/du-an/532-nha-dat-binh-phuoc"
-                              @click.prevent="
-                                handleMenuClick(106, 'Nhà đất Bình Phước')
-                              "
-                              >Nhà đất Bình Phước</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="has-sub">
-                        <a
-                          title="Nhà đất Tây Nam Bộ"
-                          href="/du-an/487-nha-dat-tay-nam-bo"
-                          @click.prevent="
-                            handleMenuClick(107, 'Nhà đất Tây Nam Bộ')
-                          "
-                          >Nhà đất Tây Nam Bộ</a
-                        >
-                        <ul>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Cần Thơ"
-                              href="/du-an/533-nha-dat-can-tho"
-                              @click.prevent="
-                                handleMenuClick(108, 'Nhà đất Cần Thơ')
-                              "
-                              >Nhà đất Cần Thơ</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Tiền Giang"
-                              href="/du-an/534-nha-dat-tien-giang"
-                              @click.prevent="
-                                handleMenuClick(109, 'Nhà đất Tiền Giang')
-                              "
-                              >Nhà đất Tiền Giang</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Hậu Giang"
-                              href="/du-an/535-nha-dat-hau-giang"
-                              @click.prevent="
-                                handleMenuClick(110, 'Nhà đất Hậu Giang')
-                              "
-                              >Nhà đất Hậu Giang</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Long An"
-                              href="/du-an/536-nha-dat-long-an"
-                              @click.prevent="
-                                handleMenuClick(111, 'Nhà đất Long An')
-                              "
-                              >Nhà đất Long An</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Trà Vinh"
-                              href="/du-an/537-nha-dat-tra-vinh"
-                              @click.prevent="
-                                handleMenuClick(112, 'Nhà đất Trà Vinh')
-                              "
-                              >Nhà đất Trà Vinh</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Sóc Trăng"
-                              href="/du-an/538-nha-dat-soc-trang"
-                              @click.prevent="
-                                handleMenuClick(113, 'Nhà đất Sóc Trăng')
-                              "
-                              >Nhà đất Sóc Trăng</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Đồng Tháp"
-                              href="/du-an/539-nha-dat-dong-thap"
-                              @click.prevent="
-                                handleMenuClick(114, 'Nhà đất Đồng Tháp')
-                              "
-                              >Nhà đất Đồng Tháp</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Vĩnh Long"
-                              href="/du-an/540-nha-dat-vinh-long"
-                              @click.prevent="
-                                handleMenuClick(115, 'Nhà đất Vĩnh Long')
-                              "
-                              >Nhà đất Vĩnh Long</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bạc Liêu"
-                              href="/du-an/541-nha-dat-bac-lieu"
-                              @click.prevent="
-                                handleMenuClick(116, 'Nhà đất Bạc Liêu')
-                              "
-                              >Nhà đất Bạc Liêu</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Bến Tre"
-                              href="/du-an/542-nha-dat-ben-tre"
-                              @click.prevent="
-                                handleMenuClick(117, 'Nhà đất Bến Tre')
-                              "
-                              >Nhà đất Bến Tre</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Cà Mau"
-                              href="/du-an/543-nha-dat-ca-mau"
-                              @click.prevent="
-                                handleMenuClick(118, 'Nhà đất Cà Mau')
-                              "
-                              >Nhà đất Cà Mau</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất An Giang"
-                              href="/du-an/544-nha-dat-an-giang"
-                              @click.prevent="
-                                handleMenuClick(119, 'Nhà đất An Giang')
-                              "
-                              >Nhà đất An Giang</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Kiên Giang"
-                              href="/du-an/545-nha-dat-kien-giang"
-                              @click.prevent="
-                                handleMenuClick(120, 'Nhà đất Kiên Giang')
-                              "
-                              >Nhà đất Kiên Giang</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="has-sub">
-                        <a
-                          title="Nhà đất Tây Nguyên"
-                          href="/du-an/488-nha-dat-tay-nguyen"
-                          @click.prevent="
-                            handleMenuClick(121, 'Nhà đất Tây Nguyên')
-                          "
-                          >Nhà đất Tây Nguyên</a
-                        >
-                        <ul>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Kon Tum"
-                              href="/du-an/546-nha-dat-kon-tum"
-                              @click.prevent="
-                                handleMenuClick(122, 'Nhà đất Kon Tum')
-                              "
-                              >Nhà đất Kon Tum</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Lâm Đồng"
-                              href="/du-an/547-nha-dat-lam-dong"
-                              @click.prevent="
-                                handleMenuClick(123, 'Nhà đất Lâm Đồng')
-                              "
-                              >Nhà đất Lâm Đồng</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Gia Lai"
-                              href="/du-an/548-nha-dat-gia-lai"
-                              @click.prevent="
-                                handleMenuClick(124, 'Nhà đất Gia Lai')
-                              "
-                              >Nhà đất Gia Lai</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Đắk Lắk"
-                              href="/du-an/549-nha-dat-dak-lak"
-                              @click.prevent="
-                                handleMenuClick(125, 'Nhà đất Đắk Lắk')
-                              "
-                              >Nhà đất Đắk Lắk</a
-                            >
-                          </li>
-                          <li class="has-sub">
-                            <a
-                              title="Nhà đất Đắk Nông"
-                              href="/du-an/550-nha-dat-dak-nong"
-                              @click.prevent="
-                                handleMenuClick(126, 'Nhà đất Đắk Nông')
-                              "
-                              >Nhà đất Đắk Nông</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li class="has-sub">
-                    <a title="Nhà đất bán" href="/du-an/465-nha-dat-ban">
                       <h2>Nhà đất bán</h2>
                     </a>
-                    <ul></ul>
                   </li>
 
                   <li class="has-sub">
                     <a
                       title="Nhà đất cho thuê"
-                      href="/du-an/466-nha-dat-cho-thue"
+                      @click.prevent="
+                        handleMenuClick(
+                          0,
+                          'Nhà đất cho thuê',
+                          'nha-dat-cho-thue'
+                        )
+                      "
+                      href="/danh-muc-du-an/nha-dat-cho-thue"
                     >
                       <h2>Nhà đất cho thuê</h2>
                     </a>
-                    <ul></ul>
                   </li>
 
                   <li class="has-sub">
-                    <a title="Kiến thức" href="/du-an/467-kien-thuc">
+                    <a
+                      title="Kiến thức"
+                      @click.prevent="
+                        handleMenuClick(0, 'Kiến thức', 'kien-thuc')
+                      "
+                      href="/danh-muc-du-an/kien-thuc"
+                    >
                       <h2>Kiến thức</h2>
                     </a>
-                    <ul></ul>
                   </li>
-                  <li class="active">
-                    <a href="/contact">Liên hệ</a>
+                  <li class="has-sub">
+                    <a href="/contact" title="Liên hệ">Liên hệ</a>
                   </li>
                 </ul>
-
-                <div class="clear"></div>
               </div>
             </div>
           </div>
@@ -2458,73 +267,254 @@
   </header>
 </template>
 
-<script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+<script>
 import { useProjectStore } from "~/store/useProject";
 import { useRouter } from "vue-router";
 
-const router = useRouter();
-const headerNav = ref<HTMLElement | null>(null);
-const isSticky = ref(false);
-const isMobileMenuOpen = ref(false);
-
-const handleMenuClick = (index: number, text: string = "") => {
-  router.push(`/du-an/${index}`);
-  useProjectStore().setMenuPage(text);
-};
-
-const checkSticky = () => {
-  if (!headerNav.value) return;
-
-  const sticky = headerNav.value.offsetTop;
-  isSticky.value = window.pageYOffset > sticky;
-};
-
-const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-  // Prevent body scrolling when menu is open
-  document.body.style.overflow = isMobileMenuOpen.value ? "hidden" : "";
-};
-
-const closeMobileMenu = () => {
-  isMobileMenuOpen.value = false;
-  document.body.style.overflow = "";
-};
-
-const toggleSubmenu = (event: Event) => {
-  event.stopPropagation();
-  const arrow = event.target as HTMLElement;
-  const menuItem = arrow.closest(".menu-item");
-  const submenu = menuItem?.nextElementSibling as HTMLElement;
-
-  if (submenu) {
-    // Đóng tất cả các submenu cùng cấp
-    const parent = submenu.parentElement?.parentElement;
-    if (parent) {
-      const allSubmenus = parent.querySelectorAll(".submenu");
-      allSubmenus.forEach((sub: HTMLElement) => {
-        if (sub !== submenu) {
-          sub.classList.remove("active");
-          sub.previousElementSibling
-            ?.querySelector(".arrow")
-            ?.classList.remove("active");
+export default {
+  data() {
+    return {
+      isSticky: false,
+      isMobileMenuOpen: false,
+      areas: [
+        {
+          id: 1,
+          name: "Sổ tay Dự án",
+          children: [
+            {
+              id: 2,
+              name: "Dự án Hà Nội",
+              children: [
+                { id: 3, name: "Quận Ba Đình" },
+                { id: 4, name: "Quận Hoàn Kiếm" },
+                { id: 5, name: "Quận Hai Bà Trưng" },
+                { id: 6, name: "Quận Đống Đa" },
+                { id: 7, name: "Quận Tây Hồ" },
+                { id: 8, name: "Quận Cầu Giấy" },
+                { id: 9, name: "Quận Thanh Xuân" },
+                { id: 10, name: "Quận Hoàng Mai" },
+                { id: 11, name: "Quận Long Biên" },
+                { id: 12, name: "Quận Nam Từ Liêm" },
+                { id: 13, name: "Quận Bắc Từ Liêm" },
+                { id: 14, name: "Quận Hà Đông" },
+                { id: 15, name: "Huyện Thanh Trì" },
+                { id: 16, name: "Huyện Gia Lâm" },
+                { id: 17, name: "Huyện Đông Anh" },
+                { id: 18, name: "Huyện Sóc Sơn" },
+                { id: 19, name: "Thị xã Sơn Tây" },
+                { id: 20, name: "Huyện Ba Vì" },
+                { id: 21, name: "Huyện Phúc Thọ" },
+                { id: 22, name: "Huyện Đan Phượng" },
+                { id: 23, name: "Huyện Hoài Đức" },
+                { id: 24, name: "Huyện Quốc Oai" },
+                { id: 25, name: "Huyện Thạch Thất" },
+                { id: 26, name: "Huyện Chương Mỹ" },
+                { id: 27, name: "Huyện Thanh Oai" },
+                { id: 28, name: "Huyện Thường Tín" },
+                { id: 29, name: "Huyện Phú Xuyên" },
+                { id: 30, name: "Huyện Ứng Hòa" },
+                { id: 31, name: "Huyện Mỹ Đức" },
+                { id: 32, name: "Huyện Mê Linh" },
+              ],
+            },
+            {
+              id: 33,
+              name: "Dự án Sài Gòn",
+              children: [
+                { id: 34, name: "Quận 1" },
+                { id: 35, name: "Quận 2" },
+                { id: 36, name: "Quận 3" },
+                { id: 37, name: "Quận 4" },
+                { id: 38, name: "Quận 5" },
+                { id: 39, name: "Quận 6" },
+                { id: 40, name: "Quận 7" },
+                { id: 41, name: "Quận 8" },
+                { id: 42, name: "Quận 9" },
+                { id: 43, name: "Quận 10" },
+                { id: 44, name: "Quận 11" },
+                { id: 45, name: "Quận 12" },
+                { id: 46, name: "Quận Bình Tân" },
+                { id: 47, name: "Quận Bình Thạnh" },
+                { id: 48, name: "Quận Gò Vấp" },
+                { id: 49, name: "Quận Phú Nhuận" },
+                { id: 50, name: "Quận Tân Bình" },
+                { id: 51, name: "Quận Tân Phú" },
+                { id: 52, name: "TP Thủ Đức" },
+                { id: 53, name: "Huyện Bình Chánh" },
+                { id: 54, name: "Huyện Cần Giờ" },
+                { id: 55, name: "Huyện Củ Chi" },
+                { id: 56, name: "Huyện Hóc Môn" },
+                { id: 57, name: "Huyện Nhà Bè" },
+              ],
+            },
+          ],
+        },
+        {
+          id: 58,
+          name: "Sổ Tay Nhà Đất",
+          children: [
+            {
+              id: 59,
+              name: "Nhà đất Đông Bắc",
+              children: [
+                { id: 60, name: "Nhà đất Hải Phòng" },
+                { id: 61, name: "Nhà đất Quảng Ninh" },
+                { id: 62, name: "Nhà đất Bắc Ninh" },
+                { id: 63, name: "Nhà đất Bắc Giang" },
+                { id: 64, name: "Nhà đất Hải Dương" },
+                { id: 65, name: "Nhà đất Thái Nguyên" },
+                { id: 66, name: "Nhà đất Vĩnh Phúc" },
+                { id: 67, name: "Nhà đất Hà Nam" },
+                { id: 68, name: "Nhà đất Phú Thọ" },
+                { id: 69, name: "Nhà đất Thái Bình" },
+                { id: 70, name: "Nhà đất Nam Định" },
+                { id: 71, name: "Nhà đất Ninh Bình" },
+                { id: 72, name: "Nhà đất Lạng Sơn" },
+                { id: 73, name: "Nhà đất Cao Bằng" },
+                { id: 74, name: "Nhà đất Tuyên Quang" },
+                { id: 75, name: "Nhà đất Hà Giang" },
+                { id: 76, name: "Nhà đất Bắc Kạn" },
+              ],
+            },
+            {
+              id: 77,
+              name: "Nhà đất Tây Bắc",
+              children: [
+                { id: 78, name: "Nhà đất Lai Châu" },
+                { id: 79, name: "Nhà đất Hòa Bình" },
+                { id: 80, name: "Nhà đất Lào Cai" },
+                { id: 81, name: "Nhà đất Yên Bái" },
+                { id: 82, name: "Nhà đất Sơn La" },
+                { id: 83, name: "Nhà đất Điện Biên" },
+              ],
+            },
+            {
+              id: 84,
+              name: "Nhà đất Bắc Trung Bộ",
+              children: [
+                { id: 85, name: "Nhà đất Nghệ An" },
+                { id: 86, name: "Nhà đất Thanh Hóa" },
+                { id: 87, name: "Nhà đất Hà Tĩnh" },
+                { id: 88, name: "Nhà đất Quảng Bình" },
+                { id: 89, name: "Nhà đất Quảng Trị" },
+                { id: 90, name: "Nhà đất Thừa Thiên - Huế" },
+              ],
+            },
+            {
+              id: 91,
+              name: "Nhà đất Nam Trung Bộ",
+              children: [
+                { id: 92, name: "Nhà đất Đà Nẵng" },
+                { id: 93, name: "Nhà đất Quảng Nam" },
+                { id: 94, name: "Nhà đất Quảng Ngãi" },
+                { id: 95, name: "Nhà đất Bình Định" },
+                { id: 96, name: "Nhà đất Phú Yên" },
+                { id: 97, name: "Nhà đất Khánh Hòa" },
+                { id: 98, name: "Nhà đất Ninh Thuận" },
+                { id: 99, name: "Nhà đất Bình Thuận" },
+              ],
+            },
+            {
+              id: 100,
+              name: "Nhà đất Đông Nam Bộ",
+              children: [
+                { id: 101, name: "Nhà đất Bình Dương" },
+                { id: 102, name: "Nhà đất Vũng Tàu" },
+                { id: 103, name: "Nhà đất Đồng Nai" },
+                { id: 104, name: "Nhà đất Bà Rịa" },
+                { id: 105, name: "Nhà đất Tây Ninh" },
+                { id: 106, name: "Nhà đất Bình Phước" },
+              ],
+            },
+            {
+              id: 107,
+              name: "Nhà đất Tây Nam Bộ",
+              children: [
+                { id: 108, name: "Nhà đất Cần Thơ" },
+                { id: 109, name: "Nhà đất Tiền Giang" },
+                { id: 110, name: "Nhà đất Hậu Giang" },
+                { id: 111, name: "Nhà đất Long An" },
+                { id: 112, name: "Nhà đất Trà Vinh" },
+                { id: 113, name: "Nhà đất Sóc Trăng" },
+                { id: 114, name: "Nhà đất Đồng Tháp" },
+                { id: 115, name: "Nhà đất Vĩnh Long" },
+                { id: 116, name: "Nhà đất Bạc Liêu" },
+                { id: 117, name: "Nhà đất Bến Tre" },
+                { id: 118, name: "Nhà đất Cà Mau" },
+                { id: 119, name: "Nhà đất An Giang" },
+                { id: 120, name: "Nhà đất Kiên Giang" },
+                { id: 121, name: "Nhà đất Kiên Giang" },
+              ],
+            },
+            {
+              id: 122,
+              name: "Nhà đất Tây Nguyên",
+              children: [
+                { id: 123, name: "Nhà đất Kon Tum" },
+                { id: 124, name: "Nhà đất Lâm Đồng" },
+                { id: 125, name: "Nhà đất Gia Lai" },
+                { id: 126, name: "Nhà đất Đắk Lắk" },
+                { id: 127, name: "Nhà đất Đắk Nông" },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+  },
+  methods: {
+    handleMenuClick(index, text = "", path = "") {
+      if (!!index) {
+        this.$router.push(`/du-an/${index}`);
+      } else {
+        this.$router.push(`/danh-muc-du-an/${path}`);
+      }
+      useProjectStore().setMenuPage(text);
+    },
+    checkSticky() {
+      const headerNav = this.$refs.headerNav;
+      if (!headerNav) return;
+      const sticky = headerNav.offsetTop;
+      this.isSticky = window.pageYOffset > sticky;
+    },
+    toggleMobileMenu() {
+      this.isMobileMenuOpen = !this.isMobileMenuOpen;
+      document.body.style.overflow = this.isMobileMenuOpen ? "hidden" : "";
+    },
+    closeMobileMenu() {
+      this.isMobileMenuOpen = false;
+      document.body.style.overflow = "";
+    },
+    toggleSubmenu(event) {
+      event.stopPropagation();
+      const arrow = event.target;
+      const menuItem = arrow.closest(".menu-item");
+      const submenu = menuItem?.nextElementSibling;
+      if (submenu) {
+        const parent = submenu.parentElement?.parentElement;
+        if (parent) {
+          const allSubmenus = parent.querySelectorAll(".submenu");
+          allSubmenus.forEach((sub) => {
+            if (sub !== submenu) {
+              sub.classList.remove("active");
+              sub.previousElementSibling
+                ?.querySelector(".arrow")
+                ?.classList.remove("active");
+            }
+          });
         }
-      });
-    }
-
-    // Toggle submenu hiện tại
-    submenu.classList.toggle("active");
-    arrow.classList.toggle("active");
-  }
+        submenu.classList.toggle("active");
+        arrow.classList.toggle("active");
+      }
+    },
+  },
+  mounted() {
+    window.addEventListener("scroll", this.checkSticky);
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.checkSticky);
+  },
 };
-
-onMounted(() => {
-  window.addEventListener("scroll", checkSticky);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", checkSticky);
-});
 </script>
 
 <style scoped>
@@ -2535,6 +525,112 @@ onUnmounted(() => {
   z-index: 100;
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 4px 24px 0 rgba(127, 83, 172, 0.1),
+    0 1.5px 6px 0 rgba(95, 251, 241, 0.08);
+  padding: 0 16px;
+  min-height: 64px;
+}
+
+.logo-bg {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  background: none;
+  border-radius: 0;
+  height: 48px;
+}
+
+.logo-bg img {
+  height: 56px;
+  width: auto;
+  max-width: 120px;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+#cssmenu {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#cssmenu ul.maunen {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+#cssmenu ul.maunen > li {
+  margin: 0 6px;
+}
+
+@media (max-width: 1200px) {
+  #header-wrapper {
+    padding: 0 4px;
+    min-height: 56px;
+  }
+  .logo-bg {
+    height: 40px;
+  }
+  .logo-bg img {
+    height: 46px;
+    max-width: 90px;
+  }
+  #cssmenu ul.maunen > li {
+    margin: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  #header-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 2px;
+    min-height: 48px;
+  }
+  .logo-bg {
+    margin: 0 0 8px 0 !important;
+    height: 36px;
+  }
+  #cssmenu ul.maunen {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  #cssmenu ul.maunen > li {
+    margin: 0 2px 4px 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  #header-wrapper {
+    display: block;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    min-height: unset;
+    padding: 0;
+  }
+  .logo-bg {
+    display: none;
+  }
+  #cssmenu {
+    display: none;
+  }
 }
 
 .nav-mobile {

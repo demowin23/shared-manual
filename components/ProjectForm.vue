@@ -12,11 +12,33 @@
           />
         </div>
         <div class="form-group">
-          <label for="projectArea">Khu vực dự án</label>
+          <label for="projectArea">Sổ tay</label>
           <select id="projectArea" v-model="projectArea">
-            <option disabled value="">Chọn khu vực</option>
+            <option disabled value="">Chọn sổ tay</option>
             <option v-for="area in areas" :key="area.id" :value="area.id">
               {{ area.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group" v-if="subAreas.length">
+          <label for="projectSubArea">Danh mục</label>
+          <select id="projectSubArea" v-model="projectSubArea">
+            <option disabled value="">Chọn danh mục</option>
+            <option v-for="sub in subAreas" :key="sub.id" :value="sub.id">
+              {{ sub.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group" v-if="subSubAreas.length">
+          <label for="projectSubSubArea">Danh mục con</label>
+          <select id="projectSubSubArea" v-model="projectSubSubArea">
+            <option disabled value="">Chọn danh mục con</option>
+            <option
+              v-for="subsub in subSubAreas"
+              :key="subsub.id"
+              :value="subsub.id"
+            >
+              {{ subsub.name }}
             </option>
           </select>
         </div>
@@ -52,13 +74,15 @@
           </div>
         </div>
       </div>
-      <div class="form-actions">
-        <button type="submit" class="submit-btn" :disabled="isLoading">
-          {{ isLoading ? "Đang xử lý..." : "Tạo dự án" }}
-        </button>
-      </div>
     </form>
-    <QuillEditor v-model="editorContent" ref="quillEditor" />
+    <client-only>
+      <component
+        :is="QuillEditor"
+        v-if="QuillEditor"
+        v-model="editorContent"
+        ref="quillEditor"
+      />
+    </client-only>
     <div class="form-actions">
       <button
         type="button"
@@ -72,248 +96,310 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from "vue";
-import QuillEditor from "~/components/QuillEditor.vue";
+<script>
 import { useProject } from "~/composables/useProject";
 
-const projectName = ref("");
-const projectArea = ref("");
-const areas = [
-  { id: 1, name: "Sổ tay Dự án" },
-  { id: 2, name: "Dự án Hà Nội" },
-  { id: 3, name: "Quận Ba Đình" },
-  { id: 4, name: "Quận Hoàn Kiếm" },
-  { id: 5, name: "Quận Hai Bà Trưng" },
-  { id: 6, name: "Quận Đống Đa" },
-  { id: 7, name: "Quận Tây Hồ" },
-  { id: 8, name: "Quận Cầu Giấy" },
-  { id: 9, name: "Quận Thanh Xuân" },
-  { id: 10, name: "Quận Hoàng Mai" },
-  { id: 11, name: "Quận Long Biên" },
-  { id: 12, name: "Quận Nam Từ Liêm" },
-  { id: 13, name: "Quận Bắc Từ Liêm" },
-  { id: 14, name: "Quận Hà Đông" },
-  { id: 15, name: "Huyện Thanh Trì" },
-  { id: 16, name: "Huyện Gia Lâm" },
-  { id: 17, name: "Huyện Đông Anh" },
-  { id: 18, name: "Huyện Sóc Sơn" },
-  { id: 19, name: "Thị xã Sơn Tây" },
-  { id: 20, name: "Huyện Ba Vì" },
-  { id: 21, name: "Huyện Phúc Thọ" },
-  { id: 22, name: "Huyện Đan Phượng" },
-  { id: 23, name: "Huyện Hoài Đức" },
-  { id: 24, name: "Huyện Quốc Oai" },
-  { id: 25, name: "Huyện Thạch Thất" },
-  { id: 26, name: "Huyện Chương Mỹ" },
-  { id: 27, name: "Huyện Thanh Oai" },
-  { id: 28, name: "Huyện Thường Tín" },
-  { id: 29, name: "Huyện Phú Xuyên" },
-  { id: 30, name: "Huyện Ứng Hòa" },
-  { id: 31, name: "Huyện Mỹ Đức" },
-  { id: 32, name: "Huyện Mê Linh" },
-  { id: 33, name: "Dự án Sài Gòn" },
-  { id: 34, name: "Quận 1" },
-  { id: 35, name: "Quận 2" },
-  { id: 36, name: "Quận 3" },
-  { id: 37, name: "Quận 4" },
-  { id: 38, name: "Quận 5" },
-  { id: 39, name: "Quận 6" },
-  { id: 40, name: "Quận 7" },
-  { id: 41, name: "Quận 8" },
-  { id: 42, name: "Quận 9" },
-  { id: 43, name: "Quận 10" },
-  { id: 44, name: "Quận 11" },
-  { id: 45, name: "Quận 12" },
-  { id: 46, name: "Quận Bình Tân" },
-  { id: 47, name: "Quận Bình Thạnh" },
-  { id: 48, name: "Quận Gò Vấp" },
-  { id: 49, name: "Quận Phú Nhuận" },
-  { id: 50, name: "Quận Tân Bình" },
-  { id: 51, name: "Quận Tân Phú" },
-  { id: 52, name: "TP Thủ Đức" },
-  { id: 53, name: "Huyện Bình Chánh" },
-  { id: 54, name: "Huyện Cần Giờ" },
-  { id: 55, name: "Huyện Củ Chi" },
-  { id: 56, name: "Huyện Hóc Môn" },
-  { id: 57, name: "Huyện Nhà Bè" },
-  { id: 58, name: "Sổ Tay Nhà Đất" },
-  { id: 59, name: "Nhà đất Đông Bắc" },
-  { id: 60, name: "Nhà đất Hải Phòng" },
-  { id: 61, name: "Nhà đất Quảng Ninh" },
-  { id: 62, name: "Nhà đất Bắc Ninh" },
-  { id: 63, name: "Nhà đất Bắc Giang" },
-  { id: 64, name: "Nhà đất Hải Dương" },
-  { id: 65, name: "Nhà đất Thái Nguyên" },
-  { id: 66, name: "Nhà đất Vĩnh Phúc" },
-  { id: 67, name: "Nhà đất Hà Nam" },
-  { id: 68, name: "Nhà đất Phú Thọ" },
-  { id: 69, name: "Nhà đất Thái Bình" },
-  { id: 70, name: "Nhà đất Nam Định" },
-  { id: 71, name: "Nhà đất Ninh Bình" },
-  { id: 72, name: "Nhà đất Lạng Sơn" },
-  { id: 73, name: "Nhà đất Cao Bằng" },
-  { id: 74, name: "Nhà đất Tuyên Quang" },
-  { id: 75, name: "Nhà đất Hà Giang" },
-  { id: 76, name: "Nhà đất Bắc Kạn" },
-  { id: 77, name: "Nhà đất Tây Bắc" },
-  { id: 78, name: "Nhà đất Lai Châu" },
-  { id: 79, name: "Nhà đất Hòa Bình" },
-  { id: 80, name: "Nhà đất Lào Cai" },
-  { id: 81, name: "Nhà đất Yên Bái" },
-  { id: 82, name: "Nhà đất Sơn La" },
-  { id: 83, name: "Nhà đất Điện Biên" },
-  { id: 84, name: "Nhà đất Bắc Trung Bộ" },
-  { id: 85, name: "Nhà đất Nghệ An" },
-  { id: 86, name: "Nhà đất Thanh Hóa" },
-  { id: 87, name: "Nhà đất Hà Tĩnh" },
-  { id: 88, name: "Nhà đất Quảng Bình" },
-  { id: 89, name: "Nhà đất Quảng Trị" },
-  { id: 90, name: "Nhà đất Thừa Thiên - Huế" },
-  { id: 91, name: "Nhà đất Nam Trung Bộ" },
-  { id: 92, name: "Nhà đất Đà Nẵng" },
-  { id: 93, name: "Nhà đất Quảng Nam" },
-  { id: 94, name: "Nhà đất Quảng Ngãi" },
-  { id: 95, name: "Nhà đất Bình Định" },
-  { id: 96, name: "Nhà đất Phú Yên" },
-  { id: 97, name: "Nhà đất Khánh Hòa" },
-  { id: 98, name: "Nhà đất Ninh Thuận" },
-  { id: 99, name: "Nhà đất Bình Thuận" },
-  { id: 100, name: "Nhà đất Đông Nam Bộ" },
-  { id: 101, name: "Nhà đất Bình Dương" },
-  { id: 102, name: "Nhà đất Vũng Tàu" },
-  { id: 103, name: "Nhà đất Đồng Nai" },
-  { id: 104, name: "Nhà đất Bà Rịa" },
-  { id: 105, name: "Nhà đất Tây Ninh" },
-  { id: 106, name: "Nhà đất Bình Phước" },
-  { id: 107, name: "Nhà đất Tây Nam Bộ" },
-  { id: 108, name: "Nhà đất Cần Thơ" },
-  { id: 109, name: "Nhà đất Tiền Giang" },
-  { id: 110, name: "Nhà đất Hậu Giang" },
-  { id: 111, name: "Nhà đất Long An" },
-  { id: 112, name: "Nhà đất Trà Vinh" },
-  { id: 113, name: "Nhà đất Sóc Trăng" },
-  { id: 114, name: "Nhà đất Đồng Tháp" },
-  { id: 115, name: "Nhà đất Vĩnh Long" },
-  { id: 116, name: "Nhà đất Bạc Liêu" },
-  { id: 117, name: "Nhà đất Bến Tre" },
-  { id: 118, name: "Nhà đất Cà Mau" },
-  { id: 119, name: "Nhà đất An Giang" },
-  { id: 120, name: "Nhà đất Kiên Giang" },
-  { id: 121, name: "Nhà đất Kiên Giang" },
-  { id: 122, name: "Nhà đất Tây Nguyên" },
-  { id: 123, name: "Nhà đất Kon Tum" },
-  { id: 124, name: "Nhà đất Lâm Đồng" },
-  { id: 125, name: "Nhà đất Gia Lai" },
-  { id: 126, name: "Nhà đất Đắk Lắk" },
-  { id: 127, name: "Nhà đất Đắk Nông" },
-];
-const imagePreviews = ref<string[]>([]);
-const imageFiles = ref<File[]>([]);
-const dragIndex = ref<number | null>(null);
-const editorContent = ref("");
-const quillEditor = ref(null);
-const { createProject, isLoading, error } = useProject();
-
-function onImageChange(event: Event) {
-  const target = event.target as HTMLInputElement;
-  if (target.files && target.files.length) {
-    Array.from(target.files).forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (typeof e.target?.result === "string") {
-          imagePreviews.value.push(e.target.result);
-          imageFiles.value.push(file);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
-    target.value = "";
-  }
-}
-
-function removeImage(idx: number) {
-  imagePreviews.value.splice(idx, 1);
-  imageFiles.value.splice(idx, 1);
-}
-
-function onDragStart(idx: number) {
-  dragIndex.value = idx;
-}
-
-function onDrop(idx: number) {
-  if (dragIndex.value === null || dragIndex.value === idx) return;
-  const movedPreview = imagePreviews.value.splice(dragIndex.value, 1)[0];
-  imagePreviews.value.splice(idx, 0, movedPreview);
-  const movedFile = imageFiles.value.splice(dragIndex.value, 1)[0];
-  imageFiles.value.splice(idx, 0, movedFile);
-  dragIndex.value = null;
-}
-
-async function handleSubmit() {
-  try {
-    if (!projectName.value || !projectArea.value || !imageFiles.value.length) {
-      alert("Vui lòng điền đầy đủ thông tin và chọn ít nhất 1 ảnh");
-      return;
-    }
-
-    const selectedArea = areas.find((a) => a.id === Number(projectArea.value));
-    if (!selectedArea) return;
-
-    await createProject(
-      projectName.value,
-      selectedArea.name,
-      content.value, // From QuillEditor
-      imageFiles.value
-    );
-
-    // Reset form after successful submission
-    projectName.value = "";
-    projectArea.value = "";
-    imagePreviews.value = [];
-    imageFiles.value = [];
-    content.value = "";
-
-    alert("Tạo dự án thành công!");
-  } catch (err) {
-    alert("Có lỗi xảy ra khi tạo dự án. Vui lòng thử lại!");
-  }
-}
-
-async function submitProject() {
-  try {
-    if (
-      !projectName.value ||
-      !projectArea.value ||
-      !imageFiles.value.length ||
-      !editorContent.value
-    ) {
-      alert(
-        "Vui lòng điền đầy đủ thông tin: tên dự án, khu vực, ảnh và nội dung chi tiết"
+export default {
+  components: {},
+  data() {
+    return {
+      projectName: "",
+      projectArea: "",
+      projectSubArea: "",
+      projectSubSubArea: "",
+      projectManual: {
+        id: 1,
+        name: "Sổ tay Dự án",
+        children: [
+          {
+            id: 2,
+            name: "Dự án Hà Nội",
+            children: [
+              { id: 3, name: "Quận Ba Đình" },
+              { id: 4, name: "Quận Hoàn Kiếm" },
+              { id: 5, name: "Quận Hai Bà Trưng" },
+              { id: 6, name: "Quận Đống Đa" },
+              { id: 7, name: "Quận Tây Hồ" },
+              { id: 8, name: "Quận Cầu Giấy" },
+              { id: 9, name: "Quận Thanh Xuân" },
+              { id: 10, name: "Quận Hoàng Mai" },
+              { id: 11, name: "Quận Long Biên" },
+              { id: 12, name: "Quận Nam Từ Liêm" },
+              { id: 13, name: "Quận Bắc Từ Liêm" },
+              { id: 14, name: "Quận Hà Đông" },
+              { id: 15, name: "Huyện Thanh Trì" },
+              { id: 16, name: "Huyện Gia Lâm" },
+              { id: 17, name: "Huyện Đông Anh" },
+              { id: 18, name: "Huyện Sóc Sơn" },
+              { id: 19, name: "Thị xã Sơn Tây" },
+              { id: 20, name: "Huyện Ba Vì" },
+              { id: 21, name: "Huyện Phúc Thọ" },
+              { id: 22, name: "Huyện Đan Phượng" },
+              { id: 23, name: "Huyện Hoài Đức" },
+              { id: 24, name: "Huyện Quốc Oai" },
+              { id: 25, name: "Huyện Thạch Thất" },
+              { id: 26, name: "Huyện Chương Mỹ" },
+              { id: 27, name: "Huyện Thanh Oai" },
+              { id: 28, name: "Huyện Thường Tín" },
+              { id: 29, name: "Huyện Phú Xuyên" },
+              { id: 30, name: "Huyện Ứng Hòa" },
+              { id: 31, name: "Huyện Mỹ Đức" },
+              { id: 32, name: "Huyện Mê Linh" },
+            ],
+          },
+          {
+            id: 33,
+            name: "Dự án Sài Gòn",
+            children: [
+              { id: 34, name: "Quận 1" },
+              { id: 35, name: "Quận 2" },
+              { id: 36, name: "Quận 3" },
+              { id: 37, name: "Quận 4" },
+              { id: 38, name: "Quận 5" },
+              { id: 39, name: "Quận 6" },
+              { id: 40, name: "Quận 7" },
+              { id: 41, name: "Quận 8" },
+              { id: 42, name: "Quận 9" },
+              { id: 43, name: "Quận 10" },
+              { id: 44, name: "Quận 11" },
+              { id: 45, name: "Quận 12" },
+              { id: 46, name: "Quận Bình Tân" },
+              { id: 47, name: "Quận Bình Thạnh" },
+              { id: 48, name: "Quận Gò Vấp" },
+              { id: 49, name: "Quận Phú Nhuận" },
+              { id: 50, name: "Quận Tân Bình" },
+              { id: 51, name: "Quận Tân Phú" },
+              { id: 52, name: "TP Thủ Đức" },
+              { id: 53, name: "Huyện Bình Chánh" },
+              { id: 54, name: "Huyện Cần Giờ" },
+              { id: 55, name: "Huyện Củ Chi" },
+              { id: 56, name: "Huyện Hóc Môn" },
+              { id: 57, name: "Huyện Nhà Bè" },
+            ],
+          },
+        ],
+      },
+      realEstateManual: {
+        id: 58,
+        name: "Sổ Tay Nhà Đất",
+        children: [
+          {
+            id: 59,
+            name: "Nhà đất Đông Bắc",
+            children: [
+              { id: 60, name: "Nhà đất Hải Phòng" },
+              { id: 61, name: "Nhà đất Quảng Ninh" },
+              { id: 62, name: "Nhà đất Bắc Ninh" },
+              { id: 63, name: "Nhà đất Bắc Giang" },
+              { id: 64, name: "Nhà đất Hải Dương" },
+              { id: 65, name: "Nhà đất Thái Nguyên" },
+              { id: 66, name: "Nhà đất Vĩnh Phúc" },
+              { id: 67, name: "Nhà đất Hà Nam" },
+              { id: 68, name: "Nhà đất Phú Thọ" },
+              { id: 69, name: "Nhà đất Thái Bình" },
+              { id: 70, name: "Nhà đất Nam Định" },
+              { id: 71, name: "Nhà đất Ninh Bình" },
+              { id: 72, name: "Nhà đất Lạng Sơn" },
+              { id: 73, name: "Nhà đất Cao Bằng" },
+              { id: 74, name: "Nhà đất Tuyên Quang" },
+              { id: 75, name: "Nhà đất Hà Giang" },
+              { id: 76, name: "Nhà đất Bắc Kạn" },
+            ],
+          },
+          {
+            id: 77,
+            name: "Nhà đất Tây Bắc",
+            children: [
+              { id: 78, name: "Nhà đất Lai Châu" },
+              { id: 79, name: "Nhà đất Hòa Bình" },
+              { id: 80, name: "Nhà đất Lào Cai" },
+              { id: 81, name: "Nhà đất Yên Bái" },
+              { id: 82, name: "Nhà đất Sơn La" },
+              { id: 83, name: "Nhà đất Điện Biên" },
+            ],
+          },
+          {
+            id: 84,
+            name: "Nhà đất Bắc Trung Bộ",
+            children: [
+              { id: 85, name: "Nhà đất Nghệ An" },
+              { id: 86, name: "Nhà đất Thanh Hóa" },
+              { id: 87, name: "Nhà đất Hà Tĩnh" },
+              { id: 88, name: "Nhà đất Quảng Bình" },
+              { id: 89, name: "Nhà đất Quảng Trị" },
+              { id: 90, name: "Nhà đất Thừa Thiên - Huế" },
+            ],
+          },
+          {
+            id: 91,
+            name: "Nhà đất Nam Trung Bộ",
+            children: [
+              { id: 92, name: "Nhà đất Đà Nẵng" },
+              { id: 93, name: "Nhà đất Quảng Nam" },
+              { id: 94, name: "Nhà đất Quảng Ngãi" },
+              { id: 95, name: "Nhà đất Bình Định" },
+              { id: 96, name: "Nhà đất Phú Yên" },
+              { id: 97, name: "Nhà đất Khánh Hòa" },
+              { id: 98, name: "Nhà đất Ninh Thuận" },
+              { id: 99, name: "Nhà đất Bình Thuận" },
+            ],
+          },
+          {
+            id: 100,
+            name: "Nhà đất Đông Nam Bộ",
+            children: [
+              { id: 101, name: "Nhà đất Bình Dương" },
+              { id: 102, name: "Nhà đất Vũng Tàu" },
+              { id: 103, name: "Nhà đất Đồng Nai" },
+              { id: 104, name: "Nhà đất Bà Rịa" },
+              { id: 105, name: "Nhà đất Tây Ninh" },
+              { id: 106, name: "Nhà đất Bình Phước" },
+            ],
+          },
+          {
+            id: 107,
+            name: "Nhà đất Tây Nam Bộ",
+            children: [
+              { id: 108, name: "Nhà đất Cần Thơ" },
+              { id: 109, name: "Nhà đất Tiền Giang" },
+              { id: 110, name: "Nhà đất Hậu Giang" },
+              { id: 111, name: "Nhà đất Long An" },
+              { id: 112, name: "Nhà đất Trà Vinh" },
+              { id: 113, name: "Nhà đất Sóc Trăng" },
+              { id: 114, name: "Nhà đất Đồng Tháp" },
+              { id: 115, name: "Nhà đất Vĩnh Long" },
+              { id: 116, name: "Nhà đất Bạc Liêu" },
+              { id: 117, name: "Nhà đất Bến Tre" },
+              { id: 118, name: "Nhà đất Cà Mau" },
+              { id: 119, name: "Nhà đất An Giang" },
+              { id: 120, name: "Nhà đất Kiên Giang" },
+              { id: 121, name: "Nhà đất Kiên Giang" },
+            ],
+          },
+          {
+            id: 122,
+            name: "Nhà đất Tây Nguyên",
+            children: [
+              { id: 123, name: "Nhà đất Kon Tum" },
+              { id: 124, name: "Nhà đất Lâm Đồng" },
+              { id: 125, name: "Nhà đất Gia Lai" },
+              { id: 126, name: "Nhà đất Đắk Lắk" },
+              { id: 127, name: "Nhà đất Đắk Nông" },
+            ],
+          },
+        ],
+      },
+      areas: [
+        { id: 1, name: "Sổ tay Dự án" },
+        { id: 58, name: "Sổ tay Nhà đất" },
+      ],
+      subAreas: [],
+      subSubAreas: [],
+      imagePreviews: [],
+      imageFiles: [],
+      dragIndex: null,
+      editorContent: "",
+      quillEditor: null,
+      QuillEditor: null,
+      isLoading: false,
+      error: null,
+    };
+  },
+  watch: {
+    projectArea(newVal) {
+      let selected = null;
+      if (Number(newVal) === 1) {
+        selected = this.projectManual;
+      } else if (Number(newVal) === 58) {
+        selected = this.realEstateManual;
+      }
+      this.subAreas = selected ? selected.children : [];
+      this.projectSubArea = "";
+      this.subSubAreas = [];
+      this.projectSubSubArea = "";
+    },
+    projectSubArea(newVal) {
+      const sub = this.subAreas.find((s) => s.id === Number(newVal));
+      this.subSubAreas = sub && sub.children ? sub.children : [];
+      this.projectSubSubArea = "";
+    },
+  },
+  async mounted() {
+    if (process.client) {
+      const { default: QuillEditor } = await import(
+        "~/components/QuillEditor.vue"
       );
-      return;
+      this.QuillEditor = QuillEditor;
     }
-
-    await createProject(
-      projectName.value,
-      Number(projectArea.value),
-      editorContent.value,
-      imageFiles.value
-    );
-
-    // Reset form sau khi gửi thành công
-    projectName.value = "";
-    projectArea.value = "";
-    imagePreviews.value = [];
-    imageFiles.value = [];
-    editorContent.value = "";
-
-    alert("Gửi dự án thành công!");
-  } catch (err) {
-    console.error("Error submitting project:", err);
-    alert("Có lỗi xảy ra khi gửi dự án. Vui lòng thử lại!");
-  }
-}
+    const { createProject, isLoading, error } = useProject();
+    this.createProject = createProject;
+    this.isLoading = isLoading;
+    this.error = error;
+  },
+  methods: {
+    onImageChange(event) {
+      const target = event.target;
+      if (target.files && target.files.length) {
+        Array.from(target.files).forEach((file) => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            if (typeof e.target?.result === "string") {
+              this.imagePreviews.push(e.target.result);
+              this.imageFiles.push(file);
+            }
+          };
+          reader.readAsDataURL(file);
+        });
+        target.value = "";
+      }
+    },
+    removeImage(idx) {
+      this.imagePreviews.splice(idx, 1);
+      this.imageFiles.splice(idx, 1);
+    },
+    onDragStart(idx) {
+      this.dragIndex = idx;
+    },
+    onDrop(idx) {
+      if (this.dragIndex === null || this.dragIndex === idx) return;
+      const movedPreview = this.imagePreviews.splice(this.dragIndex, 1)[0];
+      this.imagePreviews.splice(idx, 0, movedPreview);
+      const movedFile = this.imageFiles.splice(this.dragIndex, 1)[0];
+      this.imageFiles.splice(idx, 0, movedFile);
+      this.dragIndex = null;
+    },
+    async submitProject() {
+      try {
+        if (
+          !this.projectName ||
+          !this.projectSubSubArea ||
+          !this.imageFiles.length ||
+          !this.editorContent
+        ) {
+          alert(
+            "Vui lòng điền đầy đủ thông tin: tên dự án, danh mục, ảnh và nội dung chi tiết"
+          );
+          return;
+        }
+        await this.createProject(
+          this.projectName,
+          Number(this.projectSubSubArea),
+          this.editorContent,
+          this.imageFiles
+        );
+        this.projectName = "";
+        this.projectSubSubArea = "";
+        this.imagePreviews = [];
+        this.imageFiles = [];
+        this.editorContent = "";
+        alert("Gửi dự án thành công!");
+      } catch (err) {
+        console.error("Error submitting project:", err);
+        alert("Có lỗi xảy ra khi gửi dự án. Vui lòng thử lại!");
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -452,7 +538,8 @@ async function submitProject() {
 }
 .row-2col {
   display: flex;
-  gap: 18px;
+  flex-direction: column;
+  gap: 12px;
 }
 .form-group {
   flex: 1 1 0;
@@ -467,7 +554,7 @@ async function submitProject() {
 }
 .form-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 10px;
 }
 
@@ -480,6 +567,7 @@ async function submitProject() {
   font-size: 16px;
   cursor: pointer;
   transition: background 0.2s;
+  margin-bottom: 20px;
 }
 
 .submit-btn:hover {

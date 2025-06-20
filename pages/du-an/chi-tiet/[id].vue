@@ -10,16 +10,6 @@
             <div class="col-md-12">
               <div class="head_title3 text-left">
                 <p>{{ project?.name }}</p>
-                <button class="btn btn-primary" @click="call">
-                  <i class="fa fa-heart"></i>
-                  Call
-                </button>
-                <input
-                  type="text"
-                  id="items_name"
-                  name="items_name"
-                  v-model="idParam"
-                />
               </div>
             </div>
           </div>
@@ -356,345 +346,26 @@
             <div class="clear"></div>
             <div class="border_box">
               <div class="pd10">
-                <div class="row news_right post_hot">
+                <div
+                  class="row news_right post_hot"
+                  v-for="project in projects"
+                  :key="project.id"
+                >
                   <div class="col-md-12 col-sm-12 col-xs-12 img">
                     <a
-                      title="Chung cư Grand Sunlake"
-                      href="https://sotaychungcu.com/chi-tiet/722-chung-cu-grand-sunlake"
+                      :title="project.name"
+                      :href="`/du-an/chi-tiet/${project.id}`"
                     >
                       <img
                         class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Grand-Sunlake-01.jpg"
+                        :src="`${urlBe}/uploads/${project.images[0]}`"
                     /></a>
                   </div>
                   <div class="col-md-12 col-sm-12 col-xs-12 info">
                     <a
-                      title="Chung cư Grand Sunlake"
-                      href="https://sotaychungcu.com/chi-tiet/722-chung-cu-grand-sunlake"
-                      >Chung cư Grand Sunlake</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Anland Lake View"
-                      href="https://sotaychungcu.com/chi-tiet/665-chung-cu-anland-lake-view"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Anland-Lake-View-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Anland Lake View"
-                      href="https://sotaychungcu.com/chi-tiet/665-chung-cu-anland-lake-view"
-                      >Chung cư Anland Lake View</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Rice City Thượng Thanh"
-                      href="https://sotaychungcu.com/chi-tiet/622-chung-cu-rice-city-thuong-thanh"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Thuong-Thanh-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Rice City Thượng Thanh"
-                      href="https://sotaychungcu.com/chi-tiet/622-chung-cu-rice-city-thuong-thanh"
-                      >Chung cư Rice City Thượng Thanh</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Him Lam Thượng Thanh "
-                      href="https://sotaychungcu.com/chi-tiet/610-chung-cu-him-lam-thuong-thanh"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Him-Lam-Thuong-Thanh-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Him Lam Thượng Thanh "
-                      href="https://sotaychungcu.com/chi-tiet/610-chung-cu-him-lam-thuong-thanh"
-                      >Chung cư Him Lam Thượng Thanh
-                    </a>
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Hinode City"
-                      href="https://sotaychungcu.com/chi-tiet/599-chung-cu-hinode-city"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Hinode-City-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Hinode City"
-                      href="https://sotaychungcu.com/chi-tiet/599-chung-cu-hinode-city"
-                      >Chung cư Hinode City</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư 6th Element"
-                      href="https://sotaychungcu.com/chi-tiet/569-chung-cu-6th-element"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-6th-Element-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư 6th Element"
-                      href="https://sotaychungcu.com/chi-tiet/569-chung-cu-6th-element"
-                      >Chung cư 6th Element</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Rose Town"
-                      href="https://sotaychungcu.com/chi-tiet/558-chung-cu-rose-town"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rose-Town-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Rose Town"
-                      href="https://sotaychungcu.com/chi-tiet/558-chung-cu-rose-town"
-                      >Chung cư Rose Town</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Hà Nội Homeland"
-                      href="https://sotaychungcu.com/chi-tiet/546-chung-cu-ha-noi-homeland"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Ha-Noi-Homeland-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Hà Nội Homeland"
-                      href="https://sotaychungcu.com/chi-tiet/546-chung-cu-ha-noi-homeland"
-                      >Chung cư Hà Nội Homeland</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Roman Plaza"
-                      href="https://sotaychungcu.com/chi-tiet/498-chung-cu-roman-plaza"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Roman-Plaza-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Roman Plaza"
-                      href="https://sotaychungcu.com/chi-tiet/498-chung-cu-roman-plaza"
-                      >Chung cư Roman Plaza</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Sky Central"
-                      href="https://sotaychungcu.com/chi-tiet/491-chung-cu-sky-central"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Sky-Central-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Sky Central"
-                      href="https://sotaychungcu.com/chi-tiet/491-chung-cu-sky-central"
-                      >Chung cư Sky Central</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Imperia Sky Garden"
-                      href="https://sotaychungcu.com/chi-tiet/484-chung-cu-imperia-sky-garden"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Imperia-Sky-Garden-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Imperia Sky Garden"
-                      href="https://sotaychungcu.com/chi-tiet/484-chung-cu-imperia-sky-garden"
-                      >Chung cư Imperia Sky Garden</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư An Bình City"
-                      href="https://sotaychungcu.com/chi-tiet/428-chung-cu-an-binh-city"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-An-Binh-City-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư An Bình City"
-                      href="https://sotaychungcu.com/chi-tiet/428-chung-cu-an-binh-city"
-                      >Chung cư An Bình City</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Imperial Plaza"
-                      href="https://sotaychungcu.com/chi-tiet/390-chung-cu-imperial-plaza"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Imperial-Plaza-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Imperial Plaza"
-                      href="https://sotaychungcu.com/chi-tiet/390-chung-cu-imperial-plaza"
-                      >Chung cư Imperial Plaza</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Hà Nội Paragon"
-                      href="https://sotaychungcu.com/chi-tiet/364-chung-cu-ha-noi-paragon"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Ha-Noi-Paragon-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Hà Nội Paragon"
-                      href="https://sotaychungcu.com/chi-tiet/364-chung-cu-ha-noi-paragon"
-                      >Chung cư Hà Nội Paragon</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Udic Westlake "
-                      href="https://sotaychungcu.com/chi-tiet/350-chung-cu-udic-westlake"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Udic-Westlake-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Udic Westlake "
-                      href="https://sotaychungcu.com/chi-tiet/350-chung-cu-udic-westlake"
-                      >Chung cư Udic Westlake
-                    </a>
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Mipec Rubik 360"
-                      href="https://sotaychungcu.com/chi-tiet/327-chung-cu-mipec-rubik-360"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Mipec-Rubik-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Mipec Rubik 360"
-                      href="https://sotaychungcu.com/chi-tiet/327-chung-cu-mipec-rubik-360"
-                      >Chung cư Mipec Rubik 360</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Rivera Park Hà Nội"
-                      href="https://sotaychungcu.com/chi-tiet/316-chung-cu-rivera-park-ha-noi"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Rivera-Park-Ha-Noi-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Rivera Park Hà Nội"
-                      href="https://sotaychungcu.com/chi-tiet/316-chung-cu-rivera-park-ha-noi"
-                      >Chung cư Rivera Park Hà Nội</a
-                    >
-                  </div>
-                </div>
-                <div class="row news_right post_hot">
-                  <div class="col-md-12 col-sm-12 col-xs-12 img">
-                    <a
-                      title="Chung cư Feliz Homes"
-                      href="https://sotaychungcu.com/chi-tiet/300-chung-cu-feliz-homes"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="~/assets/img/webroot/upload/images/images/Hanoi/Chung-cu-Feliz-Homes-01.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-12 info">
-                    <a
-                      title="Chung cư Feliz Homes"
-                      href="https://sotaychungcu.com/chi-tiet/300-chung-cu-feliz-homes"
-                      >Chung cư Feliz Homes</a
+                      :title="project.name"
+                      :href="`/du-an/chi-tiet/${project.id}`"
+                      >{{ project.name }}</a
                     >
                   </div>
                 </div>
@@ -832,333 +503,144 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script>
 import ProjectItem from "~/components/ProjectItem.vue";
-import { onMounted, ref, computed, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { useProjectStore } from "~/store/useProject";
 
-definePageMeta({
-  layout: "default",
-});
-
-useHead({
-  link: [
-    {
-      rel: "stylesheet",
-      href: "https://sotaychungcu.com/zoom/css/xzoom.css",
-      media: "all",
-    },
-    {
-      rel: "stylesheet",
-      href: "https://sotaychungcu.com/zoom/fancybox/source/jquery.fancybox.css",
-      media: "all",
-    },
-    {
-      rel: "stylesheet",
-      href: "https://sotaychungcu.com/zoom/magnific-popup/css/magnific-popup.css",
-      media: "all",
-    },
-    // Add Font Awesome 6
-    {
-      rel: "stylesheet",
-      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
-      integrity:
-        "sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==",
-      crossorigin: "anonymous",
-    },
-  ],
-  script: [
-    { src: "https://code.jquery.com/jquery-3.6.0.min.js" },
-    { src: "https://sotaychungcu.com/zoom/js/xzoom.min.js", body: true },
-    {
-      src: "https://sotaychungcu.com/zoom/fancybox/source/jquery.fancybox.js",
-      body: true,
-    },
-    {
-      src: "https://sotaychungcu.com/zoom/magnific-popup/js/magnific-popup.js",
-      body: true,
-    },
-    // Add Font Awesome 6 JS
-    {
-      src: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js",
-      integrity:
-        "sha512-GWzVrcGlo0TxTjXO8PkW6ExP+8sNhj7OZIyFcEZ+YbJT5JH4EnN1c0CNqMqxKpqMaT8U+3ydqq8Cy2rrZ/qIHA==",
-      crossorigin: "anonymous",
-      body: true,
-    },
-  ],
-});
-
-onMounted(async () => {
-  await call();
-  await loadScripts();
-  setTimeout(initializeXZoom, 500);
-});
-const route = useRoute();
-const projectStore = useProjectStore();
-const project = ref(null);
-let idParam = ref(route.params.id);
-const call = async () => {
-  let id = idParam.value;
-  if (typeof id === "string") {
-    const match = id.match(/^(\\d+)/);
-    if (match) id = match[1];
-  }
-  if (id) {
-    await projectStore.fetchProjectById(Number(id));
-    project.value = projectStore.getProject;
-    console.log(project.value);
-  }
-};
-
-// Gallery images
-const defaultGallery = [
-  {
-    src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-01.jpg",
-    alt: "Chung cư Rice City Long Châu",
-  },
-  // ... các ảnh mặc định khác nếu cần
-];
-
-const galleryImages = computed(() => {
-  if (
-    project.value &&
-    Array.isArray(project.value.images) &&
-    project.value.images.length > 0
-  ) {
-    // Nếu là mảng string
-    if (typeof project.value.images[0] === "string") {
-      const prefix = "http://127.0.0.1:4000/uploads/";
-      return project.value.images.map((img, idx) => ({
-        src: prefix + img,
-        alt: project.value.name || `Ảnh ${idx + 1}`,
-      }));
-    }
-    // Nếu là mảng object {src, alt}
-    return project.value.images;
-  }
-  return defaultGallery;
-});
-
-// Main image state
-const mainImage = ref("");
-
-watchEffect(() => {
-  if (galleryImages.value.length > 0) {
-    mainImage.value = galleryImages.value[0].src;
-  } else {
-    mainImage.value =
-      "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-01.jpg";
-  }
-});
-
-const initializeXZoom = () => {
-  if (typeof window !== "undefined" && window.jQuery) {
-    const $ = window.jQuery;
-    $(".xzoom4, .xzoom-gallery4").xzoom({
-      tint: "#006699",
-      Xoffset: 15,
-      position: "lens",
-      lensShape: "circle",
-      sourceClass: "xzoom-hidden",
-    });
-
-    //Integration with fancybox plugin
-    $("#xzoom-fancy").bind("click", function (event) {
-      var xzoom = $(this).data("xzoom");
-      xzoom.closezoom();
-      $.fancybox.open(xzoom.gallery().cgallery);
-      event.preventDefault();
-    });
-  }
-};
-
-const loadScripts = () => {
-  return new Promise((resolve) => {
-    const jqueryScript = document.createElement("script");
-    jqueryScript.src = "https://code.jquery.com/jquery-3.6.0.min.js";
-    jqueryScript.onload = () => {
-      const xzoomScript = document.createElement("script");
-      xzoomScript.src = "https://sotaychungcu.com/zoom/js/xzoom.min.js";
-      xzoomScript.onload = () => {
-        const fancyboxScript = document.createElement("script");
-        fancyboxScript.src =
-          "https://sotaychungcu.com/zoom/fancybox/source/jquery.fancybox.js";
-        fancyboxScript.onload = () => {
-          const magnificScript = document.createElement("script");
-          magnificScript.src =
-            "https://sotaychungcu.com/zoom/magnific-popup/js/magnific-popup.js";
-          magnificScript.onload = () => {
-            resolve();
-          };
-          document.body.appendChild(magnificScript);
-        };
-        document.body.appendChild(fancyboxScript);
-      };
-      document.body.appendChild(xzoomScript);
+export default {
+  components: { ProjectItem },
+  data() {
+    return {
+      project: null,
+      idParam: "",
+      mainImage: "",
+      defaultGallery: [
+        {
+          src: "https://sotaychungcu.com/img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-01.jpg",
+          alt: "Chung cư Rice City Long Châu",
+        },
+      ],
+      projects: [],
     };
-    document.body.appendChild(jqueryScript);
-  });
+  },
+  setup() {
+    const { $env } = useNuxtApp();
+    const urlBe = $env.URL_BE;
+    return { urlBe };
+  },
+  computed: {
+    galleryImages() {
+      if (
+        this.project &&
+        Array.isArray(this.project.images) &&
+        this.project.images.length > 0
+      ) {
+        if (typeof this.project.images[0] === "string") {
+          const prefix = `${this.urlBe}/uploads/`;
+          return this.project.images.map((img, idx) => ({
+            src: prefix + img,
+            alt: this.project.name || `Ảnh ${idx + 1}`,
+          }));
+        }
+        return this.project.images;
+      }
+      return this.defaultGallery;
+    },
+  },
+  watch: {
+    galleryImages: {
+      handler(newVal) {
+        if (newVal.length > 0) {
+          this.mainImage = newVal[0].src;
+        } else {
+          this.mainImage = this.defaultGallery[0].src;
+        }
+      },
+      immediate: true,
+    },
+  },
+  methods: {
+    async call() {
+      let id = this.idParam;
+      if (typeof id === "string") {
+        const match = id.match(/^(\d+)/);
+        if (match) id = match[1];
+      }
+      if (id) {
+        const store = useProjectStore();
+        await store.fetchProjectById(Number(id));
+        this.project = store.getProject;
+      }
+    },
+    async loadScripts() {
+      return new Promise((resolve) => {
+        const jqueryScript = document.createElement("script");
+        jqueryScript.src = "https://code.jquery.com/jquery-3.6.0.min.js";
+        jqueryScript.onload = () => {
+          const xzoomScript = document.createElement("script");
+          xzoomScript.src = "https://sotaychungcu.com/zoom/js/xzoom.min.js";
+          xzoomScript.onload = () => {
+            const fancyboxScript = document.createElement("script");
+            fancyboxScript.src =
+              "https://sotaychungcu.com/zoom/fancybox/source/jquery.fancybox.js";
+            fancyboxScript.onload = () => {
+              const magnificScript = document.createElement("script");
+              magnificScript.src =
+                "https://sotaychungcu.com/zoom/magnific-popup/js/magnific-popup.js";
+              magnificScript.onload = () => {
+                resolve();
+              };
+              document.body.appendChild(magnificScript);
+            };
+            document.body.appendChild(fancyboxScript);
+          };
+          document.body.appendChild(xzoomScript);
+        };
+        document.body.appendChild(jqueryScript);
+      });
+    },
+    initializeXZoom() {
+      if (typeof window !== "undefined" && window.jQuery) {
+        const $ = window.jQuery;
+        $(".xzoom4, .xzoom-gallery4").xzoom({
+          tint: "#006699",
+          Xoffset: 15,
+          position: "lens",
+          lensShape: "circle",
+          sourceClass: "xzoom-hidden",
+        });
+        $("#xzoom-fancy").bind("click", function (event) {
+          var xzoom = $(this).data("xzoom");
+          xzoom.closezoom();
+          $.fancybox.open(xzoom.gallery().cgallery);
+          event.preventDefault();
+        });
+      }
+    },
+  },
+  async created() {
+    const route = useRoute();
+    let rawId = route.params.id;
+    if (typeof rawId === "string") {
+      const match = rawId.match(/^(\d+)/);
+      if (match) this.idParam = match[1];
+      else this.idParam = rawId;
+    } else {
+      this.idParam = rawId;
+    }
+    await this.call();
+    const store = useProjectStore();
+    await store.fetchProjects();
+    this.projects = store.projects;
+  },
+  async mounted() {
+    await this.loadScripts();
+    setTimeout(this.initializeXZoom, 500);
+  },
 };
-
-const projects = ref([
-  {
-    id: "728",
-    title: "Chung cư Handico Riverside",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Handico-Riverside-01.jpg",
-    link: "/du-an/chi-tiet/728-chung-cu-handico-riverside",
-  },
-  {
-    id: "727",
-    title: "Chung cư Rice City Long Châu",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-Long-Chau-01.jpg",
-    link: "/du-an/chi-tiet/727-chung-cu-rice-city-long-chau",
-  },
-  {
-    id: "724",
-    title: "Chung cư Ruby Riverside",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Ruby-Riverside-01.jpg",
-    link: "/du-an/chi-tiet/724-chung-cu-ruby-riverside",
-  },
-  {
-    id: "722",
-    title: "Chung cư Grand Sunlake",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Grand-Sunlake-01.jpg",
-    link: "/du-an/chi-tiet/722-chung-cu-grand-sunlake",
-  },
-  {
-    id: "721",
-    title: "Chung cư The Charm An Hưng",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-The-Charm-An-Hung-01.jpg",
-    link: "/du-an/chi-tiet/721-chung-cu-the-charm-an-hung",
-  },
-  {
-    id: "720",
-    title: "Chung cư 393 Lĩnh Nam",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-393-Linh-Nam-01.jpg",
-    link: "/du-an/chi-tiet/720-chung-cu-393-linh-nam",
-  },
-  {
-    id: "719",
-    title: "Chung cư D22 Định Công",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-D22-Dinh-Cong-01.jpg",
-    link: "/du-an/chi-tiet/719-chung-cu-d22-dinh-cong",
-  },
-  {
-    id: "718",
-    title: "Chung cư 62B Nguyễn Thị Định",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-62B-Nguyen-Thi-Dinh-01.jpg",
-    link: "/du-an/chi-tiet/718-chung-cu-62b-nguyen-thi-dinh",
-  },
-  {
-    id: "717",
-    title: "Chung cư Panorama Riverside",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Panorama-Riverside-01.jpg",
-    link: "/du-an/chi-tiet/717-chung-cu-panorama-riverside",
-  },
-  {
-    id: "716",
-    title: "Chung cư Ngọc Linh Plaza",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Ngoc-Linh-Plaza-01.jpg",
-    link: "/du-an/chi-tiet/716-chung-cu-ngoc-linh-plaza",
-  },
-  {
-    id: "715",
-    title: "Chung cư Lake Plaza",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Lake-Plaza-01.jpg",
-    link: "/du-an/chi-tiet/715-chung-cu-lake-plaza",
-  },
-  {
-    id: "714",
-    title: "Chung cư Grande Park",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Grande-Park-01.jpg",
-    link: "/du-an/chi-tiet/714-chung-cu-grande-park",
-  },
-  {
-    id: "713",
-    title: "Chung cư Hà Nội Orchard Park",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Ha-Noi-Orchard-Park-01.jpg",
-    link: "/du-an/chi-tiet/713-chung-cu-ha-noi-orchard-park",
-  },
-  {
-    id: "712",
-    title: "Chung cư Chelsea Tower",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Chelsea-Tower-01.jpg",
-    link: "/du-an/chi-tiet/712-chung-cu-chelsea-tower",
-  },
-  {
-    id: "711",
-    title: "Chung cư Northern Star Complex",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Northern-Star-Complex-01.jpg",
-    link: "/du-an/chi-tiet/711-chung-cu-northern-star-complex",
-  },
-  {
-    id: "710",
-    title: "Chung cư Vân Canh Residence",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Hud-Van-Canh-01.jpg",
-    link: "/du-an/chi-tiet/710-chung-cu-van-canh-residence",
-  },
-  {
-    id: "709",
-    title: "Chung cư Hacinco Nguyễn Xiển",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Hacinco-Nguyen-Xien-01.jpg",
-    link: "/du-an/chi-tiet/709-chung-cu-hacinco-nguyen-xien",
-  },
-  {
-    id: "708",
-    title: "Chung cư Rice City Tố Hữu",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Rice-City-To-Huu-01.jpg",
-    link: "/du-an/chi-tiet/708-chung-cu-rice-city-to-huu",
-  },
-  {
-    id: "707",
-    title: "Chung cư Vân Canh Tower",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-THT-Complex-01.jpg",
-    link: "/du-an/chi-tiet/707-chung-cu-van-canh-tower",
-  },
-  {
-    id: "706",
-    title: "Chung cư Sunset Tower",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Sunset-Tower-01.jpg",
-    link: "/du-an/chi-tiet/706-chung-cu-sunset-tower",
-  },
-  {
-    id: "705",
-    title: "Chung cư Eurowindow Lake City",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-Eurowindow-Lake-City-01.jpg",
-    link: "/du-an/chi-tiet/705-chung-cu-eurowindow-lake-city",
-  },
-  {
-    id: "704",
-    title: "Chung cư A12 Nguyễn Xiển",
-    imageUrl:
-      "https://sotaychungcu.com//img/webroot/upload/images/images/Hanoi/Chung-cu-A12-Nguyen-Xien-01.jpg",
-    link: "/du-an/chi-tiet/704-chung-cu-a12-nguyen-xien",
-  },
-]);
 </script>
+
 <style scoped>
 .xzoom-gallery4 {
   border: 1px solid #ccc;

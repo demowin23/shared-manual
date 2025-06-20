@@ -1,61 +1,65 @@
 <template>
   <div class="quill-editor-wrapper">
     <client-only>
-      <QuillEditor
+      <component
+        :is="QuillEditor"
+        v-if="QuillEditor"
         theme="snow"
         toolbar="full"
         v-model:content="content"
         contentType="html"
         class="custom-quill-editor"
       />
-    </client-only>
-    <button class="export-btn" @click="showHtml = !showHtml">
-      {{ showHtml ? "Ẩn HTML" : "Xuất HTML" }}
-    </button>
-
-    <div v-if="showHtml" class="custom-quill-editor ql-container ql-snow">
-      <div class="ql-editor" data-gramm="false" contenteditable="true">
-        <div v-if="showHtml" class="html-output">
-          <h3>HTML Output:</h3>
-          <pre>{{ content }}</pre>
-          <div class="html-preview" v-html="content"></div>
+      <button class="export-btn" @click="showHtml = !showHtml">
+        {{ showHtml ? "Ẩn HTML" : "Xuất HTML" }}
+      </button>
+      <div v-if="showHtml" class="custom-quill-editor ql-container ql-snow">
+        <div class="ql-editor" data-gramm="false" contenteditable="true">
+          <div v-if="showHtml" class="html-output">
+            <h3>HTML Output:</h3>
+            <pre>{{ content }}</pre>
+            <div class="html-preview" v-html="content"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </client-only>
   </div>
 </template>
 
-<script setup lang="ts">
-import { QuillEditor } from "@vueup/vue-quill";
-import "@vueup/vue-quill/dist/vue-quill.snow.css";
-import { ref, watch } from "vue";
-
-const props = defineProps<{
-  modelValue: string;
-}>();
-
-const emit = defineEmits<{
-  "update:modelValue": [value: string];
-}>();
-
-const content = ref(props.modelValue);
-
-// Watch for external changes
-watch(
-  () => props.modelValue,
-  (newValue) => {
-    if (newValue !== content.value) {
-      content.value = newValue;
+<script>
+export default {
+  components: {},
+  props: {
+    modelValue: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      content: this.modelValue,
+      showHtml: false,
+      QuillEditor: null,
+    };
+  },
+  async mounted() {
+    if (process.client) {
+      const { QuillEditor } = await import("@vueup/vue-quill");
+      await import("@vueup/vue-quill/dist/vue-quill.snow.css");
+      this.QuillEditor = QuillEditor;
     }
-  }
-);
-
-// Watch for internal changes
-watch(content, (newValue) => {
-  emit("update:modelValue", newValue);
-});
-
-const showHtml = ref(false);
+  },
+  watch: {
+    modelValue(newValue) {
+      if (newValue !== this.content) {
+        this.content = newValue;
+      }
+    },
+    content(newValue) {
+      this.$emit("update:modelValue", newValue);
+    },
+  },
+};
 </script>
 
 <style scoped>

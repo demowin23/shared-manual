@@ -1,14 +1,15 @@
+import { useNuxtApp } from 'nuxt/app';
 import { ref } from 'vue'
 
-const API_URL = 'http://127.0.0.1:4000/api'
-
-export const useProject = () => {
+export function useProject() {
+  const { $env } = useNuxtApp() as any;
+  const urlBe = $env.URL_BE;
   const isLoading = ref(false)
   const error = ref<string | null>(null)
 
   const createProject = async (
     name: string,
-    locationId: number,
+    areas: number,
     detail: string,
     images: File[]
   ) => {
@@ -18,7 +19,7 @@ export const useProject = () => {
 
       const formData = new FormData()
       formData.append('name', name)
-      formData.append('locationId', locationId.toString())
+      formData.append('areas', areas.toString())
       formData.append('detail', detail)
       
       // Append multiple images
@@ -26,7 +27,7 @@ export const useProject = () => {
         formData.append('images', image)
       })
 
-      const response = await fetch(`${API_URL}/projects`, {
+      const response = await fetch(`${urlBe}/api/projects`, {
         method: 'POST',
         body: formData
       })
@@ -46,6 +47,7 @@ export const useProject = () => {
   }
 
   return {
+    urlBe,
     isLoading,
     error,
     createProject
