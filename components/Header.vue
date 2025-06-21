@@ -154,7 +154,7 @@
                 >
                   <img
                     class="img-responsive"
-                    src="../assets/images/logo.png"
+                    src="/images/logo.png"
                     alt="Logo Sổ tay chung cư"
                     width="110"
                     height="32"

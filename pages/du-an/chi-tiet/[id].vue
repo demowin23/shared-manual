@@ -283,7 +283,7 @@
                     </ul>
                     <div class="text-center">
                       <img
-                        src="~/assets/images/Em.png"
+                        src="/images/Em.png"
                         style="position: relative; left: -30px"
                         class="lazyloading"
                         data-was-processed="true"
@@ -321,7 +321,7 @@
                     >
                       <img
                         class="img-responsive img-hover"
-                        src="~/assets/img/upload/images/files/Tintuc/Ky-gui-nha-dat.jpg"
+                        src="/img/upload/images/files/Tintuc/Ky-gui-nha-dat.jpg"
                     /></a>
                   </div>
                   <div class="col-md-8 col-sm-6 col-xs-6 info">
@@ -382,10 +382,7 @@
                 Tải trọn bộ tài liệu dự án Chung cư Rice City Long Châu
               </div>
               <div class="content">
-                <img
-                  class="img-responsive"
-                  src="~/assets/images/bg-form-sidebar.jpg"
-                />
+                <img class="img-responsive" src="/images/bg-form-sidebar.jpg" />
 
                 <form
                   action="https://sotaychungcu.com/dat-hang-nhanh.html"

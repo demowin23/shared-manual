@@ -1225,7 +1225,7 @@ ul.more-content {}
 .footer2 {
     border-color: #e9eaee;
     border-top-width: 12px;
-    background: url(/assets/images/news.jpg)no-repeat;
+    background: url(/images/news.jpg)no-repeat;
     background-size: cover;
     color: white
 }
@@ -2677,7 +2677,7 @@ p.short {
 }
 
 .module3 {
-    background: url(/assets/images/world.jpg) no-repeat;
+    background: url(/images/world.jpg) no-repeat;
     background-size: 100%;
     text-align: center;
     color: #fff;
@@ -2842,7 +2842,7 @@ p.short {
 }
 
 .cat-title {
-    background: url(/assets/images/thanh-xuan-complex-hapulico-24t3.jpg) no-repeat;
+    background: url(/images/thanh-xuan-complex-hapulico-24t3.jpg) no-repeat;
     text-align: center;
     line-height: 200px;
     font-size: 50px;

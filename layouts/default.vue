@@ -14,7 +14,7 @@
       :style="{ display: showBackToTop ? 'block' : 'none' }"
       @click.prevent="scrollToTop"
     >
-      <img src="/assets/images/top.png" />
+      <img src="/images/top.png" />
     </a>
     <div
       class="phonering-alo-phone phonering-alo-green phonering-alo-show"
