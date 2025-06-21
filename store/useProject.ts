@@ -44,6 +44,8 @@ export const useProjectStore = defineStore('project', {
     async fetchProjects() {
       this.loading = true;
       this.error = null;
+      const { $env } = useNuxtApp() as any;
+      const urlBe = $env.URL_BE;
       try {
         const response = await fetch(`${urlBe}/api/projects`, {
           method: 'GET',
