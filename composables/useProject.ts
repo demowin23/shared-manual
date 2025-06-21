@@ -2,8 +2,6 @@ import { useNuxtApp } from 'nuxt/app';
 import { ref } from 'vue'
 
 export function useProject() {
-  const { $env } = useNuxtApp() as any;
-  const urlBe = $env.URL_BE;
   const isLoading = ref(false)
   const error = ref<string | null>(null)
 
@@ -13,6 +11,8 @@ export function useProject() {
     detail: string,
     images: File[]
   ) => {
+    const { $env } = useNuxtApp() as any;
+    const urlBe = $env.URL_BE;
     try {
       isLoading.value = true
       error.value = null
@@ -47,7 +47,6 @@ export function useProject() {
   }
 
   return {
-    urlBe,
     isLoading,
     error,
     createProject
