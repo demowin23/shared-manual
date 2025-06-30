@@ -14,7 +14,7 @@
             </div>
             <img
               class="img-responsive"
-              src="https://sotaychungcu.com//img/upload/images/files/Slideshow/sotaychungcu.png"
+              src="/images/logo.png"
               alt="Logo Sổ tay chung cư"
               width="200"
               height="50"

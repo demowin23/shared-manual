@@ -65,15 +65,6 @@
               <div
                 style="float: left"
                 class="fb-like fb_iframe_widget fb_iframe_widget_fluid"
-                data-href="https://sotaychungcu.com//chi-tiet/727-chung-cu-rice-city-long-chau"
-                data-width=""
-                data-layout="button_count"
-                data-action="like"
-                data-size="small"
-                data-show-faces="true"
-                data-share="true"
-                fb-xfbml-state="rendered"
-                fb-iframe-plugin-query="action=like&amp;app_id=1951538371539278&amp;container_width=0&amp;href=https%3A%2F%2Fsotaychungcu.com%2F%2Fchi-tiet%2F727-chung-cu-rice-city-long-chau&amp;layout=button_count&amp;locale=vi_VN&amp;sdk=joey&amp;share=true&amp;show_faces=true&amp;size=small&amp;width="
               >
                 <span style="vertical-align: bottom; width: 150px; height: 28px"
                   ><iframe
@@ -158,7 +149,7 @@
               <div class="info">
                 <p class="sp" style="color: #0175d7">
                   <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp; Email
-                  : sotaychungcu@gmail.com
+                  : dadiland@gmail.com
                 </p>
                 <p class="sp" style="color: red">
                   <i class="fa fa-phone-square" aria-hidden="true"></i> &nbsp;

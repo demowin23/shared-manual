@@ -66,6 +66,7 @@ pnpm run build
 yarn build
 ```
 
+pm2 start .output/server/index.mjs --name shared-manual
 Preview the production build:
 
 ```bash
@@ -79,4 +80,4 @@ pnpm run preview
 yarn preview
 ```
 
-Check out the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more. 
+Check out the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

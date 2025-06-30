@@ -5,7 +5,7 @@ interface ImageOptimizationOptions {
   format?: 'webp' | 'jpeg' | 'png';
 }
 
-const CDN_URL = 'https://cdn.sotaychungcu.com';
+const CDN_URL = 'https://cdn.dadiland.com';
 
 export function optimizeImage(path: string, options: ImageOptimizationOptions = {}) {
   const {

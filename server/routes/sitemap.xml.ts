@@ -5,7 +5,7 @@ import { defineEventHandler } from 'h3'
 export default defineEventHandler(async (event) => {
   // Create a new sitemap stream
   const sitemap = new SitemapStream({
-    hostname: 'https://sotaychungcu.com'
+    hostname: 'https://dadiland.com'
   })
 
   // Add static routes

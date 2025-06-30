@@ -18,7 +18,7 @@
                       >S&Agrave;N GIAO DỊCH&nbsp;BẤT ĐỘNG SẢN SỔ TAY CHUNG CƯ<br />
                       Hotline: 0914.788.345<br />
                       Website: </span
-                    ><a href="/">www.sotaychungcu.com</a></span
+                    ><a href="/">dadiland.com</a></span
                   >
                 </span>
               </p>
@@ -151,9 +151,6 @@
                   ></span
                 >
               </p>
-              <!-- <p><i class="fa fa-map-marker circle-no"></i>KDT Mỹ Đình Sông Đà, Nam Từ Liêm, Hà Nội</p>
- 					<p><i class="fa fa-phone circle-no"></i>0914.788.345</p>
- 					<p><i class="fa fa-envelope  circle-no"></i>sotaychungcu@gmail.com</p> -->
             </div>
           </div>
           <div class="col-md-4 col-sm-6">

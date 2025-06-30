@@ -66,7 +66,7 @@ export function generateBreadcrumbSchema(items: Array<{name: string, item: strin
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": `https://sotaychungcu.com${item.item}`
+      "item": `https://dadiland.com${item.item}`
     }))
   };
 } 

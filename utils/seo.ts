@@ -20,11 +20,11 @@ export const defaultSeoMeta: SeoMeta = {
   robots: 'index, follow',
   ogTitle: 'Sổ tay chung cư - Thông tin bất động sản toàn quốc',
   ogDescription: 'Cập nhật thông tin mới nhất về bất động sản, chung cư, nhà đất tại các tỉnh thành trên toàn quốc',
-  ogImage: 'https://sotaychungcu.com/img/upload/images/files/Slideshow/sotaychungcu.png',
+  ogImage: 'https://dadiland.com/images/logo.png',
   twitterCard: 'summary_large_image',
   twitterTitle: 'Sổ tay chung cư - Thông tin bất động sản toàn quốc',
   twitterDescription: 'Cập nhật thông tin mới nhất về bất động sản, chung cư, nhà đất',
-  twitterImage: 'https://sotaychungcu.com/img/upload/images/files/Slideshow/sotaychungcu.png'
+  twitterImage: 'https://dadiland.com/images/logo.png'
 };
 
 export function generateMetaTags(meta: Partial<SeoMeta> = {}): any {

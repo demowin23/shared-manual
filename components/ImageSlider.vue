@@ -64,17 +64,17 @@ export default {
           image: "/images/Banner_01.jpg",
         },
         {
-          href: "https://sotaychungcu.com/",
+          href: "https://dadiland.com/",
           title: "Chung cư",
           image: "/images/Banner_02.jpg",
         },
         {
-          href: "https://sotaychungcu.com/",
+          href: "https://dadiland.com/",
           title: "Chung cư",
           image: "/images/Banner_03.jpg",
         },
         {
-          href: "https://sotaychungcu.com/",
+          href: "https://dadiland.com/",
           title: "Chung cư",
           image: "/images/Roman-Plaza-Slider.jpg",
         },

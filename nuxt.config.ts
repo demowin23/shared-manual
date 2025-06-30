@@ -27,15 +27,16 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'Nuxt Project',
+      title: 'Chung cư',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap' }
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap' },
+        { rel: 'icon', type: 'image/png', href: '/images/logo.png' }
       ]
     }
   },
@@ -122,7 +123,7 @@ export default defineNuxtConfig({
     workbox: {
       runtimeCaching: [
         {
-          urlPattern: 'https://sotaychungcu.com/api/.*',
+          urlPattern: 'https://dadiland.com/api/.*',
           handler: 'NetworkFirst',
           options: {
             cacheName: 'api-cache',
@@ -133,7 +134,7 @@ export default defineNuxtConfig({
           }
         },
         {
-          urlPattern: 'https://sotaychungcu.com/img/.*',
+          urlPattern: 'https://dadiland.com/img/.*',
           handler: 'CacheFirst',
           options: {
             cacheName: 'image-cache',

@@ -17,12 +17,9 @@
                   ><span style="font-size: 14px"
                     >SÀN GIAO DỊCH&nbsp;BẤT ĐỘNG SẢN SỔ TAY CHUNG CƯ<br />
                     Địa chỉ: KDT Mỹ Đình Sông Đà, Nam Từ Liêm, Hà Nội<br />
-                    Hotline: 0914.788.345&nbsp;- Email:
-                    sotaychungcu@gmail.com<br />
+                    Hotline: 0914.788.345&nbsp;- Email: dadiland@gmail.com<br />
                     Website:
-                    <a href="https://sotaychungcu.com"
-                      >www.sotaychungcu.com</a
-                    ></span
+                    <a href="dadiland.com">dadiland.com</a></span
                   ></span
                 >
               </p>
@@ -32,7 +29,7 @@
             <div class="col-md-6 col-sm-6">
               <form
                 class="form-horizontal"
-                action="https://sotaychungcu.com/contact/index"
+                action="https://dadiland.com/contact"
                 method="post"
               >
                 <div class="form-group">

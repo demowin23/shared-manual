@@ -59,12 +59,12 @@ export function generateOrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Sổ tay chung cư",
-    "url": "https://sotaychungcu.com",
-    "logo": "https://sotaychungcu.com/img/upload/images/files/Slideshow/sotaychungcu.png",
+    "url": "https://dadiland.com",
+    "logo": "https://dadiland.com/images/logo.png",
     "sameAs": [
-      "https://facebook.com/sotaychungcu",
-      "https://twitter.com/sotaychungcu",
-      "https://youtube.com/sotaychungcu"
+      "https://facebook.com/dadiland",
+      "https://twitter.com/dadiland",
+      "https://youtube.com/dadiland"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
