@@ -77,6 +77,19 @@ export default {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   margin-bottom: 16px;
 }
+
+/* Sticky toolbar styles */
+:deep(.ql-toolbar.ql-snow) {
+  border: 1px solid #d1d5db;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  padding: 8px;
+  position: sticky;
+  top: 62px;
+  z-index: 1000;
+  background: #fff;
+  border-radius: 8px 8px 0 0;
+}
 .export-btn {
   display: inline-block;
   margin: 12px 0 20px 0;
