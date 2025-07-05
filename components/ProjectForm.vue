@@ -63,7 +63,7 @@
             @drop="onDrop(idx)"
             @dragenter.prevent
           >
-            <img :src="img" alt="Ảnh dự án" />
+            <img :src="getImageSrc(img)" alt="Ảnh dự án" />
             <button
               type="button"
               class="remove-img-btn"
@@ -98,9 +98,20 @@
 
 <script>
 import { useProject } from "~/composables/useProject";
+import { useNuxtApp } from "nuxt/app";
 
 export default {
   components: {},
+  props: {
+    editMode: {
+      type: Boolean,
+      default: false,
+    },
+    projectData: {
+      type: Object,
+      default: null,
+    },
+  },
   data() {
     return {
       projectName: "",
@@ -306,6 +317,25 @@ export default {
     };
   },
   watch: {
+    projectData: {
+      handler(newVal) {
+        if (this.editMode && newVal) {
+          this.projectName = newVal.name || "";
+          this.projectArea = newVal.area || "";
+          this.projectSubArea = newVal.subArea || "";
+          this.projectSubSubArea = newVal.subSubArea || "";
+          this.editorContent = newVal.detail || "";
+          // Nếu có ảnh, hiển thị preview
+          if (Array.isArray(newVal.images)) {
+            this.imagePreviews = newVal.images.map((img) =>
+              typeof img === "string" ? img : ""
+            );
+            this.imageFiles = [];
+          }
+        }
+      },
+      immediate: true,
+    },
     projectArea(newVal) {
       let selected = null;
       if (Number(newVal) === 1) {
@@ -335,6 +365,11 @@ export default {
     this.createProject = createProject;
     this.isLoading = isLoading;
     this.error = error;
+  },
+  setup() {
+    const { $env } = useNuxtApp();
+    const urlBe = $env.URL_BE;
+    return { urlBe };
   },
   methods: {
     onImageChange(event) {
@@ -369,34 +404,51 @@ export default {
       this.dragIndex = null;
     },
     async submitProject() {
-      try {
-        if (
-          !this.projectName ||
-          !this.projectSubSubArea ||
-          !this.imageFiles.length ||
-          !this.editorContent
-        ) {
-          alert(
-            "Vui lòng điền đầy đủ thông tin: tên dự án, danh mục, ảnh và nội dung chi tiết"
+      if (this.editMode) {
+        // Gửi event submitEdit cho trang edit
+        this.$emit("submitEdit", {
+          name: this.projectName,
+          area: this.projectArea,
+          subArea: this.projectSubArea,
+          subSubArea: this.projectSubSubArea,
+          detail: this.editorContent,
+          images: this.imagePreviews, // hoặc imageFiles nếu cần upload lại
+        });
+      } else {
+        try {
+          if (
+            !this.projectName ||
+            !this.projectSubSubArea ||
+            !this.imageFiles.length ||
+            !this.editorContent
+          ) {
+            alert(
+              "Vui lòng điền đầy đủ thông tin: tên dự án, danh mục, ảnh và nội dung chi tiết"
+            );
+            return;
+          }
+          await this.createProject(
+            this.projectName,
+            Number(this.projectSubSubArea),
+            this.editorContent,
+            this.imageFiles
           );
-          return;
+          this.projectName = "";
+          this.projectSubSubArea = "";
+          this.imagePreviews = [];
+          this.imageFiles = [];
+          this.editorContent = "";
+          alert("Gửi dự án thành công!");
+        } catch (err) {
+          console.error("Error submitting project:", err);
+          alert("Có lỗi xảy ra khi gửi dự án. Vui lòng thử lại!");
         }
-        await this.createProject(
-          this.projectName,
-          Number(this.projectSubSubArea),
-          this.editorContent,
-          this.imageFiles
-        );
-        this.projectName = "";
-        this.projectSubSubArea = "";
-        this.imagePreviews = [];
-        this.imageFiles = [];
-        this.editorContent = "";
-        alert("Gửi dự án thành công!");
-      } catch (err) {
-        console.error("Error submitting project:", err);
-        alert("Có lỗi xảy ra khi gửi dự án. Vui lòng thử lại!");
       }
+    },
+    getImageSrc(img) {
+      if (!img) return "";
+      if (img.startsWith("data:")) return img;
+      return `${this.urlBe}/uploads/${img}`;
     },
   },
 };
