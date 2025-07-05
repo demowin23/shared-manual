@@ -2,7 +2,10 @@
   <div class="col-md-4 col-sm-4 col-xs-6">
     <div class="product_box">
       <div class="prbox">
-        <a :title="project.name" :href="`/du-an/chi-tiet/${project.id}`">
+        <a
+          :title="project.name"
+          :href="`/chi-tiet/${project.id}-${slugify(project.name)}`"
+        >
           <div
             class="img"
             :style="{
@@ -15,9 +18,11 @@
         </a>
         <div class="info">
           <div class="name">
-            <a :title="project.name" :href="`/du-an/chi-tiet/${project.id}`">{{
-              project.name
-            }}</a>
+            <a
+              :title="project.name"
+              :href="`/chi-tiet/${project.id}-${slugify(project.name)}`"
+              >{{ project.name }}</a
+            >
           </div>
         </div>
       </div>
@@ -37,6 +42,17 @@ export default {
     const { $env } = useNuxtApp();
     const urlBe = $env.URL_BE;
     return { urlBe };
+  },
+  methods: {
+    slugify(text) {
+      return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-");
+    },
   },
 };
 </script>

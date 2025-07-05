@@ -20,7 +20,7 @@
               </div>
               <div class="col-md-8 col-sm-6 col-7">
                 <h3>
-                  <a href="/du-an/chi-tiet/29-dich-vu-ky-gui-bat-dong-san"
+                  <a href="/chi-tiet/29-dich-vu-ky-gui-bat-dong-san"
                     >Dịch vụ ký gửi Bất động sản</a
                   >
                 </h3>

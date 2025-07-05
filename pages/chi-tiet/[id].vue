@@ -57,9 +57,7 @@
                     width: 0px;
                     height: 0px;
                   "
-                >
-                  <div></div>
-                </div>
+                ></div>
               </div>
 
               <div
@@ -345,7 +343,7 @@
                   <div class="col-md-12 col-sm-12 col-xs-12 img">
                     <a
                       :title="project.name"
-                      :href="`/du-an/chi-tiet/${project.id}`"
+                      :href="`/chi-tiet/${project.id}-${slugify(project.name)}`"
                     >
                       <img
                         class="img-responsive img-hover"
@@ -355,7 +353,7 @@
                   <div class="col-md-12 col-sm-12 col-xs-12 info">
                     <a
                       :title="project.name"
-                      :href="`/du-an/chi-tiet/${project.id}`"
+                      :href="`/chi-tiet/${project.id}-${slugify(project.name)}`"
                       >{{ project.name }}</a
                     >
                   </div>
@@ -549,17 +547,19 @@ export default {
     },
   },
   methods: {
-    async call() {
-      let id = this.idParam;
-      if (typeof id === "string") {
-        const match = id.match(/^(\d+)/);
-        if (match) id = match[1];
-      }
-      if (id) {
-        const store = useProjectStore();
-        await store.fetchProjectById(Number(id));
-        this.project = store.getProject;
-      }
+    slugify(text) {
+      return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-");
+    },
+    async call(id) {
+      const store = useProjectStore();
+      await store.fetchProjectById(Number(id));
+      this.project = store.getProject;
     },
     async loadScripts() {
       return new Promise((resolve) => {
@@ -612,12 +612,13 @@ export default {
     let rawId = route.params.id;
     if (typeof rawId === "string") {
       const match = rawId.match(/^(\d+)/);
+
       if (match) this.idParam = match[1];
       else this.idParam = rawId;
     } else {
       this.idParam = rawId;
     }
-    await this.call();
+    await this.call(this.idParam);
     const store = useProjectStore();
     await store.fetchProjects();
     this.projects = store.projects;

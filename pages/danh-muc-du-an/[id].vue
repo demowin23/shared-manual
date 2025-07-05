@@ -63,7 +63,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 img">
                   <a
                     :title="project.name"
-                    :href="`/du-an/chi-tiet/${project.id}`"
+                    :href="`/chi-tiet/${project.id}-${slugify(project.name)}`"
                   >
                     <img
                       class="img-responsive img-hover"
@@ -73,7 +73,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 info">
                   <a
                     :title="project.name"
-                    :href="`/du-an/chi-tiet/${project.id}`"
+                    :href="`/chi-tiet/${project.id}-${slugify(project.name)}`"
                     >{{ project.name }}</a
                   >
                 </div>
@@ -107,7 +107,17 @@ export default {
     return { urlBe };
   },
   watch: {},
-  methods: {},
+  methods: {
+    slugify(text) {
+      return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-");
+    },
+  },
   async created() {
     const store = useProjectStore();
     await store.fetchProjects();

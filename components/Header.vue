@@ -49,7 +49,7 @@
           <li class="has-submenu" v-for="area in areas" :key="area.id">
             <div class="menu-item">
               <a
-                :href="`/du-an/${area.id}`"
+                :href="`/du-an/${area.id}-${slugify(area.name)}`"
                 @click.prevent="handleMenuClick(area.id, area.name)"
               >
                 <h2>{{ area.name }}</h2>
@@ -87,7 +87,9 @@
                     :key="subSubArea.id"
                   >
                     <a
-                      :href="`/du-an/${subSubArea.id}`"
+                      :href="`/du-an/${subSubArea.id}-${slugify(
+                        subSubArea.name
+                      )}`"
                       @click.prevent="
                         handleMenuClick(subSubArea.id, subSubArea.name)
                       "
@@ -175,7 +177,7 @@
                   <li class="has-sub" v-for="area in areas" :key="area.id">
                     <a
                       :title="area.name"
-                      :href="`/du-an/${area.id}`"
+                      :href="`/du-an/${area.id}-${slugify(area.name)}`"
                       @click.prevent="handleMenuClick(area.id, area.name)"
                     >
                       <h2>{{ area.name }}</h2>
@@ -188,7 +190,9 @@
                       >
                         <a
                           :title="subArea.name"
-                          :href="`/du-an/${subArea.id}`"
+                          :href="`/du-an/${subArea.id}-${slugify(
+                            subArea.name
+                          )}`"
                           @click.prevent="
                             handleMenuClick(subArea.id, subArea.name)
                           "
@@ -202,7 +206,9 @@
                           >
                             <a
                               :title="subSubArea.name"
-                              :href="`/du-an/${subSubArea.id}`"
+                              :href="`/du-an/${subSubArea.id}-${slugify(
+                                subSubArea.name
+                              )}`"
                               @click.prevent="
                                 handleMenuClick(subSubArea.id, subSubArea.name)
                               "
@@ -463,9 +469,18 @@ export default {
     };
   },
   methods: {
+    slugify(text) {
+      return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-");
+    },
     handleMenuClick(index, text = "", path = "") {
       if (!!index) {
-        this.$router.push(`/du-an/${index}`);
+        this.$router.push(`/du-an/${index}-${this.slugify(text)}`);
       } else {
         this.$router.push(`/danh-muc-du-an/${path}`);
       }

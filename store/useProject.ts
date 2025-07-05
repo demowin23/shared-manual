@@ -11,6 +11,8 @@ export const useProjectStore = defineStore('project', {
     loading: false,
     error: null as string | null,
     menuPage: null as string | null,
+    projectId: null as number | null,
+    areaId: null as number | null,
   }),
 
   actions: {
@@ -26,7 +28,6 @@ export const useProjectStore = defineStore('project', {
             'Content-Type': 'application/json',
           },
         });
-        console.log(response);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
