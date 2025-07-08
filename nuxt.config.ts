@@ -149,9 +149,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    URL_BE: process.env.URL_BE || 'http://127.0.0.1:4000',
+    URL_BE: process.env.URL_BE || 'https://127.0.0.1:4000',
     public: {
-      URL_BE: process.env.URL_BE || 'http://127.0.0.1:4000',
+      URL_BE: process.env.URL_BE || 'https://127.0.0.1:4000',
     }
   }
 }) 
