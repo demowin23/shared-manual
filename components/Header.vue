@@ -115,10 +115,9 @@
             </a>
           </li>
 
-          <!-- Kiến thức -->
           <li class="has-sub">
-            <a title="Kiến thức" href="/du-an/467-kien-thuc">
-              <h2>Kiến thức</h2>
+            <a title="Tin tức" href="/du-an/467-tin-tuc">
+              <h2>Tin tức</h2>
             </a>
           </li>
 
@@ -249,13 +248,11 @@
 
                   <li class="has-sub">
                     <a
-                      title="Kiến thức"
-                      @click.prevent="
-                        handleMenuClick(0, 'Kiến thức', 'kien-thuc')
-                      "
-                      href="/danh-muc-du-an/kien-thuc"
+                      title="Tin tức"
+                      @click.prevent="handleMenuClick(0, 'Tin tức', 'tin-tuc')"
+                      href="/danh-muc-du-an/tin-tuc"
                     >
-                      <h2>Kiến thức</h2>
+                      <h2>Tin tức</h2>
                     </a>
                   </li>
                   <li class="has-sub">

@@ -2,247 +2,258 @@
 #cssmenu li,
 #cssmenu span,
 #cssmenu a {
-    margin: 0;
-    padding: 0;
-    position: relative;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 #nav_menu {
-    background: linear-gradient(90deg, #9f69d7, #708ac9);
-    position: relative;
+  background: linear-gradient(90deg, #9f69d7, #708ac9);
+  position: relative;
 }
 
 #cssmenu {
-    width: 102%;
-    margin: 0 auto;
-    position: relative;
-    border-radius: 16px 16px 0 0;
-    box-shadow: 0 4px 24px 0 rgba(127,83,172,0.10), 0 1.5px 6px 0 rgba(95,251,241,0.08);
-    overflow: visible;
+  width: 102%;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 4px 24px 0 rgba(127, 83, 172, 0.1),
+    0 1.5px 6px 0 rgba(95, 251, 241, 0.08);
+  overflow: visible;
 }
 
 #cssmenu ul:after {
-    content: '';
-    display: block;
-    clear: both;
+  content: "";
+  display: block;
+  clear: both;
 }
 
 #cssmenu h2 {
-    font-size: inherit;
-    margin: 0px;
-    line-height: inherit;
-    font-weight: 600;
+  font-size: inherit;
+  margin: 0px;
+  line-height: inherit;
+  font-weight: 600;
 }
 
 #cssmenu a {
-    color: #ffffff;
-    display: block;
-    padding: 0px 12px;
-    text-decoration: none;
-    text-transform: initial;
+  color: #ffffff;
+  display: block;
+  padding: 0px 12px;
+  text-decoration: none;
+  text-transform: initial;
 }
 
 #cssmenu ul {
-    list-style: none;
-    margin: 0 auto;
-    position: relative;
-    float: right;
-    padding-top: 27px;
+  list-style: none;
+  margin: 0 auto;
+  position: relative;
+  float: right;
+  padding-top: 27px;
 }
 
-#cssmenu>ul>li {
-    display: inline-block;
-    float: left;
-    margin: 0 2px;
-    border-radius: 8px 8px 0 0;
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
+#cssmenu > ul > li {
+  display: inline-block;
+  float: left;
+  margin: 0 2px;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
 #cssmenu.align-center {
-    text-align: center;
+  text-align: center;
 }
 
-#cssmenu.align-center>ul>li {
-    float: none;
+#cssmenu.align-center > ul > li {
+  float: none;
 }
 
 #cssmenu.align-center ul ul {
-    text-align: left;
+  text-align: left;
 }
 
-#cssmenu.align-right>ul {
-    float: right;
+#cssmenu.align-right > ul {
+  float: right;
 }
 
 #cssmenu.align-right ul ul {
-    text-align: right;
+  text-align: right;
 }
 
-#cssmenu>ul>li>a {
-    color: #fff;
-    font-size: 14px;
-    text-transform: uppercase;
-    padding: 10px 18px;
-    font-family: inherit;
-    font-weight: 600;
-    border-radius: 8px 8px 0 0;
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-    position: relative;
-    letter-spacing: 0.5px;
+#cssmenu > ul > li > a {
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 8px 8px 0 0;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  position: relative;
+  letter-spacing: 0.5px;
 }
 
-#cssmenu>ul>li:hover>a, #cssmenu>ul>li.active>a {
-    color: #7F53AC;
-    background: #fff;
-    box-shadow: 0 4px 16px 0 rgba(127,83,172,0.10);
-    transform: translateY(-2px) scale(1.04);
+#cssmenu > ul > li:hover > a,
+#cssmenu > ul > li.active > a {
+  color: #7f53ac;
+  background: #fff;
+  box-shadow: 0 4px 16px 0 rgba(127, 83, 172, 0.1);
+  transform: translateY(-2px) scale(1.04);
 }
 
-#cssmenu>ul>li:first-child {}
-
-#cssmenu>ul>li:first-child>a {
-    font-family: inherit;
-    font-weight: 600;
-    border-right: 0px;
-    border-left: 0px;
+#cssmenu > ul > li:first-child {
 }
 
-#cssmenu.align-right>ul>li:first-child>a,
-#cssmenu.align-center>ul>li:first-child>a {
-    border-radius: 0;
-    -moz-border-radius: 0;
-    -webkit-border-radius: 0;
+#cssmenu > ul > li:first-child > a {
+  font-family: inherit;
+  font-weight: 600;
+  border-right: 0px;
+  border-left: 0px;
 }
 
-#cssmenu>ul>li:last-child>a {
-    background: none;
-    border-right: 0px;
+#cssmenu.align-right > ul > li:first-child > a,
+#cssmenu.align-center > ul > li:first-child > a {
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
 }
 
-#cssmenu>ul>li.active>a {
-    color: #ffffff;
-    background: rgba(127,83,172,0.15);
+#cssmenu > ul > li:last-child > a {
+  background: none;
+  border-right: 0px;
 }
 
-#cssmenu>ul>li:hover {}
+#cssmenu > ul > li.active > a {
+  color: #ffffff;
+  background: rgba(127, 83, 172, 0.15);
+}
+
+#cssmenu > ul > li:hover {
+}
 
 #cssmenu .has-sub {
-    z-index: 9999;
+  z-index: 9999;
 }
 
-#cssmenu .has-sub:hover>a:after {
-    transform: rotate(180deg);
+#cssmenu .has-sub:hover > a:after {
+  transform: rotate(180deg);
 }
 
 #cssmenu .has-sub ul {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    min-width: 220px;
-    background: #fff;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 8px 32px 0 rgba(127,83,172,0.15), 0 2px 8px 0 rgba(95,251,241,0.10);
-    padding: 10px 0;
-    z-index: 100;
-    animation: dropdownFadeIn 0.3s;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 220px;
+  background: #fff;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 8px 32px 0 rgba(127, 83, 172, 0.15),
+    0 2px 8px 0 rgba(95, 251, 241, 0.1);
+  padding: 10px 0;
+  z-index: 100;
+  animation: dropdownFadeIn 0.3s;
 }
 
-#cssmenu .has-sub:hover>ul {
-    display: block;
+#cssmenu .has-sub:hover > ul {
+  display: block;
 }
 
 @keyframes dropdownFadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #cssmenu .has-sub ul li {
-    border: none;
-    margin: 0;
-    border-radius: 0;
+  border: none;
+  margin: 0;
+  border-radius: 0;
 }
 
 #cssmenu .has-sub ul li a {
-    color: #7F53AC;
-    background: transparent;
-    font-size: 13px;
-    padding: 8px 18px;
-    border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
-    font-weight: 500;
+  color: #7f53ac;
+  background: transparent;
+  font-size: 13px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
 }
 
 #cssmenu .has-sub ul li a:hover {
-    background: linear-gradient(90deg, #7F53AC22, #5FFBF122);
-    color: #5FFBF1;
+  background: linear-gradient(90deg, #7f53ac22, #5ffbf122);
+  color: #5ffbf1;
 }
 
-#cssmenu .has-sub .has-sub>ul {
-    left: 100%;
-    top: 0;
-    border-radius: 12px;
-    margin-left: 2px;
-    box-shadow: 0 8px 32px 0 rgba(127,83,172,0.10);
+#cssmenu .has-sub .has-sub > ul {
+  left: 100%;
+  top: 0;
+  border-radius: 12px;
+  margin-left: 2px;
+  box-shadow: 0 8px 32px 0 rgba(127, 83, 172, 0.1);
 }
-
-
 
 #cssmenu .has-sub .has-sub ul li a {
-    padding-left: 26px;
+  padding-left: 26px;
 }
 
-#cssmenu ul ul li:hover>a {
-    background: #5FFBF1;
-    color: #7F53AC;
+#cssmenu ul ul li:hover > a {
+  background: #5ffbf1;
+  color: #7f53ac;
 }
 
-#cssmenu .has-sub .has-sub:hover>ul {
-    display: block;
-    padding-top: 0px;
+#cssmenu .has-sub .has-sub:hover > ul {
+  display: block;
+  padding-top: 0px;
 }
 
-#cssmenu ul li ul li:first-child>a {}
+#cssmenu ul li ul li:first-child > a {
+}
 
-#cssmenu ul li ul li:last-child>a {}
+#cssmenu ul li ul li:last-child > a {
+}
 
 #cssmenu .has-sub .has-sub ul {
-    display: none;
-    position: absolute;
-    left: 100%;
-    top: 0;
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
 }
 
 #cssmenu.align-right .has-sub .has-sub ul,
 #cssmenu.align-right ul ul ul {
-    left: auto;
-    right: 100%;
+  left: auto;
+  right: 100%;
 }
 
 #cssmenu .has-sub .has-sub ul li a {
-    background: #fff;
-    border-bottom: 1px solid #e0e7ff;
-    color: #7F53AC;
+  background: #fff;
+  border-bottom: 1px solid #e0e7ff;
+  color: #7f53ac;
 }
 
 #cssmenu .has-sub .has-sub ul li a:hover {
-    background: linear-gradient(90deg, #7F53AC22, #5FFBF122);
-    color: #5FFBF1;
+  background: linear-gradient(90deg, #7f53ac22, #5ffbf122);
+  color: #5ffbf1;
 }
 
-#cssmenu ul ul li.last>a,
-#cssmenu ul ul li:last-child>a,
-#cssmenu ul ul ul li.last>a,
-#cssmenu ul ul ul li:last-child>a,
-#cssmenu .has-sub ul li:last-child>a,
-#cssmenu .has-sub ul li.last>a {
-    border-bottom: 0;
+#cssmenu ul ul li.last > a,
+#cssmenu ul ul li:last-child > a,
+#cssmenu ul ul ul li.last > a,
+#cssmenu ul ul ul li:last-child > a,
+#cssmenu .has-sub ul li:last-child > a,
+#cssmenu .has-sub ul li.last > a {
+  border-bottom: 0;
 }
 
 #cssmenu ul.maunen > li.has-sub > a[title="Nhà đất bán"],
 #cssmenu ul.maunen > li.has-sub > a[title="Nhà đất cho thuê"],
-#cssmenu ul.maunen > li.has-sub > a[title="Kiến thức"],
+#cssmenu ul.maunen > li.has-sub > a[title="Tin tức"],
 #cssmenu ul.maunen > li.has-sub > a[title="Liên hệ"],
 #cssmenu ul.maunen > li.has-sub > a[title="Trang chủ"] {
   pointer-events: auto;
@@ -252,7 +263,7 @@
 }
 #cssmenu ul.maunen > li.has-sub > a[title="Nhà đất bán"]:hover,
 #cssmenu ul.maunen > li.has-sub > a[title="Nhà đất cho thuê"]:hover,
-#cssmenu ul.maunen > li.has-sub > a[title="Kiến thức"]:hover,
+#cssmenu ul.maunen > li.has-sub > a[title="Tin tức"]:hover,
 #cssmenu ul.maunen > li.has-sub > a[title="Liên hệ"]:hover,
 #cssmenu ul.maunen > li.has-sub > a[title="Trang chủ"]:hover {
   background: none !important;

@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     { url: '/du-an/464-so-tay-nha-dat', priority: 0.9 },
     { url: '/du-an/465-nha-dat-ban', priority: 0.8 },
     { url: '/du-an/466-nha-dat-cho-thue', priority: 0.8 },
-    { url: '/du-an/467-kien-thuc', priority: 0.7 }
+    { url: '/du-an/467-tin-tuc', priority: 0.7 }
   ]
 
   for (const category of categories) {
