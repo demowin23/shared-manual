@@ -13,6 +13,7 @@ export const useProjectStore = defineStore('project', {
     menuPage: null as string | null,
     projectId: null as number | null,
     areaId: null as number | null,
+    totalItems: 0,
   }),
 
   actions: {
@@ -42,13 +43,13 @@ export const useProjectStore = defineStore('project', {
       }
     },
 
-    async fetchProjects() {
+    async fetchProjects(page = 1, pageSize = 10) {
       this.loading = true;
       this.error = null;
       const { $env } = useNuxtApp() as any;
       const urlBe = $env.URL_BE;
       try {
-        const response = await fetch(`${urlBe}/api/projects`, {
+        const response = await fetch(`${urlBe}/api/projects?page=${page}&pageSize=${pageSize}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -58,7 +59,10 @@ export const useProjectStore = defineStore('project', {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        this.projects = data;
+        console.log(data);
+        
+        this.projects = data.data;
+        this.totalItems = data.pagination.total;
       } catch (error) {
         this.error = error instanceof Error ? error.message : 'An error occurred while fetching the projects';
         console.error('Error fetching projects:', error);

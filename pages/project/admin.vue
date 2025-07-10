@@ -34,26 +34,50 @@
           </tr>
         </tbody>
       </table>
+      <Paginations
+        :page="page"
+        :pageSize="pageSize"
+        :hasNext="hasNext"
+        :total="totalItems"
+        @update:page="onPageChange"
+        @update:pageSize="onPageSizeChange"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref, onActivated } from "vue";
+import { onMounted, ref, onActivated, computed } from "vue";
 import { useProjectStore } from "~/store/useProject";
 import { useNuxtApp } from "nuxt/app";
 import { useRouter } from "vue-router";
+import Paginations from "~/components/Paginations.vue";
 
 const store = useProjectStore();
 const projects = ref([]);
 const loading = ref(false);
 const router = useRouter();
+const page = ref(1);
+const pageSize = ref(10);
+const hasNext = ref(true);
+const totalItems = computed(() => useProjectStore().totalItems);
 
 const fetchProjects = async () => {
   loading.value = true;
-  await store.fetchProjects();
+  await store.fetchProjects(page.value, pageSize.value);
   projects.value = store.projects;
+  hasNext.value = page.value < totalItems.value / pageSize.value;
   loading.value = false;
+};
+
+const onPageChange = (newPage) => {
+  page.value = newPage;
+  fetchProjects();
+};
+const onPageSizeChange = (newSize) => {
+  pageSize.value = newSize;
+  page.value = 1;
+  fetchProjects();
 };
 
 const editProject = (project) => {

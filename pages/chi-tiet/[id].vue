@@ -511,11 +511,17 @@ export default {
     };
   },
   setup() {
-    const { $env } = useNuxtApp();
-    const urlBe = $env.URL_BE;
-    return { urlBe };
+    // Remove useNuxtApp from here to avoid composable error
+    // Instead, use useRuntimeConfig in a computed or method
+    // Or, if you need urlBe, use useRuntimeConfig directly
+    // This setup() can be removed if not used for other things
+    return {};
   },
   computed: {
+    urlBe() {
+      // Use useRuntimeConfig here, which is safe in computed
+      return useRuntimeConfig().public.URL_BE;
+    },
     galleryImages() {
       if (
         this.project &&

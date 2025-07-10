@@ -83,6 +83,14 @@
           <div class="clear"></div>
         </div>
         <div class="quangcao"></div>
+        <Paginations
+          :page="page"
+          :pageSize="pageSize"
+          :hasNext="hasNext"
+          :total="totalItems"
+          @update:page="onPageChange"
+          @update:pageSize="onPageSizeChange"
+        />
       </div>
     </div>
   </div>
@@ -92,14 +100,23 @@
 import ProjectItem from "~/components/ProjectItem.vue";
 import { useRoute } from "vue-router";
 import { useProjectStore } from "~/store/useProject";
+import Paginations from "~/components/Paginations.vue";
 
 export default {
-  components: { ProjectItem },
+  components: { ProjectItem, Paginations },
   data() {
     return {
       projectStore: useProjectStore(),
       projects: [],
+      page: 1,
+      pageSize: 10,
+      hasNext: true,
     };
+  },
+  computed: {
+    totalItems() {
+      return useProjectStore().totalItems;
+    },
   },
   setup() {
     const { $env } = useNuxtApp();
@@ -123,11 +140,24 @@ export default {
         .trim()
         .replace(/\s+/g, "-");
     },
+    async fetchProjects() {
+      const store = useProjectStore();
+      await store.fetchProjects(this.page, this.pageSize);
+      this.projects = store.projects;
+      this.hasNext = this.page < this.totalItems / this.pageSize;
+    },
+    onPageChange(newPage) {
+      this.page = newPage;
+      this.fetchProjects();
+    },
+    onPageSizeChange(newSize) {
+      this.pageSize = newSize;
+      this.page = 1;
+      this.fetchProjects();
+    },
   },
   async created() {
-    const store = useProjectStore();
-    await store.fetchProjects();
-    this.projects = store.projects;
+    await this.fetchProjects();
   },
 };
 </script>

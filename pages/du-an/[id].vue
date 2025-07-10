@@ -17,7 +17,6 @@
               />
             </div>
           </div>
-          <Paginations />
         </div>
       </div>
     </div>
@@ -26,7 +25,6 @@
 
 <script>
 import ProjectItem from "~/components/ProjectItem.vue";
-import Paginations from "~/components/Paginations.vue";
 import { useProjectStore } from "~/store/useProject";
 import { useRoute } from "vue-router";
 
