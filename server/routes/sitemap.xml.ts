@@ -190,7 +190,7 @@ const areas = [
 
 export default defineEventHandler(async (event) => {
   const config = event.context.runtimeConfig || {};
-  const urlBe = config.URL_BE || 'https://127.0.0.1:4000';
+  const urlBe = config.URL_BE || 'https://103.110.87.30:4000';
 
   // Create a new sitemap stream
   const sitemap = new SitemapStream({
@@ -220,7 +220,7 @@ export default defineEventHandler(async (event) => {
 
   // --- Thêm toàn bộ dự án động ---
   try {
-    const projectsRes = await fetch(`${urlBe}/api/projects?page=1&pageSize=1000`);
+    const projectsRes = await fetch(`${urlBe}/api/projects`);
     if (projectsRes.ok) {
       const projectsData = await projectsRes.json();
       const projects = projectsData.data || projectsData.items || [];
@@ -238,7 +238,7 @@ export default defineEventHandler(async (event) => {
 
   // --- Thêm toàn bộ tin tức động ---
   try {
-    const newsRes = await fetch(`${urlBe}/api/news?page=1&pageSize=1000`);
+    const newsRes = await fetch(`${urlBe}/api/news`);
     if (newsRes.ok) {
       const newsData = await newsRes.json();
       const newsList = newsData.data || newsData.items || [];
