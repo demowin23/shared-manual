@@ -29,7 +29,7 @@ import { useProjectStore } from "~/store/useProject";
 import { useRoute } from "vue-router";
 
 export default {
-  components: { ProjectItem, Paginations },
+  components: { ProjectItem },
   data() {
     return {
       projectStore: useProjectStore(),
