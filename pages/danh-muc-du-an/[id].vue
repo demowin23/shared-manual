@@ -30,7 +30,7 @@
                   >
                     <img
                       class="img-responsive img-hover"
-                      src="/img/upload/images/files/Tintuc/Ky-gui-nha-dat.jpg"
+                      src="/images/Ky-gui-nha-dat.jpg"
                   /></a>
                 </div>
                 <div class="col-md-8 col-sm-6 col-xs-6 info">
