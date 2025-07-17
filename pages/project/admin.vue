@@ -58,7 +58,7 @@ const projects = ref([]);
 const loading = ref(false);
 const router = useRouter();
 const page = ref(1);
-const pageSize = ref(10);
+const pageSize = ref(12);
 const hasNext = ref(true);
 const totalItems = computed(() => useProjectStore().totalItems);
 

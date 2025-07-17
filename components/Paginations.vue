@@ -46,7 +46,7 @@ const props = defineProps({
   },
   pageSizeOptions: {
     type: Array as () => number[],
-    default: () => [10, 20, 50, 100],
+    default: () => [12, 24, 48, 96],
   },
 });
 const totalPages = computed(() =>

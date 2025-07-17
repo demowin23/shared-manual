@@ -12,39 +12,6 @@
           type="text/css"
           href="/css/styles_menu.css"
         />
-        <div class="box-left">
-          <div class="head_title4">
-            <p>
-              TIN TỨC MỚI CẬP NHẬT
-              <i class="fa fa-star mr_5" aria-hidden="true"></i>
-            </p>
-          </div>
-          <div class="clear"></div>
-          <div class="border_box">
-            <div class="pd10">
-              <div class="row news_right">
-                <div class="col-md-4 col-sm-6 col-xs-6 img">
-                  <a
-                    title="Dịch vụ ký gửi Bất động sản"
-                    href="https://sotaychungcu.com/chi-tiet/29-dich-vu-ky-gui-bat-dong-san"
-                  >
-                    <img
-                      class="img-responsive img-hover"
-                      src="/images/Ky-gui-nha-dat.jpg"
-                  /></a>
-                </div>
-                <div class="col-md-8 col-sm-6 col-xs-6 info">
-                  <a
-                    title="Dịch vụ ký gửi Bất động sản"
-                    href="https://sotaychungcu.com/chi-tiet/29-dich-vu-ky-gui-bat-dong-san"
-                    >Dịch vụ ký gửi Bất động sản</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="clear"></div>
-        </div>
 
         <div class="box-left">
           <div class="head_title4">
@@ -109,7 +76,7 @@ export default {
       projectStore: useProjectStore(),
       projects: [],
       page: 1,
-      pageSize: 10,
+      pageSize: 12,
       hasNext: true,
     };
   },

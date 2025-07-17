@@ -137,8 +137,8 @@
               <a
                 style="background: #00b827"
                 class="addtocart btn btn-primary ajax cboxElement"
-                href="tel:0914.788.345"
-                ><label>Hotline</label><span>0914.788.345</span></a
+                href="tel: 0967.938.168"
+                ><label>Hotline</label><span> 0967.938.168</span></a
               >
             </div>
           </div>
@@ -151,7 +151,7 @@
                 </p>
                 <p class="sp" style="color: red">
                   <i class="fa fa-phone-square" aria-hidden="true"></i> &nbsp;
-                  Hotline : 0914.788.345
+                  Hotline : 0967.938.168
                 </p>
 
                 <div class=""></div>
@@ -292,39 +292,6 @@
             type="text/css"
             href="/css/styles_menu.css"
           />
-          <div class="box-left">
-            <div class="head_title4">
-              <p>
-                TIN TỨC MỚI CẬP NHẬT
-                <i class="fa fa-star mr_5" aria-hidden="true"></i>
-              </p>
-            </div>
-            <div class="clear"></div>
-            <div class="border_box">
-              <div class="pd10">
-                <div class="row news_right">
-                  <div class="col-md-4 col-sm-6 col-xs-6 img">
-                    <a
-                      title="Dịch vụ ký gửi Bất động sản"
-                      href="https://sotaychungcu.com/chi-tiet/29-dich-vu-ky-gui-bat-dong-san"
-                    >
-                      <img
-                        class="img-responsive img-hover"
-                        src="/images/Ky-gui-nha-dat.jpg"
-                    /></a>
-                  </div>
-                  <div class="col-md-8 col-sm-6 col-xs-6 info">
-                    <a
-                      title="Dịch vụ ký gửi Bất động sản"
-                      href="https://sotaychungcu.com/chi-tiet/29-dich-vu-ky-gui-bat-dong-san"
-                      >Dịch vụ ký gửi Bất động sản</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="clear"></div>
-          </div>
 
           <div class="box-left">
             <div class="head_title4">
@@ -455,9 +422,9 @@
             </div>
             <div class="hotline-bottom">
               <div class="text-center">
-                <a href="tel:0914.788.345"
+                <a href="tel: 0967.938.168"
                   ><i class="fa fa-phone" aria-hidden="true"></i>
-                  0914.788.345</a
+                  0967.938.168</a
                 >
               </div>
             </div>

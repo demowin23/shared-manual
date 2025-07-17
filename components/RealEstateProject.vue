@@ -35,7 +35,7 @@ export default {
     return {
       realEstateProjects: [],
       page: 1,
-      pageSize: 10,
+      pageSize: 12,
       hasNext: true,
     };
   },
