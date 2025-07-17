@@ -83,6 +83,7 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useNewsStore } from "~/store/useNews";
 import { useNuxtApp } from "nuxt/app";
+import { useHead } from "nuxt/app";
 
 const route = useRoute();
 let idParam = route.params.id;
@@ -129,6 +130,23 @@ function slugify(text: string) {
 onMounted(async () => {
   newsDetail.value = await newsStore.getNewsDetail(id);
   newsList.value = await newsStore.getNewsList(1, 5);
+  useHead({
+    title:
+      newsDetail.value && newsDetail.value.title
+        ? `${newsDetail.value.title} - Tin tức bất động sản mới nhất`
+        : "Chi tiết tin tức",
+    meta: [
+      {
+        name: "description",
+        content:
+          newsDetail.value && newsDetail.value.short_intro
+            ? newsDetail.value.short_intro
+            : newsDetail.value && newsDetail.value.content
+            ? newsDetail.value.content.replace(/<[^>]+>/g, "").slice(0, 160)
+            : "Tin tức bất động sản, thị trường, chính sách mới nhất.",
+      },
+    ],
+  });
 });
 </script>
 

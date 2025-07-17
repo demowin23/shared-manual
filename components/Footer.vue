@@ -15,7 +15,7 @@
                 <span style="font-family: Verdana, Geneva, sans-serif"
                   ><span style="font-size: 14px"
                     ><span style="color: null"
-                      >S&Agrave;N GIAO DỊCH&nbsp;BẤT ĐỘNG SẢN SỔ TAY CHUNG CƯ<br />
+                      >S&Agrave;N GIAO DỊCH&nbsp;BẤT ĐỘNG SẢN CHUNG CƯ<br />
                       Hotline: 0967.938.168<br />
                       Website: </span
                     ><a href="/">dadiland.com</a></span
@@ -56,7 +56,7 @@
     </div>
   </div>
   <div class="bottom text-center">
-    Copyright: 2015 Sổ tay Chung cư. All Rights Reserved
+    Copyright: 2025 DADILAND. All Rights Reserved
   </div>
 </template>
 

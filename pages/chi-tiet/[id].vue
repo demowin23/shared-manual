@@ -463,6 +463,24 @@ import { useProjectStore } from "~/store/useProject";
 
 export default {
   components: { ProjectItem },
+  head() {
+    return {
+      title:
+        this.project && this.project.name
+          ? `${this.project.name} - Thông tin dự án, bảng giá, chính sách mới nhất`
+          : "Chi tiết dự án",
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content:
+            this.project && this.project.detail
+              ? this.project.detail.replace(/<[^>]+>/g, "").slice(0, 160)
+              : "Thông tin chi tiết dự án bất động sản, bảng giá, chính sách mới nhất.",
+        },
+      ],
+    };
+  },
   data() {
     return {
       project: null,

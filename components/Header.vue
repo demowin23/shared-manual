@@ -15,7 +15,7 @@
             <img
               class="img-responsive"
               src="/images/logo.png"
-              alt="Logo Sổ tay chung cư"
+              alt="Logo DADILAND"
               width="200"
               height="50"
               loading="lazy"
@@ -156,7 +156,7 @@
                   <img
                     class="img-responsive"
                     src="/images/logo.png"
-                    alt="Logo Sổ tay chung cư"
+                    alt="Logo DADILAND"
                     width="110"
                     height="32"
                     loading="lazy"

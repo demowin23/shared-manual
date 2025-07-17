@@ -98,7 +98,7 @@ export default defineNuxtConfig({
   // PWA configuration
   pwa: {
     manifest: {
-      name: 'Sổ tay chung cư',
+      name: 'Chung cư',
       short_name: 'STCC',
       description: 'Thông tin bất động sản toàn quốc',
       theme_color: '#ffffff',

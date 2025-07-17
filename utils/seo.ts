@@ -14,15 +14,15 @@ export interface SeoMeta {
 }
 
 export const defaultSeoMeta: SeoMeta = {
-  title: 'Sổ tay chung cư - Thông tin bất động sản toàn quốc',
+  title: 'DADILAND - Thông tin bất động sản toàn quốc',
   description: 'Cập nhật thông tin mới nhất về bất động sản, chung cư, nhà đất tại các tỉnh thành trên toàn quốc. Thông tin chi tiết về giá cả, vị trí, tiện ích.',
   keywords: ['bất động sản', 'chung cư', 'nhà đất', 'mua bán nhà đất', 'cho thuê nhà đất'],
   robots: 'index, follow',
-  ogTitle: 'Sổ tay chung cư - Thông tin bất động sản toàn quốc',
+  ogTitle: 'DADILAND - Thông tin bất động sản toàn quốc',
   ogDescription: 'Cập nhật thông tin mới nhất về bất động sản, chung cư, nhà đất tại các tỉnh thành trên toàn quốc',
   ogImage: 'https://dadiland.com/images/logo.png',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'Sổ tay chung cư - Thông tin bất động sản toàn quốc',
+  twitterTitle: 'DADILAND - Thông tin bất động sản toàn quốc',
   twitterDescription: 'Cập nhật thông tin mới nhất về bất động sản, chung cư, nhà đất',
   twitterImage: 'https://dadiland.com/images/logo.png'
 };
