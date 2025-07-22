@@ -4,6 +4,20 @@
     <h2>Thêm tin tức mới</h2>
     <form @submit.prevent="submitNews">
       <div class="form-group">
+        <label>Loại bài viết *</label>
+        <div class="type-options">
+          <label
+            ><input type="radio" value="news" v-model="type" /> Tin tức</label
+          >
+          <label
+            ><input type="radio" value="wiki" v-model="type" /> Wiki BĐS</label
+          >
+        </div>
+        <div v-if="type === 'wiki'" class="wiki-note">
+          Bài viết sẽ xuất hiện ở mục <b>Wiki BĐS</b>.
+        </div>
+      </div>
+      <div class="form-group">
         <label for="title">Tiêu đề *</label>
         <input v-model="title" id="title" type="text" required />
       </div>
@@ -54,6 +68,7 @@ import { useNewsStore } from "~/store/useNews";
 import QuillEditor from "~/components/QuillEditor.vue";
 const newsStore = useNewsStore();
 
+const type = ref("news");
 const title = ref("");
 const short_intro = ref("");
 const image = ref(null);
@@ -86,6 +101,7 @@ async function submitNews() {
     return;
   }
   const payload = {
+    type: type.value,
     title: title.value,
     short_intro: short_intro.value,
     content: content.value,
@@ -101,6 +117,7 @@ async function submitNews() {
     is_featured.value = false;
     image.value = null;
     imagePreview.value = null;
+    type.value = "news";
   } else {
     error.value = newsStore.error;
   }
@@ -191,6 +208,21 @@ button[type="submit"]:hover {
   border: 1.5px solid #eee;
   margin-top: 8px;
   max-width: 220px;
+}
+.type-options {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+.type-options label {
+  font-weight: 500;
+  cursor: pointer;
+}
+.wiki-note {
+  color: #7f53ac;
+  font-size: 0.98rem;
+  margin-bottom: 4px;
 }
 @media (max-width: 700px) {
   .news-add-form {

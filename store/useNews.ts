@@ -10,11 +10,11 @@ export const useNewsStore = defineStore('news', () => {
   const { $env } = useNuxtApp() as any;
   const urlBe = $env.URL_BE;
 
-  async function getNewsList(page = 1, pageSize = 10) {
+  async function getNewsList(page = 1, pageSize = 10,type = "news") {
     isLoading.value = true;
     error.value = null;
     try {
-      const response = await fetch(`${urlBe}/api/news?page=${page}&pageSize=${pageSize}`, {
+      const response = await fetch(`${urlBe}/api/news?type=${type}&page=${page}&pageSize=${pageSize}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

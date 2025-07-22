@@ -100,18 +100,9 @@
               </li>
             </ul>
           </li>
-
-          <!-- Nhà đất bán -->
           <li class="has-sub">
-            <a title="Nhà đất bán" href="/du-an/465-nha-dat-ban">
-              <h2>Nhà đất bán</h2>
-            </a>
-          </li>
-
-          <!-- Nhà đất cho thuê -->
-          <li class="has-sub">
-            <a title="Nhà đất cho thuê" href="/du-an/466-nha-dat-cho-thue">
-              <h2>Nhà đất cho thuê</h2>
+            <a title="Wiki BĐS" href="/wiki-bds">
+              <h2>Wiki BĐS</h2>
             </a>
           </li>
 
@@ -220,29 +211,13 @@
                   </li>
                   <li class="has-sub">
                     <a
-                      title="Nhà đất bán"
+                      title="Wiki BĐS"
                       @click.prevent="
-                        handleMenuClick(0, 'Nhà đất bán', 'nha-dat-ban')
+                        handleMenuClick(0, 'Wiki BĐS', 'wiki-bds')
                       "
-                      href="/danh-muc-du-an/nha-dat-ban"
+                      href="/wiki-bds"
                     >
-                      <h2>Nhà đất bán</h2>
-                    </a>
-                  </li>
-
-                  <li class="has-sub">
-                    <a
-                      title="Nhà đất cho thuê"
-                      @click.prevent="
-                        handleMenuClick(
-                          0,
-                          'Nhà đất cho thuê',
-                          'nha-dat-cho-thue'
-                        )
-                      "
-                      href="/danh-muc-du-an/nha-dat-cho-thue"
-                    >
-                      <h2>Nhà đất cho thuê</h2>
+                      <h2>Wiki BĐS</h2>
                     </a>
                   </li>
 
@@ -485,7 +460,11 @@ export default {
       if (!!index) {
         this.$router.push(`/du-an/${index}-${this.slugify(text)}`);
       } else {
-        this.$router.push(`/danh-muc-du-an/${path}`);
+        if (path === "wiki-bds") {
+          this.$router.push(`/wiki-bds`);
+        } else {
+          this.$router.push(`/danh-muc-du-an/${path}`);
+        }
       }
       useProjectStore().setMenuPage(text);
     },

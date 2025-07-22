@@ -241,13 +241,13 @@ export default defineEventHandler(async (event) => {
 
   // --- Thêm toàn bộ tin tức động ---
   try {
-    const newsRes = await fetch(`${urlBe}/api/news?page=1&pageSize=1000`);
+    const newsRes = await fetch(`${urlBe}/api/news?type=news&page=1&pageSize=1000`);
     if (newsRes.ok) {
       const newsData = await newsRes.json();
       const newsList = newsData.data || newsData.items || [];
       for (const news of newsList) {
         sitemap.write({
-          url: `/tin-tuc/${news.id}`,
+          url: `/tin-tuc/${news.id}-${slugify(news.title)}`,
           changefreq: 'weekly',
           priority: 0.6
         })
@@ -256,7 +256,22 @@ export default defineEventHandler(async (event) => {
   } catch (e) {
     // Nếu lỗi thì bỏ qua
   }
-
+  try {
+    const wikiRes = await fetch(`${urlBe}/api/news?type=wiki&page=1&pageSize=1000`);
+    if (wikiRes.ok) {
+      const wikiData = await wikiRes.json();
+      const wikiList = wikiData.data || wikiData.items || [];
+      for (const wiki of wikiList) {
+        sitemap.write({
+          url: `/wiki-bds/${wiki.id}-${slugify(wiki.title)}`,
+          changefreq: 'weekly',
+          priority: 0.6
+        })
+      }
+    }
+  } catch (e) {
+    // Nếu lỗi thì bỏ qua
+  }
   sitemap.end()
 
   return streamToPromise(sitemap)

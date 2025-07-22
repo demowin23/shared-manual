@@ -59,8 +59,6 @@ export const useProjectStore = defineStore('project', {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log(data);
-        
         this.projects = data.data;
         this.totalItems = data.pagination.total;
       } catch (error) {

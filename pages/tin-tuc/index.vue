@@ -1,8 +1,14 @@
 <template>
   <div class="news-list-page">
     <div class="header-row">
-      <h2>Quản lý tin tức</h2>
-      <nuxt-link to="/tin-tuc/add" class="add-btn">+ Thêm tin tức</nuxt-link>
+      <h2>Quản lý bài viết</h2>
+      <nuxt-link to="/tin-tuc/add" class="add-btn">+ Thêm bài viết</nuxt-link>
+    </div>
+    <div class="options">
+      <select name="type" id="type" v-model="type" class="type-select">
+        <option value="news">Tin tức</option>
+        <option value="wiki">Wiki</option>
+      </select>
     </div>
     <div>
       <table class="news-table">
@@ -81,12 +87,20 @@ const totalPages = computed(
 let news = ref([]);
 const showEditModal = ref(false);
 const editingNews = ref(null);
-
-onMounted(() => {
-  newsStore.getNewsList(page.value, pageSize.value).then((res) => {
-    news.value = res;
-  });
-});
+const type = ref("news");
+watch(
+  type,
+  () => {
+    newsStore
+      .getNewsList(page.value, pageSize.value, type.value)
+      .then((res) => {
+        news.value = res;
+      });
+  },
+  {
+    immediate: true,
+  }
+);
 
 function openEditModal(item) {
   editingNews.value = { ...item };
@@ -304,5 +318,27 @@ function goToNewsDetail(news: any) {
     font-size: 13px;
     padding: 7px 12px;
   }
+}
+.options {
+  margin: 20px 0;
+}
+.type-select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  max-width: 150px;
+}
+.type-select:hover {
+  border-color: #7f53ac;
+}
+.type-select:focus {
+  outline: none;
+  border-color: #7f53ac;
+  box-shadow: 0 0 0 2px rgba(127, 83, 172, 0.2);
 }
 </style>

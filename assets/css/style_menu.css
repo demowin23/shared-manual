@@ -251,8 +251,7 @@
   border-bottom: 0;
 }
 
-#cssmenu ul.maunen > li.has-sub > a[title="Nhà đất bán"],
-#cssmenu ul.maunen > li.has-sub > a[title="Nhà đất cho thuê"],
+#cssmenu ul.maunen > li.has-sub > a[title="Wiki BĐS"],
 #cssmenu ul.maunen > li.has-sub > a[title="Tin tức"],
 #cssmenu ul.maunen > li.has-sub > a[title="Liên hệ"],
 #cssmenu ul.maunen > li.has-sub > a[title="Trang chủ"] {
@@ -261,8 +260,7 @@
   color: #fff !important;
   transition: none !important;
 }
-#cssmenu ul.maunen > li.has-sub > a[title="Nhà đất bán"]:hover,
-#cssmenu ul.maunen > li.has-sub > a[title="Nhà đất cho thuê"]:hover,
+#cssmenu ul.maunen > li.has-sub > a[title="Wiki BĐS"]:hover,
 #cssmenu ul.maunen > li.has-sub > a[title="Tin tức"]:hover,
 #cssmenu ul.maunen > li.has-sub > a[title="Liên hệ"]:hover,
 #cssmenu ul.maunen > li.has-sub > a[title="Trang chủ"]:hover {
