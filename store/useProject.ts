@@ -85,7 +85,7 @@ export const useProjectStore = defineStore('project', {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        this.projects = data;
+        this.projects = data.data;
       } catch (error) {
         this.error = error instanceof Error ? error.message : 'An error occurred while fetching the projects by area';
         console.error('Error fetching projects by area:', error);
