@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="head_title3 text-left">
-                <p>{{ project?.name }}</p>
+                <h1>{{ project?.name }}</h1>
               </div>
             </div>
           </div>

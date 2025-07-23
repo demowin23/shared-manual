@@ -43,6 +43,120 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import Header from "~/components/Header.vue";
 import Footer from "~/components/Footer.vue";
+import { useHead } from "nuxt/app";
+
+useHead({
+  title:
+    "Nền tảng bất động sản toàn quốc – Mua bán, đầu tư dự án uy tín | DadiLand.com",
+  meta: [
+    {
+      name: "viewport",
+      content:
+        "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+    },
+    { "http-equiv": "content-type", content: "text/html; charset=utf-8" },
+    { "http-equiv": "audience", content: "general" },
+    { name: "resource-type", content: "document" },
+    {
+      name: "abstract",
+      content: "Thông tin bất động sản toàn quốc – DadiLand.com",
+    },
+    { name: "classification", content: "Bất động sản Việt Nam" },
+    { name: "area", content: "Nhà đất, dự án bất động sản, đầu tư" },
+    { name: "placename", content: "Việt Nam" },
+    { name: "author", content: "Công ty TNHH Vidco Group" },
+    { name: "copyright", content: "©2025 DadiLand.com – Vidco Group" },
+    { name: "owner", content: "Công ty TNHH Vidco Group" },
+    { name: "generator", content: "DadiLand CMS by Vidco" },
+    { name: "distribution", content: "Global" },
+    { name: "revisit-after", content: "1 days" },
+    { name: "referrer", content: "no-referrer-when-downgrade" },
+    { name: "robots", content: "index, follow" },
+    {
+      name: "keywords",
+      content:
+        "mua bán nhà đất, bất động sản, dự án căn hộ, đất nền, nhà phố, chung cư, cho thuê bất động sản, đầu tư địa ốc, DadiLand, Vidco Group",
+    },
+    {
+      name: "description",
+      content:
+        "Chuyên trang bất động sản toàn quốc – DadiLand giúp bạn tìm kiếm và đăng tin mua bán, cho thuê nhà đất, đất nền, chung cư, văn phòng. Cập nhật tin tức thị trường BĐS mới nhất, chính xác và uy tín.",
+    },
+    // Open Graph
+    { property: "og:url", content: "https://dadiland.com/" },
+    {
+      property: "og:title",
+      content:
+        "Nền tảng bất động sản toàn quốc – Mua bán, đầu tư dự án uy tín | DadiLand.com",
+    },
+    {
+      property: "og:description",
+      content:
+        "DadiLand cung cấp thông tin mua bán, cho thuê nhà đất, căn hộ, đất nền và dự án bất động sản tại TP.HCM, Hà Nội và khắp cả nước. Cập nhật pháp lý, giá bán, quy hoạch rõ ràng.",
+    },
+    { property: "og:image", content: "https://dadiland.com/images/logo.png" },
+  ],
+  link: [{ rel: "canonical", href: "https://dadiland.com/" }],
+  script: [
+    {
+      type: "application/ld+json",
+      children: `{
+        "@context": "https://schema.org",
+        "@type": "RealEstateAgent",
+        "name": "DadiLand",
+        "alternateName": "Nhà Đất DadiLand",
+        "url": "https://dadiland.com/",
+        "logo": "https://dadiland.com/images/logo.png",
+        "image": "https://dadiland.com/images/logo.png",
+        "description": "DadiLand là nền tảng bất động sản trực tuyến cung cấp thông tin mua bán, cho thuê, đầu tư nhà đất tại Hà Nội. Cầu nối tin cậy giữa người bán và người mua bất động sản.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "27 Trần Duy Hưng, Phường Thanh Xuân",
+          "addressLocality": "Hà Nội",
+          "addressCountry": "VN"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+84-343018345",
+          "contactType": "Customer Service",
+          "availableLanguage": ["Vietnamese"]
+        },
+        "sameAs": [
+          "https://solo.to/dadiland",
+          "https://snstheme.com/forums/users/dadiland/",
+          "https://ucgp.jujuy.edu.ar/profile/dadiland",
+          "https://veterinarypracticetransition.com/author/dadiland/",
+          "https://library.zortrax.com/members/dadilandcmquk/",
+          "https://idol.st/user/64907/dadiland/",
+          "https://participa.sostrecivic.coop/profiles/dadiland/activity",
+          "https://www.slideserve.com/dadiland",
+          "https://www.checkli.com/dadiland",
+          "https://telegra.ph/dadiland-07-11",
+          "https://demo.userproplugin.com/profile/dadiland/",
+          "https://we-xpats.com/en/member/53110/",
+          "https://careers.gita.org/profiles/6874867-nha-d-t-dadiland",
+          "https://www.40billion.com/profile/106512035",
+          "https://challonge.com/dadilandrs",
+          "https://photoclub.canadiangeographic.ca/profile/21651556",
+          "https://schoolido.lu/user/dadiland/",
+          "https://www.gaiaonline.com/profiles/dadiland/50539878/",
+          "https://linkmix.co/40595652",
+          "https://postheaven.net/2bb2gkroyy",
+          "https://backloggery.com/dadiland",
+          "https://pumpyoursound.com/u/user/1509261",
+          "https://www.gp1.hr/forums/users/dadiland/",
+          "https://beatsaver.com/playlists/950688",
+          "https://roomstyler.com/users/dadiland",
+          "https://www.nintendo-master.com/profil/dadiland",
+          "https://simania.co.il/userPage.php?userId=308334",
+          "https://clearvoice.com/cv/NhtDadiland",
+          "https://www.joindota.com/users/2303355-dadiland",
+          "https://www.montessorijobsuk.co.uk/author/dadiland/"
+        ]
+      }`,
+    },
+  ],
+});
 
 const showBackToTop = ref(false);
 
