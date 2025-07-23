@@ -131,7 +131,7 @@ async function submitEdit() {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
   background: rgba(30, 41, 59, 0.35);
   display: flex;
   align-items: center;
@@ -144,7 +144,7 @@ async function submitEdit() {
   border-radius: 18px;
   padding: 40px 32px 32px 32px;
   min-width: 400px;
-  max-width: 95vw;
+  max-width: 90vw;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
   position: relative;
   font-family: "Segoe UI", "Roboto", Arial, sans-serif;

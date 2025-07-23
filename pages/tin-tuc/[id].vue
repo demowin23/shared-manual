@@ -10,33 +10,56 @@
           <div class="clear h15"></div>
           <div class="row">
             <div class="col-md-9 col-sm-12">
-              <div class="detail_new bg-white p-4 rounded shadow-sm mb-4">
-                <h1 class="mb-3 text-2xl font-bold text-primary">
+              <div
+                class="detail_new bg-white p-4 rounded-3 shadow-lg mb-4 border"
+              >
+                <h1 class="mb-3 text-3xl font-bold text-primary title-detail">
                   {{ newsDetail?.title }}
                 </h1>
-                <div class="mb-3 text-gray-500 flex items-center gap-3">
-                  <span
-                    ><i class="fa fa-calendar"></i>
-                    {{ formatDate(newsDetail?.created_at) }}</span
-                  >
-                  <span v-if="newsDetail?.author"
-                    ><i class="fa fa-user"></i> {{ newsDetail?.author }}</span
-                  >
+                <div
+                  class="mb-3 text-gray-500 flex items-center gap-3 meta-detail"
+                >
+                  <span>
+                    <i class="fa fa-calendar"></i>
+                    {{ formatDate(newsDetail?.created_at) }}
+                  </span>
+                  <span v-if="newsDetail?.author">
+                    <i class="fa fa-user"></i> {{ newsDetail?.author }}
+                  </span>
                 </div>
                 <img
                   v-if="newsDetail?.image"
                   :src="getImageUrl(newsDetail?.image)"
                   alt="Ảnh đại diện"
-                  class="img-fluid rounded mb-4"
-                  style="object-fit: cover; width: 100%"
+                  class="img-fluid rounded-3 mb-4 shadow-sm main-news-img"
+                  style="
+                    object-fit: cover;
+                    width: 100%;
+                    max-height: 420px;
+                    background: #f8f8f8;
+                  "
                 />
                 <p
-                  class="lead text-lg text-gray-700 mb-4"
+                  class="lead text-lg text-gray-700 mb-4 short-intro-detail text-justify"
                   v-if="newsDetail?.short_intro"
                 >
                   {{ newsDetail?.short_intro }}
                 </p>
-                <div class="content" v-html="newsDetail?.content"></div>
+
+                <div class="content content-detail">
+                  <div class="custom-quill-editor ql-container ql-snow">
+                    <div
+                      class="ql-editor html-output"
+                      data-gramm="false"
+                      contenteditable="true"
+                    >
+                      <div
+                        class="html-preview"
+                        v-html="newsDetail?.content"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -151,6 +174,11 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.html-preview {
+  font-size: 16px;
+  line-height: 21px;
+  text-align: justify;
+}
 .cat-title {
   margin-top: 24px;
   margin-bottom: 16px;
@@ -161,13 +189,47 @@ onMounted(async () => {
   color: #ffff;
   margin-bottom: 0;
 }
-.detail_new h1 {
-  color: var(--primary-color, #7f53ac);
+.detail_new {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(127, 83, 172, 0.08),
+    0 1.5px 8px rgba(0, 0, 0, 0.04);
+  padding: 40px 36px 32px 36px;
+  border: 1.5px solid #f3f0fa;
+  margin-bottom: 32px;
 }
-.content {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: #333;
+.title-detail {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #7f53ac;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+.meta-detail {
+  font-size: 1.05rem;
+  color: #888;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.main-news-img {
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(127, 83, 172, 0.1);
+  margin-bottom: 28px;
+  background: #f8f8f8;
+}
+.short-intro-detail {
+  font-size: 1.6rem;
+  color: #555;
+  margin-bottom: 22px;
+  font-style: italic;
+}
+.content-detail {
+  font-size: 1.13rem;
+  line-height: 1.8;
+  color: #222;
+  margin-bottom: 0;
+  min-height: 180px;
+  word-break: break-word;
 }
 .latest-news-item {
   display: flex;
@@ -225,6 +287,13 @@ onMounted(async () => {
   }
   .detail_new {
     padding: 20px 8px;
+  }
+  .content-detail {
+    padding: 16px 6px;
+    font-size: 1.01rem;
+  }
+  .title-detail {
+    font-size: 1.3rem;
   }
   .latest-news-item {
     gap: 8px;

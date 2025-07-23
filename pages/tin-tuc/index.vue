@@ -42,8 +42,10 @@
               <span v-if="item.is_featured">✔</span>
             </td>
             <td>
-              <button @click="openEditModal(item)" class="edit-btn">Sửa</button>
-              <button @click="deleteNews(item.id)" class="delete-btn">
+              <button @click.stop="openEditModal(item)" class="edit-btn">
+                Sửa
+              </button>
+              <button @click.stop="deleteNews(item.id)" class="delete-btn">
                 Xóa
               </button>
             </td>
@@ -61,12 +63,6 @@
       </div>
     </div>
     <div v-if="newsStore.error" class="error">{{ newsStore.error }}</div>
-    <NewsEditModal
-      :visible="showEditModal"
-      :news="editingNews"
-      @save="handleEditSave"
-      @cancel="closeEditModal"
-    />
   </div>
 </template>
 
@@ -85,8 +81,6 @@ const totalPages = computed(
   () => Math.ceil(newsStore.total / pageSize.value) || 1
 );
 let news = ref([]);
-const showEditModal = ref(false);
-const editingNews = ref(null);
 const type = ref("news");
 watch(
   type,
@@ -103,22 +97,8 @@ watch(
 );
 
 function openEditModal(item) {
-  editingNews.value = { ...item };
-  showEditModal.value = true;
-}
-
-function closeEditModal() {
-  showEditModal.value = false;
-  editingNews.value = null;
-}
-
-async function handleEditSave(edited) {
-  if (!editingNews.value) return;
-  const ok = await newsStore.updateNews(editingNews.value.id, edited);
-  if (ok) {
-    await newsStore.getNewsList(page.value, pageSize.value);
-    closeEditModal();
-  }
+  // Chuyển hướng sang trang chỉnh sửa thay vì mở modal
+  router.push(`/tin-tuc/edit/${item.id}`);
 }
 
 async function deleteNews(id) {
