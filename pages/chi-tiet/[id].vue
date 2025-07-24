@@ -464,20 +464,44 @@ import { useProjectStore } from "~/store/useProject";
 export default {
   components: { ProjectItem },
   head() {
+    const title =
+      this.project && this.project.name
+        ? `${this.project.name} - Thông tin dự án, bảng giá, chính sách mới nhất`
+        : "Chi tiết dự án";
+    const description =
+      this.project && this.project.detail
+        ? this.project.detail.replace(/<[^>]+>/g, "").slice(0, 160)
+        : "Thông tin chi tiết dự án bất động sản, bảng giá, chính sách mới nhất.";
+    const image =
+      this.project && this.project.images && this.project.images.length > 0
+        ? typeof this.project.images[0] === "string"
+          ? `${this.urlBe}/uploads/${this.project.images[0]}`
+          : this.project.images[0].src
+        : "/images/logo.png";
     return {
-      title:
-        this.project && this.project.name
-          ? `${this.project.name} - Thông tin dự án, bảng giá, chính sách mới nhất`
-          : "Chi tiết dự án",
+      title,
       meta: [
+        { hid: "description", name: "description", content: description },
+        { hid: "og:title", property: "og:title", content: title },
         {
-          hid: "description",
-          name: "description",
-          content:
-            this.project && this.project.detail
-              ? this.project.detail.replace(/<[^>]+>/g, "").slice(0, 160)
-              : "Thông tin chi tiết dự án bất động sản, bảng giá, chính sách mới nhất.",
+          hid: "og:description",
+          property: "og:description",
+          content: description,
         },
+        { hid: "og:image", property: "og:image", content: image },
+        { hid: "og:type", property: "og:type", content: "article" },
+        {
+          hid: "twitter:card",
+          name: "twitter:card",
+          content: "summary_large_image",
+        },
+        { hid: "twitter:title", name: "twitter:title", content: title },
+        {
+          hid: "twitter:description",
+          name: "twitter:description",
+          content: description,
+        },
+        { hid: "twitter:image", name: "twitter:image", content: image },
       ],
     };
   },
@@ -547,11 +571,14 @@ export default {
       for (let i = 0; i < from.length; i++) {
         slug = slug.replace(new RegExp(from[i], "g"), to[i]);
       }
-      return slug
+      slug = slug
         .toLowerCase()
         .replace(/[^a-z0-9\s-]/g, "")
         .trim()
         .replace(/\s+/g, "-");
+      slug = slug.replace(/-+/g, "-");
+      slug = slug.replace(/^-+|-+$/g, "");
+      return slug;
     },
     async call(id) {
       const store = useProjectStore();

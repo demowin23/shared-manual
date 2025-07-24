@@ -144,30 +144,58 @@ function slugify(text: string) {
   for (let i = 0; i < from.length; i++) {
     slug = slug.replace(new RegExp(from[i], "g"), to[i]);
   }
-  return slug
+  slug = slug
     .toLowerCase()
-    .replace(/[^a-z0-9\\s-]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
     .trim()
-    .replace(/\\s+/g, "-");
+    .replace(/\s+/g, "-");
+  slug = slug.replace(/-+/g, "-");
+  slug = slug.replace(/^-+|-+$/g, "");
+  return slug;
 }
+
 onMounted(async () => {
   newsDetail.value = await newsStore.getNewsDetail(id);
   newsList.value = await newsStore.getNewsList(1, 5);
+  // --- Meta tags for SEO & social sharing ---
+  const title =
+    newsDetail.value && newsDetail.value.title
+      ? newsDetail.value.title
+      : "Chi tiết tin tức";
+  let description =
+    newsDetail.value && newsDetail.value.short_intro
+      ? newsDetail.value.short_intro
+      : newsDetail.value && newsDetail.value.content
+      ? newsDetail.value.content.replace(/<[^>]+>/g, "").slice(0, 160)
+      : "Tin tức bất động sản, thị trường, chính sách mới nhất.";
+  const image =
+    newsDetail.value && newsDetail.value.image
+      ? getImageUrl(newsDetail.value.image)
+      : "/images/logo.png";
   useHead({
-    title:
-      newsDetail.value && newsDetail.value.title
-        ? `${newsDetail.value.title} - Tin tức bất động sản mới nhất`
-        : "Chi tiết tin tức",
+    title,
     meta: [
+      { hid: "description", name: "description", content: description },
+      { hid: "og:title", property: "og:title", content: title },
       {
-        name: "description",
-        content:
-          newsDetail.value && newsDetail.value.short_intro
-            ? newsDetail.value.short_intro
-            : newsDetail.value && newsDetail.value.content
-            ? newsDetail.value.content.replace(/<[^>]+>/g, "").slice(0, 160)
-            : "Tin tức bất động sản, thị trường, chính sách mới nhất.",
+        hid: "og:description",
+        property: "og:description",
+        content: description,
       },
+      { hid: "og:image", property: "og:image", content: image },
+      { hid: "og:type", property: "og:type", content: "article" },
+      {
+        hid: "twitter:card",
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+      { hid: "twitter:title", name: "twitter:title", content: title },
+      {
+        hid: "twitter:description",
+        name: "twitter:description",
+        content: description,
+      },
+      { hid: "twitter:image", name: "twitter:image", content: image },
     ],
   });
 });
