@@ -76,18 +76,6 @@ useHead({
         "mua bán nhà đất, bất động sản, dự án căn hộ, đất nền, nhà phố, chung cư, cho thuê bất động sản, đầu tư địa ốc, DadiLand, Vidco Group",
     },
     // Open Graph
-    { property: "og:url", content: "https://dadiland.com/" },
-    {
-      property: "og:title",
-      content:
-        "Nền tảng bất động sản toàn quốc – Mua bán, đầu tư dự án uy tín | DadiLand.com",
-    },
-    {
-      property: "og:description",
-      content:
-        "DadiLand cung cấp thông tin mua bán, cho thuê nhà đất, căn hộ, đất nền và dự án bất động sản tại TP.HCM, Hà Nội và khắp cả nước. Cập nhật pháp lý, giá bán, quy hoạch rõ ràng.",
-    },
-    { property: "og:image", content: "https://dadiland.com/images/logo.png" },
   ],
   link: [{ rel: "canonical", href: "https://dadiland.com/" }],
   script: [
