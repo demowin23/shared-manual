@@ -69,13 +69,13 @@ export const useProjectStore = defineStore('project', {
       }
     },
 
-    async fetchProjectsByArea(areaId) {
+    async fetchProjectsByArea(areaId, page = 1, pageSize = 12) {
       this.loading = true;
       this.error = null;
       const { $env } = useNuxtApp() as any;
       const urlBe = $env.URL_BE;
       try {
-        const response = await fetch(`${urlBe}/api/projects?areas=${areaId}`, {
+        const response = await fetch(`${urlBe}/api/projects?areas=${areaId}&page=${page}&pageSize=${pageSize}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -86,6 +86,7 @@ export const useProjectStore = defineStore('project', {
         }
         const data = await response.json();
         this.projects = data.data;
+        this.totalItems = data.pagination?.total || 0;
       } catch (error) {
         this.error = error instanceof Error ? error.message : 'An error occurred while fetching the projects by area';
         console.error('Error fetching projects by area:', error);

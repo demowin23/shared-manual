@@ -20,6 +20,13 @@
         </div>
       </div>
     </div>
+    <Paginations
+      :page="page"
+      :pageSize="pageSize"
+      :total="totalItems"
+      @update:page="onPageChange"
+      @update:pageSize="onPageSizeChange"
+    />
   </div>
 </template>
 
@@ -27,14 +34,39 @@
 import ProjectItem from "~/components/ProjectItem.vue";
 import { useProjectStore } from "~/store/useProject";
 import { useRoute } from "vue-router";
+import Paginations from "~/components/Paginations.vue";
 
 export default {
-  components: { ProjectItem },
+  components: { ProjectItem, Paginations },
   data() {
     return {
       projectStore: useProjectStore(),
       projects: [],
+      page: 1,
+      pageSize: 12,
+      totalItems: 0,
+      areaId: null,
     };
+  },
+  methods: {
+    async fetchProjects(areaId) {
+      await this.projectStore.fetchProjectsByArea(
+        areaId,
+        this.page,
+        this.pageSize
+      );
+      this.projects = this.projectStore.projects;
+      this.totalItems = this.projectStore.totalItems;
+    },
+    onPageChange(newPage) {
+      this.page = newPage;
+      this.fetchProjects(this.areaId);
+    },
+    onPageSizeChange(newSize) {
+      this.pageSize = newSize;
+      this.page = 1;
+      this.fetchProjects(this.areaId);
+    },
   },
   async created() {
     const route = useRoute();
@@ -43,8 +75,8 @@ export default {
       const match = areaId.match(/^\d+/);
       if (match) areaId = match[0];
     }
-    await this.projectStore.fetchProjectsByArea(areaId);
-    this.projects = this.projectStore.projects;
+    this.areaId = areaId;
+    await this.fetchProjects(areaId);
   },
 };
 </script>
