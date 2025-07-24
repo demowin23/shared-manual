@@ -46,8 +46,6 @@ import Footer from "~/components/Footer.vue";
 import { useHead } from "nuxt/app";
 
 useHead({
-  title:
-    "Nền tảng bất động sản toàn quốc – Mua bán, đầu tư dự án uy tín | DadiLand.com",
   meta: [
     {
       name: "viewport",
@@ -76,11 +74,6 @@ useHead({
       name: "keywords",
       content:
         "mua bán nhà đất, bất động sản, dự án căn hộ, đất nền, nhà phố, chung cư, cho thuê bất động sản, đầu tư địa ốc, DadiLand, Vidco Group",
-    },
-    {
-      name: "description",
-      content:
-        "Chuyên trang bất động sản toàn quốc – DadiLand giúp bạn tìm kiếm và đăng tin mua bán, cho thuê nhà đất, đất nền, chung cư, văn phòng. Cập nhật tin tức thị trường BĐS mới nhất, chính xác và uy tín.",
     },
     // Open Graph
     { property: "og:url", content: "https://dadiland.com/" },
