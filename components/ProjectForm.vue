@@ -188,6 +188,11 @@ export default {
               { id: 57, name: "Huyện Nhà Bè" },
             ],
           },
+          {
+            id: 128,
+            name: "Dự án Tỉnh",
+            children: [],
+          },
         ],
       },
       realEstateManual: {
@@ -409,8 +414,7 @@ export default {
         this.$emit("submitEdit", {
           name: this.projectName,
           area: this.projectArea,
-          subArea: this.projectSubArea,
-          subSubArea: this.projectSubSubArea,
+          subArea: this.projectSubArea || this.projectSubSubArea,
           detail: this.editorContent,
           images: this.imagePreviews, // hoặc imageFiles nếu cần upload lại
         });
@@ -418,7 +422,7 @@ export default {
         try {
           if (
             !this.projectName ||
-            !this.projectSubSubArea ||
+            !this.projectSubArea ||
             !this.imageFiles.length ||
             !this.editorContent
           ) {
@@ -429,7 +433,7 @@ export default {
           }
           await this.createProject(
             this.projectName,
-            Number(this.projectSubSubArea),
+            Number(this.projectSubArea || this.projectSubSubArea),
             this.editorContent,
             this.imageFiles
           );

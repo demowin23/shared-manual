@@ -73,6 +73,11 @@ const areas = [
           { id: 57, name: 'Huyện Nhà Bè' },
         ],
       },
+      {
+        id: 128,
+        name: 'Dự án Tỉnh',
+        children: [],
+      },
     ],
   },
   {
