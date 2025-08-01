@@ -10,9 +10,13 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import ProjectForm from "~/components/ProjectForm.vue";
+definePageMeta({
+  layout: "admin",
+  pageTitle: "Thêm Dự án",
+});
 const router = useRouter();
 const goToAdmin = () => {
-  router.push("/project/admin");
+  router.push("/admin/project");
 };
 </script>
 <style scoped>

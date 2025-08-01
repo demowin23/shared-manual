@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <h2>Quản lý Dự án</h2>
+    <div class="admin-header">
+      <h2>Quản lý Dự án</h2>
+      <button class="btn btn-primary" @click="goToAddProject">
+        Thêm dự án
+      </button>
+    </div>
     <div v-if="loading">Đang tải danh sách dự án...</div>
     <div v-else>
       <table class="table table-bordered">
@@ -61,7 +66,13 @@ const page = ref(1);
 const pageSize = ref(12);
 const hasNext = ref(true);
 const totalItems = computed(() => useProjectStore().totalItems);
-
+definePageMeta({
+  layout: "admin",
+  pageTitle: "Quản lý Dự án",
+});
+const goToAddProject = () => {
+  router.push("/admin/project/create");
+};
 const fetchProjects = async () => {
   loading.value = true;
   await store.fetchProjects(page.value, pageSize.value);
@@ -81,7 +92,7 @@ const onPageSizeChange = (newSize) => {
 };
 
 const editProject = (project) => {
-  router.push(`/project/edit/${project.id}`);
+  router.push(`/admin/project/edit/${project.id}`);
 };
 
 const deleteProject = async (project) => {
@@ -129,5 +140,12 @@ th {
 }
 .btn {
   margin-right: 8px;
+}
+</style>
+<style scoped>
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

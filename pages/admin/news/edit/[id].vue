@@ -1,17 +1,17 @@
 <template>
   <div class="news-add-form">
-    <a href="/tin-tuc">Quản lý tin tức</a>
-    <h2>Thêm tin tức mới</h2>
+    <a href="/admin/news">Quản lý tin tức</a>
+    <h2>Sửa tin tức</h2>
     <form @submit.prevent="submitNews">
       <div class="form-group">
         <label>Loại bài viết *</label>
         <div class="type-options">
-          <label
-            ><input type="radio" value="news" v-model="type" /> Tin tức</label
-          >
-          <label
-            ><input type="radio" value="wiki" v-model="type" /> Wiki BĐS</label
-          >
+          <label>
+            <input type="radio" value="news" v-model="type" /> Tin tức
+          </label>
+          <label>
+            <input type="radio" value="wiki" v-model="type" /> Wiki BĐS
+          </label>
         </div>
         <div v-if="type === 'wiki'" class="wiki-note">
           Bài viết sẽ xuất hiện ở mục <b>Wiki BĐS</b>.
@@ -32,12 +32,21 @@
           type="file"
           accept="image/*"
           @change="onImageChange"
-          required
         />
         <div v-if="imagePreview" class="image-preview">
           <img
             :src="imagePreview"
             alt="Preview"
+            style="max-width: 200px; margin-top: 8px"
+          />
+        </div>
+        <div
+          v-else-if="image && typeof image === 'string'"
+          class="image-preview"
+        >
+          <img
+            :src="getImageUrl(image)"
+            alt="Ảnh hiện tại"
             style="max-width: 200px; margin-top: 8px"
           />
         </div>
@@ -54,19 +63,34 @@
         </label>
       </div>
       <button type="submit" :disabled="isLoading">
-        {{ isLoading ? "Đang gửi..." : "Thêm tin tức" }}
+        {{ isLoading ? "Đang lưu..." : "Lưu thay đổi" }}
       </button>
     </form>
     <div v-if="error" class="error">{{ error }}</div>
-    <div v-if="success" class="success">Thêm tin tức thành công!</div>
+    <div v-if="success" class="success">Cập nhật tin tức thành công!</div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useNewsStore } from "~/store/useNews";
 import QuillEditor from "~/components/QuillEditor.vue";
+definePageMeta({
+  layout: "admin",
+  pageTitle: "Sửa Tin tức",
+});
 const newsStore = useNewsStore();
+const route = useRoute();
+const router = useRouter();
+const { $env } = useNuxtApp();
+
+const idParam = route.params.id;
+let id = idParam;
+if (typeof idParam === "string") {
+  const match = idParam.match(/^\d+/);
+  if (match) id = match[0];
+}
 
 const type = ref("news");
 const title = ref("");
@@ -78,6 +102,28 @@ const is_featured = ref(false);
 const isLoading = ref(false);
 const error = ref(null);
 const success = ref(false);
+
+function getImageUrl(img) {
+  if (!img) return "";
+  if (img.startsWith("http")) return img;
+  return `${$env.URL_BE}/uploads/${img}`;
+}
+
+onMounted(async () => {
+  isLoading.value = true;
+  const news = await newsStore.getNewsDetail(id);
+  if (news) {
+    type.value = news.type || "news";
+    title.value = news.title || "";
+    short_intro.value = news.short_intro || "";
+    image.value = news.image || null;
+    content.value = news.content || "";
+    is_featured.value = !!news.is_featured;
+  } else {
+    error.value = "Không tìm thấy tin tức.";
+  }
+  isLoading.value = false;
+});
 
 function onImageChange(e) {
   const file = e.target.files[0];
@@ -95,7 +141,7 @@ async function submitNews() {
   isLoading.value = true;
   error.value = null;
   success.value = false;
-  if (!title.value || !content.value || !image.value) {
+  if (!title.value || !content.value) {
     error.value = "Vui lòng nhập đầy đủ thông tin bắt buộc.";
     isLoading.value = false;
     return;
@@ -108,18 +154,14 @@ async function submitNews() {
     is_featured: is_featured.value ? "true" : "false",
     image: image.value,
   };
-  const ok = await newsStore.createNews(payload);
+  const ok = await newsStore.updateNews(id, payload);
   if (ok) {
     success.value = true;
-    title.value = "";
-    short_intro.value = "";
-    content.value = "";
-    is_featured.value = false;
-    image.value = null;
-    imagePreview.value = null;
-    type.value = "news";
+    setTimeout(() => {
+      router.push("/admin/news");
+    }, 1200);
   } else {
-    error.value = newsStore.error;
+    error.value = newsStore.error || "Cập nhật thất bại.";
   }
   isLoading.value = false;
 }
@@ -186,7 +228,9 @@ button[type="submit"] {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0, 123, 255, 0.08);
 }
 button[type="submit"]:hover {

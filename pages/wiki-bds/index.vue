@@ -43,7 +43,7 @@
                 </p>
                 <a
                   :href="
-                    '/tin-tuc/' + article.id + '-' + slugify(article.title)
+                    '/wiki-bds/' + article.id + '-' + slugify(article.title)
                   "
                   class="featured-link"
                   >Đọc chi tiết</a
@@ -88,7 +88,7 @@
                 </div>
                 <a
                   :href="
-                    '/tin-tuc/' + article.id + '-' + slugify(article.title)
+                    '/wiki-bds/' + article.id + '-' + slugify(article.title)
                   "
                   class="wiki-article-link"
                   >Xem chi tiết</a
@@ -426,7 +426,9 @@ export default {
   color: #7f53ac;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 .wiki-pagination button:disabled {
   color: #aaa;

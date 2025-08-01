@@ -17,7 +17,10 @@ import { useRouter, useRoute } from "vue-router";
 import ProjectForm from "~/components/ProjectForm.vue";
 import { useProjectStore } from "~/store/useProject";
 import { useNuxtApp } from "nuxt/app";
-
+definePageMeta({
+  layout: "admin",
+  pageTitle: "Sửa Dự án",
+});
 const router = useRouter();
 const route = useRoute();
 const store = useProjectStore();
@@ -25,7 +28,7 @@ const { $env } = useNuxtApp();
 const urlBe = $env.URL_BE;
 
 const goToAdmin = () => {
-  router.push("/project/admin");
+  router.push("/admin/project");
 };
 
 const projectData = ref(null);
@@ -70,7 +73,7 @@ const submitEdit = async (data) => {
     });
     if (!response.ok) throw new Error("Cập nhật dự án thất bại!");
     alert("Cập nhật dự án thành công!");
-    router.push("/project/admin");
+    router.push("/admin/project");
   } catch (err) {
     alert("Có lỗi xảy ra khi cập nhật dự án!");
     console.error(err);

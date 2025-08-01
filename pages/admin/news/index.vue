@@ -2,7 +2,9 @@
   <div class="news-list-page">
     <div class="header-row">
       <h2>Quản lý bài viết</h2>
-      <nuxt-link to="/tin-tuc/add" class="add-btn">+ Thêm bài viết</nuxt-link>
+      <nuxt-link to="/admin/news/add" class="add-btn"
+        >+ Thêm bài viết</nuxt-link
+      >
     </div>
     <div class="options">
       <select name="type" id="type" v-model="type" class="type-select">
@@ -67,10 +69,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { useNewsStore } from "~/store/useNews";
-import NewsEditModal from "~/components/NewsEditModal.vue";
 import { useRouter } from "vue-router";
+
+// Set page title for admin layout
+definePageMeta({
+  layout: "admin",
+  pageTitle: "Quản lý Tin tức",
+});
 
 const newsStore = useNewsStore();
 const { $env } = useNuxtApp() as any;
@@ -82,6 +89,24 @@ const totalPages = computed(
 );
 let news = ref([]);
 const type = ref("news");
+
+onMounted(() => {
+  // Load news data
+  loadNews();
+});
+
+const loadNews = async () => {
+  try {
+    news.value = await newsStore.getNewsList(
+      page.value,
+      pageSize.value,
+      type.value
+    );
+  } catch (error) {
+    console.error("Error loading news:", error);
+  }
+};
+
 watch(
   type,
   () => {
@@ -98,7 +123,7 @@ watch(
 
 function openEditModal(item) {
   // Chuyển hướng sang trang chỉnh sửa thay vì mở modal
-  router.push(`/tin-tuc/edit/${item.id}`);
+  router.push(`/admin/news/edit/${item.id}`);
 }
 
 async function deleteNews(id) {
@@ -139,32 +164,35 @@ const router = useRouter();
 
 function goToNewsDetail(news: any) {
   const slug = slugify(news.title || "");
-  router.push(`/tin-tuc/${news.id}-${slug}`);
+  router.push(`/admin/news/${news.id}-${slug}`);
 }
 </script>
 
 <style scoped>
 .news-list-page {
   max-width: 1100px;
-  margin: 40px auto;
+  margin: 0 auto;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
   padding: 40px 32px 32px 32px;
   font-family: "Segoe UI", "Roboto", Arial, sans-serif;
 }
+
 .header-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
 }
+
 .header-row h2 {
   font-size: 2rem;
   font-weight: 700;
   color: #222;
   margin: 0;
 }
+
 .add-btn {
   background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
   color: #fff;
@@ -175,13 +203,17 @@ function goToNewsDetail(news: any) {
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(0, 123, 255, 0.08);
   border: none;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   outline: none;
 }
+
 .add-btn:hover {
   background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
   box-shadow: 0 4px 16px rgba(0, 123, 255, 0.18);
 }
+
 .news-table {
   width: 100%;
   border-collapse: separate;
@@ -192,6 +224,7 @@ function goToNewsDetail(news: any) {
   overflow: hidden;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
 }
+
 .news-table th,
 .news-table td {
   border-bottom: 1px solid #e3e8ee;
@@ -199,22 +232,27 @@ function goToNewsDetail(news: any) {
   text-align: left;
   font-size: 15px;
 }
+
 .news-table th {
   background: #f1f5fa;
   font-weight: 600;
   color: #333;
   font-size: 16px;
 }
+
 .news-table tr:last-child td {
   border-bottom: none;
 }
+
 .news-table tbody tr {
   transition: background 0.18s;
 }
+
 .news-table tbody tr:hover {
   background: #e6f0fa;
   cursor: pointer;
 }
+
 .edit-btn {
   color: #fff;
   background: linear-gradient(90deg, #007bff 60%, #0056b3 100%);
@@ -225,13 +263,17 @@ function goToNewsDetail(news: any) {
   font-weight: 500;
   margin-right: 8px;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   box-shadow: 0 1px 4px rgba(0, 123, 255, 0.08);
 }
+
 .edit-btn:hover {
   background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
   box-shadow: 0 2px 8px rgba(0, 123, 255, 0.18);
 }
+
 .delete-btn {
   color: #fff;
   background: linear-gradient(90deg, #d32f2f 60%, #b71c1c 100%);
@@ -241,13 +283,17 @@ function goToNewsDetail(news: any) {
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
   box-shadow: 0 1px 4px rgba(211, 47, 47, 0.08);
 }
+
 .delete-btn:hover {
   background: linear-gradient(90deg, #b71c1c 60%, #d32f2f 100%);
   box-shadow: 0 2px 8px rgba(211, 47, 47, 0.18);
 }
+
 .pagination {
   display: flex;
   align-items: center;
@@ -255,6 +301,7 @@ function goToNewsDetail(news: any) {
   justify-content: center;
   margin-top: 24px;
 }
+
 .pagination button {
   background: #f1f5fa;
   border: none;
@@ -265,46 +312,37 @@ function goToNewsDetail(news: any) {
   color: #007bff;
   font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
+
 .pagination button:disabled {
   color: #aaa;
   background: #f3f3f3;
   cursor: not-allowed;
 }
+
 .pagination button:not(:disabled):hover {
   background: #eaf3ff;
   color: #0056b3;
 }
+
 .loading {
   text-align: center;
   color: #888;
 }
+
 .error {
   color: #d32f2f;
   margin-top: 12px;
   text-align: center;
 }
-@media (max-width: 700px) {
-  .news-list-page {
-    padding: 12px 2vw;
-  }
-  .news-table th,
-  .news-table td {
-    padding: 8px 4px;
-    font-size: 14px;
-  }
-  .header-row h2 {
-    font-size: 1.2rem;
-  }
-  .add-btn {
-    font-size: 13px;
-    padding: 7px 12px;
-  }
-}
+
 .options {
   margin: 20px 0;
 }
+
 .type-select {
   padding: 8px 12px;
   border: 1px solid #ddd;
@@ -316,12 +354,35 @@ function goToNewsDetail(news: any) {
   transition: all 0.2s ease;
   max-width: 150px;
 }
+
 .type-select:hover {
   border-color: #7f53ac;
 }
+
 .type-select:focus {
   outline: none;
   border-color: #7f53ac;
   box-shadow: 0 0 0 2px rgba(127, 83, 172, 0.2);
+}
+
+@media (max-width: 768px) {
+  .news-list-page {
+    padding: 12px 2vw;
+  }
+
+  .news-table th,
+  .news-table td {
+    padding: 8px 4px;
+    font-size: 14px;
+  }
+
+  .header-row h2 {
+    font-size: 1.2rem;
+  }
+
+  .add-btn {
+    font-size: 13px;
+    padding: 7px 12px;
+  }
 }
 </style>
