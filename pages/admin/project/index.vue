@@ -35,6 +35,12 @@
               >
                 Xóa
               </button>
+              <button
+                class="btn btn-success btn-sm"
+                @click="copyProjectUrl(project)"
+              >
+                Copy URL
+              </button>
             </td>
           </tr>
         </tbody>
@@ -118,6 +124,60 @@ const deleteProject = async (project) => {
   }
 };
 
+// Function to copy project URL
+const copyProjectUrl = async (project) => {
+  try {
+    const slug = slugify(project.name || "");
+    const { $env } = useNuxtApp();
+    const baseUrl = $env.URL_BE || window.location.origin;
+    const urlPath = `/chi-tiet/${project.id}-${slug}`;
+    const fullUrl = `${baseUrl}${urlPath}`;
+    
+    // Copy to clipboard using modern API or fallback
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(fullUrl);
+    } else {
+      // Fallback for older browsers or non-secure contexts
+      const textArea = document.createElement('textarea');
+      textArea.value = fullUrl;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand('copy');
+      textArea.remove();
+    }
+    
+    // Show success message
+    alert('Đã copy URL thành công!');
+  } catch (error) {
+    console.error('Error copying URL:', error);
+    alert('Có lỗi xảy ra khi copy URL!');
+  }
+};
+
+// Hàm slugify
+function slugify(text) {
+  const from =
+    "àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ";
+  const to =
+    "aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyydAAAAAAAAAAAAAAAAAEEEEEEEEEEEIIIIIOOOOOOOOOOOOOOOOOUUUUUUUUUUUYYYYYD";
+  let slug = text;
+  for (let i = 0; i < from.length; i++) {
+    slug = slug.replace(new RegExp(from[i], "g"), to[i]);
+  }
+  slug = slug
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+  slug = slug.replace(/-+/g, "-");
+  slug = slug.replace(/^-+|-+$/g, "");
+  return slug;
+}
+
 onMounted(fetchProjects);
 onActivated(fetchProjects);
 </script>
@@ -140,6 +200,15 @@ th {
 }
 .btn {
   margin-right: 8px;
+}
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
 }
 </style>
 <style scoped>

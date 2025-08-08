@@ -50,6 +50,9 @@
               <button @click.stop="deleteNews(item.id)" class="delete-btn">
                 Xóa
               </button>
+              <button @click.stop="copyNewsUrl(item)" class="copy-btn">
+                Copy URL
+              </button>
             </td>
           </tr>
         </tbody>
@@ -165,6 +168,47 @@ const router = useRouter();
 function goToNewsDetail(news: any) {
   const slug = slugify(news.title || "");
   router.push(`/admin/news/${news.id}-${slug}`);
+}
+
+// Function to copy news URL
+async function copyNewsUrl(item: any) {
+  try {
+    const slug = slugify(item.title || "");
+    const baseUrl = $env.URL_BE || window.location.origin;
+    let urlPath = '';
+    
+    // Determine URL path based on type
+    if (type.value === 'wiki') {
+      urlPath = `/wiki-bds/${item.id}-${slug}`;
+    } else {
+      urlPath = `/tin-tuc/${item.id}-${slug}`;
+    }
+    
+    const fullUrl = `${baseUrl}${urlPath}`;
+    
+    // Copy to clipboard using modern API or fallback
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(fullUrl);
+    } else {
+      // Fallback for older browsers or non-secure contexts
+      const textArea = document.createElement('textarea');
+      textArea.value = fullUrl;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand('copy');
+      textArea.remove();
+    }
+    
+    // Show success message
+    alert('Đã copy URL thành công!');
+  } catch (error) {
+    console.error('Error copying URL:', error);
+    alert('Có lỗi xảy ra khi copy URL!');
+  }
 }
 </script>
 
@@ -282,6 +326,7 @@ function goToNewsDetail(news: any) {
   padding: 7px 18px;
   font-size: 15px;
   font-weight: 500;
+  margin-right: 8px;
   cursor: pointer;
   transition:
     background 0.2s,
@@ -292,6 +337,26 @@ function goToNewsDetail(news: any) {
 .delete-btn:hover {
   background: linear-gradient(90deg, #b71c1c 60%, #d32f2f 100%);
   box-shadow: 0 2px 8px rgba(211, 47, 47, 0.18);
+}
+
+.copy-btn {
+  color: #fff;
+  background: linear-gradient(90deg, #28a745 60%, #1e7e34 100%);
+  border: none;
+  border-radius: 6px;
+  padding: 7px 18px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(40, 167, 69, 0.08);
+}
+
+.copy-btn:hover {
+  background: linear-gradient(90deg, #1e7e34 60%, #28a745 100%);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.18);
 }
 
 .pagination {
